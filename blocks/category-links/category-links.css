@@ -25,6 +25,17 @@
   text-align: center;
 }
 
+/* filter mode: the categories are buttons */
+.category-links button.category-links-card {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
 .category-links .category-links-card picture {
   filter: drop-shadow(0 4px 6px rgb(0 0 0 / 15%));
 }
@@ -45,14 +56,15 @@
 }
 
 /* bold label with an underline on hover / focus */
-.category-links a.category-links-card:hover,
-.category-links a.category-links-card:focus-visible {
+.category-links .category-links-card:hover,
+.category-links .category-links-card:focus-visible {
   outline: none;
   text-decoration: none;
 }
 
-.category-links a.category-links-card:hover .category-links-name,
-.category-links a.category-links-card:focus-visible .category-links-name {
+.category-links .category-links-card:hover .category-links-name,
+.category-links .category-links-card:focus-visible .category-links-name,
+.category-links .category-links-card[aria-pressed='true'] .category-links-name {
   border-bottom-color: var(--text-color);
   font-weight: 700;
 }

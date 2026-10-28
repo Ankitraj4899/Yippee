@@ -9,7 +9,8 @@
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
               "name": "Recipes",
-              "filter": "recipes"
+              "filter": "recipes",
+              "model": "recipes"
             }
           }
         }
@@ -32,6 +33,19 @@
     }
   ],
   "models": [
+    {
+      "id": "recipes",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "source",
+          "label": "Recipe Index",
+          "value": "",
+          "description": "Optional. e.g. /query-index.json - lists the recipe pages under /recipes/ automatically and follows the category selected in Category Links. Leave empty to add recipes by hand."
+        }
+      ]
+    },
     {
       "id": "recipes-item",
       "fields": [

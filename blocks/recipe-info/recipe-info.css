@@ -1,0 +1,32 @@
+/* prep time, cook time, serves and difficulty in a row of yellow tiles */
+.recipe-info .recipe-info-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.recipe-info .recipe-info-item {
+  padding: 16px 12px;
+  border-radius: 20px;
+  background-color: var(--brand-yellow);
+  text-align: center;
+}
+
+.recipe-info dt {
+  font-family: var(--heading-font-family);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.recipe-info dd {
+  margin: 4px 0 0;
+  font-size: 18px;
+}
+
+@media (width >= 900px) {
+  .recipe-info .recipe-info-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
