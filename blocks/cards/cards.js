@@ -1,6 +1,7 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 import createSlider from '../../scripts/slider.js';
+import openVideoModal from '../../scripts/video-modal.js';
 
 /**
  * Builds tab buttons from the authored tab labels of the cards.
@@ -93,6 +94,16 @@ export default async function decorate(block) {
     moveInstrumentation(img, optimizedPic.querySelector('img'));
     img.closest('picture').replaceWith(optimizedPic);
   });
+
+  // video cards play their linked video in the modal instead of leaving the page
+  if (block.classList.contains('video')) {
+    ul.querySelectorAll('.cards-card-link').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        openVideoModal(link.href, link.textContent.trim() || 'Video');
+      });
+    });
+  }
 
   const items = [...ul.children];
   const tabs = buildTabs(block, items);
