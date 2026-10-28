@@ -1,8 +1,11 @@
 /* YiPPee! video modal, see scripts/video-modal.js */
 .video-modal {
   box-sizing: border-box;
-  width: min(92vw, 800px);
+
+  /* fit the window both ways: frame height = (width - 40px) * 554 / 760 + 46px */
+  width: min(92vw, 800px, calc((100dvh - 32px - 46px) * 760 / 554 + 40px));
   max-width: none;
+  max-height: none;
   padding: 24px 20px 22px;
   border: 0;
   border-radius: 20px;
