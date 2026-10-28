@@ -107,6 +107,14 @@ function buildVideoPlayer(player, src, title) {
  * @param {string} [title] Accessible name for the video
  */
 export default async function openVideoModal(url, title = 'Video') {
+  const embed = youtubeEmbed(url);
+  // links that are not a playable video (e.g. a YouTube channel page) open in a new tab
+  const isVideoFile = /\.(mp4|webm|ogg|mov|m4v)(\?|#|$)/i.test(url) || url.includes('/is/content/');
+  if (!embed && !isVideoFile) {
+    window.open(url, '_blank', 'noopener');
+    return;
+  }
+
   await loadCSS(`${window.hlx.codeBasePath}/styles/video-modal.css`);
 
   const dialog = document.createElement('dialog');
@@ -117,7 +125,6 @@ export default async function openVideoModal(url, title = 'Video') {
   player.className = 'video-modal-player';
   dialog.append(close, player);
 
-  const embed = youtubeEmbed(url);
   let video = null;
   if (embed) {
     const iframe = document.createElement('iframe');
