@@ -1,0 +1,13 @@
+{
+  "sites": {
+    "Yippee": {
+      "previewOrg": "Ankitraj4899",
+      "previewSite": "Yippee",
+      "contentHostUrl": "author-p8803-e1283844.adobeaemcloud.com",
+      "aemSitePath": "/content/yippee",
+      "aemAssetsFolderPath": "/content/dam/yippee",
+      "aemSiteName": "yippee",
+      "aemSiteTitle": "yippee"
+    }
+  }
+}
