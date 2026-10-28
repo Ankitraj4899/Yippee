@@ -115,6 +115,10 @@
   outline-offset: 2px;
 }
 
+.slider.slider-static .slider-track {
+  justify-content: center;
+}
+
 .slider.slider-static .slider-prev,
 .slider.slider-static .slider-next,
 .slider.slider-static .slider-dots {
