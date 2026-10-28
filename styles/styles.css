@@ -402,6 +402,10 @@ main .section.centered .default-content-wrapper {
     border-radius: 90px 0 0 90px;
   }
 
+  main .section:has(.cards.product) .default-content-wrapper h2 {
+    font-size: 46px;
+  }
+
   main .section.rounded-right {
     border-radius: 0 90px 90px 0;
   }
