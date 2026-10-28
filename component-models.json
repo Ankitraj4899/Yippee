@@ -20,6 +20,46 @@
         "name": "keywords",
         "multi": true,
         "label": "Keywords"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "category",
+        "label": "Recipe Category",
+        "description": "Recipe pages only: the category the recipe is listed under",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Appetizers",
+            "value": "Appetizers"
+          },
+          {
+            "name": "Breakfast",
+            "value": "Breakfast"
+          },
+          {
+            "name": "Snacks",
+            "value": "Snacks"
+          },
+          {
+            "name": "Fancy Meal",
+            "value": "Fancy Meal"
+          },
+          {
+            "name": "Pasta",
+            "value": "Pasta"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "duration",
+        "label": "Cooking Time",
+        "description": "Recipe pages only: total time shown on the recipe card, e.g. 25 mins"
       }
     ]
   },
@@ -314,6 +354,18 @@
     ]
   },
   {
+    "id": "category-links",
+    "fields": [
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "classes_filter",
+        "label": "Filter Recipes",
+        "description": "Turn the categories into tabs that filter the Recipes block in the same section (that Recipes block needs a Recipe Index)"
+      }
+    ]
+  },
+  {
     "id": "category-links-item",
     "fields": [
       {
@@ -440,6 +492,55 @@
         "label": "Tab Label",
         "value": "",
         "description": "Optional. Products with the same label are grouped under a tab button, e.g. Instant Noodles / Cup Noodles"
+      }
+    ]
+  },
+  {
+    "id": "recipe-info",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "prepTime",
+        "label": "Prep Time",
+        "value": "",
+        "description": "e.g. 10 mins"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cookTime",
+        "label": "Cook Time",
+        "value": "",
+        "description": "e.g. 15 mins"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "serves",
+        "label": "Serves",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "difficulty",
+        "label": "Difficulty",
+        "value": "",
+        "description": "e.g. Easy"
+      }
+    ]
+  },
+  {
+    "id": "recipes",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "source",
+        "label": "Recipe Index",
+        "value": "",
+        "description": "Optional. e.g. /query-index.json - lists the recipe pages under /recipes/ automatically and follows the category selected in Category Links. Leave empty to add recipes by hand."
       }
     ]
   },

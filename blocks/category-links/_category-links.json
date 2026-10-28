@@ -9,7 +9,8 @@
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
               "name": "Category Links",
-              "filter": "category-links"
+              "filter": "category-links",
+              "model": "category-links"
             }
           }
         }
@@ -32,6 +33,18 @@
     }
   ],
   "models": [
+    {
+      "id": "category-links",
+      "fields": [
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "classes_filter",
+          "label": "Filter Recipes",
+          "description": "Turn the categories into tabs that filter the Recipes block in the same section (that Recipes block needs a Recipe Index)"
+        }
+      ]
+    },
     {
       "id": "category-links-item",
       "fields": [

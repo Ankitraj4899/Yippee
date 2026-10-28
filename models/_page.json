@@ -21,6 +21,46 @@
           "name": "keywords",
           "multi": true,
           "label": "Keywords"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "category",
+          "label": "Recipe Category",
+          "description": "Recipe pages only: the category the recipe is listed under",
+          "options": [
+            {
+              "name": "None",
+              "value": ""
+            },
+            {
+              "name": "Appetizers",
+              "value": "Appetizers"
+            },
+            {
+              "name": "Breakfast",
+              "value": "Breakfast"
+            },
+            {
+              "name": "Snacks",
+              "value": "Snacks"
+            },
+            {
+              "name": "Fancy Meal",
+              "value": "Fancy Meal"
+            },
+            {
+              "name": "Pasta",
+              "value": "Pasta"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "duration",
+          "label": "Cooking Time",
+          "description": "Recipe pages only: total time shown on the recipe card, e.g. 25 mins"
         }
       ]
     }

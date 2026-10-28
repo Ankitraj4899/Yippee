@@ -1,32 +1,63 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
 import { optimizedPicture } from '../../scripts/block-helpers.js';
 
+/**
+ * Filter mode: the categories act as tabs for the Recipes block in the same
+ * section. The selected category is kept on the section and announced with a
+ * "recipes:filter" event.
+ * @param {Element} block The block
+ * @param {HTMLButtonElement[]} buttons The category buttons
+ */
+function setUpFilter(block, buttons) {
+  const section = block.closest('.section');
+  const select = (button) => {
+    buttons.forEach((b) => b.setAttribute('aria-pressed', b === button));
+    if (section) {
+      section.dataset.recipeCategory = button.dataset.category;
+      section.dispatchEvent(new CustomEvent('recipes:filter', { detail: { category: button.dataset.category } }));
+    }
+  };
+  buttons.forEach((button) => button.addEventListener('click', () => select(button)));
+  if (buttons.length) select(buttons[0]);
+}
+
 export default function decorate(block) {
+  const isFilter = block.classList.contains('filter');
   const list = document.createElement('ul');
   list.className = 'category-links-list';
+  if (isFilter) list.setAttribute('aria-label', 'Recipe categories');
+  const buttons = [];
 
-  [...block.children].forEach((row) => {
+  [...block.children].filter((row) => row.children.length > 1).forEach((row) => {
     const [imageCell, linkCell] = [...row.children];
     const li = document.createElement('li');
     li.className = 'category-links-item';
     moveInstrumentation(row, li);
 
     const link = linkCell?.querySelector('a[href]');
-    const card = document.createElement(link ? 'a' : 'div');
-    card.className = 'category-links-card';
-    if (link) {
-      card.href = link.href;
-      moveInstrumentation(link, card);
+    const name = (link || linkCell)?.textContent.trim() || '';
+    let card;
+    if (isFilter) {
+      card = document.createElement('button');
+      card.type = 'button';
+      card.dataset.category = name;
+      buttons.push(card);
+    } else {
+      card = document.createElement(link ? 'a' : 'div');
+      if (link) card.href = link.href;
     }
+    card.className = 'category-links-card';
+    if (link) moveInstrumentation(link, card);
     const picture = optimizedPicture(imageCell, '200');
     if (picture) card.append(picture);
-    const name = document.createElement('span');
-    name.className = 'category-links-name';
-    name.textContent = (link || linkCell)?.textContent.trim() || '';
-    card.append(name);
+    const label = document.createElement('span');
+    label.className = 'category-links-name';
+    label.textContent = name;
+    card.append(label);
     li.append(card);
     list.append(li);
   });
 
   block.replaceChildren(list);
+  if (isFilter) setUpFilter(block, buttons);
 }
