@@ -150,6 +150,18 @@
             "value": "rounded"
           },
           {
+            "name": "Rounded Left",
+            "value": "rounded-left"
+          },
+          {
+            "name": "Rounded Right",
+            "value": "rounded-right"
+          },
+          {
+            "name": "Color Stripes",
+            "value": "stripes"
+          },
+          {
             "name": "Centered Text",
             "value": "centered"
           }

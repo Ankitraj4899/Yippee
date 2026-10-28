@@ -26,7 +26,7 @@
   --brand-cream: #fcedec;
 
   /* fonts */
-  --body-font-family: lato, lato-fallback, sans-serif;
+  --body-font-family: amaranth, amaranth-fallback, sans-serif;
   --heading-font-family: amaranth, amaranth-fallback, sans-serif;
 
   /* body sizes */
@@ -36,7 +36,7 @@
 
   /* heading sizes */
   --heading-font-size-xxl: 32px;
-  --heading-font-size-xl: 24px;
+  --heading-font-size-xl: 28px;
   --heading-font-size-l: 22px;
   --heading-font-size-m: 20px;
   --heading-font-size-s: 18px;
@@ -63,7 +63,7 @@
   :root {
     /* heading sizes */
     --heading-font-size-xxl: 40px;
-    --heading-font-size-xl: 32px;
+    --heading-font-size-xl: 36px;
     --heading-font-size-l: 26px;
     --heading-font-size-m: 22px;
     --heading-font-size-s: 20px;
@@ -187,14 +187,14 @@ button.button {
   justify-content: center;
   max-width: 100%;
   margin: 0;
-  min-height: 40px;
   border: 2px solid transparent;
-  border-radius: 30px;
-  padding: 8px 38px;
+  border-radius: 50px;
+  padding: 11px 36px;
   font-family: var(--body-font-family);
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.25;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.2px;
   text-decoration: none;
   cursor: pointer;
   overflow: hidden;
@@ -205,9 +205,8 @@ button.button {
 @media (width >= 900px) {
   a.button:any-link,
   button.button {
-    min-height: 56px;
-    padding: 11px 38px;
-    font-size: 24px;
+    padding: 13px 44px;
+    font-size: 19px;
   }
 }
 
@@ -222,15 +221,18 @@ button.button.primary {
   border-color: var(--brand-red);
   background-color: var(--brand-red);
   color: var(--background-color);
+  box-shadow: 0 4px 14px rgb(181 4 4 / 28%);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 a.button.primary:hover,
 a.button.primary:focus-visible,
 button.button.primary:hover,
 button.button.primary:focus-visible {
-  border-color: var(--link-hover-color);
-  background-color: var(--link-hover-color);
+  border-color: #920303;
+  background-color: #920303;
   color: var(--background-color);
+  box-shadow: 0 6px 18px rgb(181 4 4 / 38%);
 }
 
 a.button.secondary,
@@ -332,6 +334,55 @@ main .section.rounded {
   border-radius: 0 0 60px;
 }
 
+main .section.rounded-left {
+  border-radius: 40px 0 0 40px;
+}
+
+main .section.rounded-right {
+  border-radius: 0 40px 40px 0;
+}
+
+/* orange block with red and yellow rounded bands peeking out on the right */
+main .section.stripes {
+  width: calc(100% - 60px);
+  border-radius: 0 60px 60px 0;
+  box-shadow: 30px 0 0 var(--brand-red), 60px 0 0 var(--brand-yellow);
+}
+
+/* long playful words (e.g. YiPPeeeeee!) wrap instead of overflowing the narrower block */
+main .section.stripes .default-content-wrapper h2 {
+  overflow-wrap: anywhere;
+}
+
+/* centered section headings get a sparkle on both sides */
+main .section.centered .default-content-wrapper h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+main .section.centered .default-content-wrapper h2::before,
+main .section.centered .default-content-wrapper h2::after {
+  content: '\2727' / '';
+  flex: 0 0 auto;
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  font-size: 0.9em;
+  font-weight: 400;
+}
+
+/* slider dots read better in white on orange */
+main .section.orange .slider-dot::after {
+  border-color: var(--background-color);
+  background-color: var(--background-color);
+}
+
+main .section.orange .slider-dot[aria-current='true']::after {
+  border-color: var(--brand-red);
+  background-color: var(--brand-red);
+}
+
 main .section.centered .default-content-wrapper {
   text-align: center;
 }
@@ -340,10 +391,24 @@ main .section.centered .default-content-wrapper {
   main .section.light,
   main .section.highlight,
   main .section.orange {
-    padding: 64px 0;
+    padding: 90px 0;
   }
 
   main .section.rounded {
     border-radius: 0 0 120px;
+  }
+
+  main .section.rounded-left {
+    border-radius: 90px 0 0 90px;
+  }
+
+  main .section.rounded-right {
+    border-radius: 0 90px 90px 0;
+  }
+
+  main .section.stripes {
+    width: calc(100% - 240px);
+    border-radius: 0 120px 120px 0;
+    box-shadow: 120px 0 0 var(--brand-red), 240px 0 0 var(--brand-yellow);
   }
 }
