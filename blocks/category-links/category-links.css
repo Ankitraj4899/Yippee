@@ -48,11 +48,24 @@
 }
 
 .category-links .category-links-name {
-  padding-bottom: 6px;
-  border-bottom: 4px solid transparent;
+  position: relative;
+  padding-bottom: 12px;
   font-family: lato, lato-fallback, sans-serif;
   font-size: 18px;
   line-height: 20px;
+}
+
+/* selected marker: a short black bar centred under the label */
+.category-links .category-links-name::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 52px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: transparent;
+  transform: translateX(-50%);
 }
 
 /* bold label with an underline on hover / focus */
@@ -65,8 +78,13 @@
 .category-links .category-links-card:hover .category-links-name,
 .category-links .category-links-card:focus-visible .category-links-name,
 .category-links .category-links-card[aria-pressed='true'] .category-links-name {
-  border-bottom-color: var(--text-color);
   font-weight: 700;
+}
+
+.category-links .category-links-card:hover .category-links-name::after,
+.category-links .category-links-card:focus-visible .category-links-name::after,
+.category-links .category-links-card[aria-pressed='true'] .category-links-name::after {
+  background-color: var(--text-color);
 }
 
 @media (width >= 900px) {

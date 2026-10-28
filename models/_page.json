@@ -29,11 +29,30 @@
           "label": "Recipe Category",
           "description": "Recipe pages only: the category the recipe is listed under",
           "options": [
-            { "name": "None", "value": "" },
-            { "name": "Breakfast", "value": "Breakfast" },
-            { "name": "Snacks", "value": "Snacks" },
-            { "name": "Main Course", "value": "Main Course" },
-            { "name": "Fusion", "value": "Fusion" }
+            {
+              "name": "None",
+              "value": ""
+            },
+            {
+              "name": "Appetizers",
+              "value": "Appetizers"
+            },
+            {
+              "name": "Breakfast",
+              "value": "Breakfast"
+            },
+            {
+              "name": "Snacks",
+              "value": "Snacks"
+            },
+            {
+              "name": "Fancy Meal",
+              "value": "Fancy Meal"
+            },
+            {
+              "name": "Pasta",
+              "value": "Pasta"
+            }
           ]
         },
         {

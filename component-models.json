@@ -33,6 +33,10 @@
             "value": ""
           },
           {
+            "name": "Appetizers",
+            "value": "Appetizers"
+          },
+          {
             "name": "Breakfast",
             "value": "Breakfast"
           },
@@ -41,12 +45,12 @@
             "value": "Snacks"
           },
           {
-            "name": "Main Course",
-            "value": "Main Course"
+            "name": "Fancy Meal",
+            "value": "Fancy Meal"
           },
           {
-            "name": "Fusion",
-            "value": "Fusion"
+            "name": "Pasta",
+            "value": "Pasta"
           }
         ]
       },
