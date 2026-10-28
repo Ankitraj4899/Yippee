@@ -9,7 +9,6 @@
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
               "name": "Cards",
-              "model": "cards",
               "filter": "cards"
             }
           }
@@ -34,56 +33,6 @@
   ],
   "models": [
     {
-      "id": "cards",
-      "fields": [
-        {
-          "component": "select",
-          "name": "classes",
-          "value": "",
-          "label": "Card Style",
-          "description": "Controls the look of the cards",
-          "valueType": "string",
-          "options": [
-            {
-              "name": "Default",
-              "value": ""
-            },
-            {
-              "name": "Product",
-              "value": "product"
-            },
-            {
-              "name": "Category",
-              "value": "category"
-            },
-            {
-              "name": "Recipe",
-              "value": "recipe"
-            },
-            {
-              "name": "Initiative",
-              "value": "initiative"
-            },
-            {
-              "name": "Video",
-              "value": "video"
-            },
-            {
-              "name": "Social",
-              "value": "social"
-            }
-          ]
-        },
-        {
-          "component": "boolean",
-          "name": "classes_carousel",
-          "label": "Show as Slider",
-          "description": "Show the cards in a horizontal slider with arrows and dots",
-          "valueType": "boolean"
-        }
-      ]
-    },
-    {
       "id": "card",
       "fields": [
         {
@@ -94,27 +43,11 @@
           "multi": false
         },
         {
-          "component": "text",
-          "valueType": "string",
-          "name": "imageAlt",
-          "label": "Image Alt Text",
-          "value": ""
-        },
-        {
           "component": "richtext",
           "name": "text",
           "value": "",
           "label": "Text",
-          "valueType": "string",
-          "description": "Title (heading), details such as cooking time, and a link. A single link makes the whole card clickable"
-        },
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "tab",
-          "label": "Tab Label",
-          "value": "",
-          "description": "Optional. Cards with the same label are grouped under a tab button, e.g. Instant Noodles / Cup Noodles"
+          "valueType": "string"
         }
       ]
     }

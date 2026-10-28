@@ -1,0 +1,98 @@
+/* staggered photo wall that fades out under the call to action */
+.social-wall {
+  position: relative;
+  margin: 24px 0 0;
+}
+
+.social-wall::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 125px;
+  background: linear-gradient(to top, #f7f5f5 10%, rgb(247 245 245 / 88%) 40%, rgb(247 245 245 / 45%) 70%, rgb(247 245 245 / 0%) 100%);
+  pointer-events: none;
+}
+
+.social-wall .social-wall-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  columns: 2;
+  column-gap: 12px;
+}
+
+.social-wall .social-wall-item {
+  height: 200px;
+  margin-bottom: 12px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 8%);
+  break-inside: avoid;
+}
+
+.social-wall .social-wall-item:nth-child(4n + 2),
+.social-wall .social-wall-item:nth-child(4n + 3) {
+  height: 280px;
+}
+
+.social-wall .social-wall-card {
+  display: block;
+  height: 100%;
+}
+
+.social-wall .social-wall-card:focus-visible {
+  outline: 3px solid var(--text-color);
+  outline-offset: -3px;
+}
+
+.social-wall .social-wall-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.social-wall .social-wall-card:hover img {
+  transform: scale(1.05);
+}
+
+/* the call to action overlaps the faded bottom of the wall */
+main .section .social-wall-wrapper + .default-content-wrapper {
+  position: relative;
+  z-index: 1;
+  margin-top: -36px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-wall .social-wall-card img {
+    transition: none;
+  }
+}
+
+@media (width >= 600px) {
+  .social-wall .social-wall-list {
+    columns: 3;
+    column-gap: 20px;
+  }
+
+  .social-wall .social-wall-item {
+    margin-bottom: 20px;
+  }
+}
+
+@media (width >= 900px) {
+  .social-wall .social-wall-list {
+    columns: 4;
+  }
+
+  .social-wall .social-wall-item {
+    height: 250px;
+  }
+
+  .social-wall .social-wall-item:nth-child(4n + 2),
+  .social-wall .social-wall-item:nth-child(4n + 3) {
+    height: 350px;
+  }
+}

@@ -15,9 +15,21 @@
       "hero",
       "carousel",
       "banner",
+      "product-range",
+      "category-links",
+      "recipes",
+      "better-world",
+      "video-gallery",
+      "social-wall",
       "cards",
       "columns",
       "fragment"
+    ]
+  },
+  {
+    "id": "better-world",
+    "components": [
+      "better-world-item"
     ]
   },
   {
@@ -33,6 +45,12 @@
     ]
   },
   {
+    "id": "category-links",
+    "components": [
+      "category-links-item"
+    ]
+  },
+  {
     "id": "columns",
     "components": [
       "column"
@@ -45,6 +63,30 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "product-range",
+    "components": [
+      "product-range-item"
+    ]
+  },
+  {
+    "id": "recipes",
+    "components": [
+      "recipes-item"
+    ]
+  },
+  {
+    "id": "social-wall",
+    "components": [
+      "social-wall-item"
+    ]
+  },
+  {
+    "id": "video-gallery",
+    "components": [
+      "video-gallery-item"
     ]
   }
 ]

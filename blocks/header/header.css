@@ -344,3 +344,19 @@ header nav .nav-tools .icon {
     height: 26px;
   }
 }
+
+/* narrower desktops: smaller links and gaps so the navbar fits */
+@media (900px <= width < 1200px) {
+  header nav {
+    gap: 0 24px;
+  }
+
+  header nav .nav-brand img {
+    height: 64px;
+  }
+
+  header nav .nav-sections ul {
+    gap: 16px 18px;
+    font-size: 16px;
+  }
+}

@@ -5,13 +5,13 @@
   max-width: none;
   padding: 24px 20px 22px;
   border: 0;
-  border-radius: 24px;
+  border-radius: 20px;
   background-color: var(--brand-orange);
   overflow: visible;
 }
 
 .video-modal::backdrop {
-  background-color: rgb(255 255 255 / 72%);
+  background-color: rgb(255 255 255 / 75%);
 }
 
 .video-modal-close {
@@ -50,7 +50,7 @@
 .video-modal-player {
   position: relative;
   aspect-ratio: 760 / 554;
-  border-radius: 22px;
+  border-radius: 20px;
   overflow: hidden;
   background-color: #000;
 }

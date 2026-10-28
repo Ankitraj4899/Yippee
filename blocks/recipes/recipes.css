@@ -1,0 +1,134 @@
+.recipes {
+  --slider-arrow-offset: -12px;
+
+  margin: 24px 0;
+}
+
+.recipes .recipes-list {
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 24px 4px 12px;
+  list-style: none;
+}
+
+.recipes .recipes-item {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  width: 72%;
+}
+
+/* the recipe image is the card, white title and a minutes badge on top */
+.recipes .recipes-card {
+  position: relative;
+  display: block;
+  height: 408px;
+  border-radius: 30px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #ffca34 0%, #ffa115 100%);
+  color: var(--background-color);
+}
+
+.recipes .recipes-card:hover {
+  text-decoration: none;
+}
+
+.recipes .recipes-card:focus-visible {
+  outline: 3px solid var(--text-color);
+  outline-offset: 4px;
+}
+
+.recipes .recipes-card picture {
+  position: absolute;
+  inset: 0;
+}
+
+.recipes .recipes-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recipes .recipes-card-footer {
+  position: absolute;
+  inset: auto 0 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 0 16px 28px;
+  text-align: left;
+}
+
+.recipes .recipes-title {
+  display: -webkit-box;
+  flex: 1 1 auto;
+  margin: 0;
+  overflow: hidden;
+  color: var(--background-color);
+  font-size: 24px;
+  line-height: 1.2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.recipes .recipes-time {
+  display: flex;
+  flex: 0 0 50px;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  font-family: lato, lato-fallback, sans-serif;
+  line-height: 1;
+}
+
+.recipes .recipes-time-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 51px;
+  border-radius: 25px 25px 22px 22px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.recipes .recipes-time-unit {
+  margin-top: 4px;
+  color: var(--background-color);
+  font-size: 18px;
+}
+
+@media (width >= 600px) {
+  .recipes .recipes-item {
+    width: calc((100% - 16px) / 2);
+  }
+}
+
+@media (width >= 900px) {
+  /* three 306px cards centred */
+  .recipes {
+    --slider-arrow-offset: -24px;
+
+    max-width: 990px;
+    margin-inline: auto;
+  }
+
+  .recipes .recipes-list {
+    gap: 32px;
+  }
+
+  .recipes .recipes-item {
+    width: calc((100% - 64px) / 3);
+  }
+}
+
+/* wide screens: arrows sit out at the section edges */
+@media (width >= 1200px) {
+  .recipes {
+    --slider-arrow-offset: -70px;
+  }
+}

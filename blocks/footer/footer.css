@@ -166,3 +166,26 @@ footer .footer .footer-social:focus-visible {
     margin-left: auto;
   }
 }
+
+/* narrower desktops: smaller logo and padding so the footer fits */
+@media (900px <= width < 1200px) {
+  footer .footer .footer-brand {
+    padding: 0 0 48px 32px;
+  }
+
+  footer .footer .footer-brand img {
+    width: 240px;
+  }
+
+  footer .footer .footer-links {
+    padding: 0 32px 48px 40px;
+  }
+
+  footer .footer .footer-links ul {
+    padding: 0 20px;
+  }
+
+  footer .footer .footer-bottom .default-content-wrapper {
+    padding: 0 32px;
+  }
+}

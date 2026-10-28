@@ -422,11 +422,11 @@ main .section.wave-heading > .default-content-wrapper:first-child {
     border-radius: 90px 0 0 90px;
   }
 
-  main .section:has(.cards.product) .default-content-wrapper h2 {
+  main .section:has(.product-range) .default-content-wrapper h2 {
     font-size: 46px;
   }
 
-  main .section.pasta-decor:has(.cards.product) .default-content-wrapper h2 {
+  main .section.pasta-decor:has(.product-range) .default-content-wrapper h2 {
     font-size: 32px;
   }
 
@@ -442,11 +442,11 @@ main .section.wave-heading > .default-content-wrapper:first-child {
   }
 
   main .section.wave-heading > .default-content-wrapper:first-child::before {
-    left: -32px;
+    left: 0;
   }
 
   main .section.wave-heading > .default-content-wrapper:first-child::after {
-    right: -32px;
+    right: 0;
   }
 
   main .section.pasta-decor::before {
@@ -468,9 +468,24 @@ main .section.wave-heading > .default-content-wrapper:first-child {
     border-radius: 0 90px 90px 0;
   }
 
+
+}
+
+@media (width >= 1200px) {
+  /* intro: the original artwork (orange block, red and yellow bands, noodle wave) as background */
   main .section.stripes {
-    width: calc(100% - 240px);
-    border-radius: 0 120px 120px 0;
-    box-shadow: 120px 0 0 var(--brand-red), 240px 0 0 var(--brand-yellow);
+    box-sizing: border-box;
+    width: 100%;
+    aspect-ratio: 1366 / 358;
+    padding: 64px 0 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: url('images/intro-noodles-bg.svg') left top / 100% 100% no-repeat;
+  }
+
+  main .section.stripes > div {
+    max-width: 63%;
+    margin: 0 0 0 8.3%;
+    padding: 0;
   }
 }

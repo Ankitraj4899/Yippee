@@ -1,0 +1,64 @@
+/* food icons with a label underneath */
+.category-links {
+  margin: 24px 0;
+}
+
+.category-links .category-links-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.category-links .category-links-item {
+  width: 100px;
+}
+
+.category-links .category-links-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.category-links .category-links-card picture {
+  filter: drop-shadow(0 4px 6px rgb(0 0 0 / 15%));
+}
+
+.category-links .category-links-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+.category-links .category-links-name {
+  padding-bottom: 6px;
+  border-bottom: 4px solid transparent;
+  font-family: lato, lato-fallback, sans-serif;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+/* bold label with an underline on hover / focus */
+.category-links a.category-links-card:hover,
+.category-links a.category-links-card:focus-visible {
+  outline: none;
+  text-decoration: none;
+}
+
+.category-links a.category-links-card:hover .category-links-name,
+.category-links a.category-links-card:focus-visible .category-links-name {
+  border-bottom-color: var(--text-color);
+  font-weight: 700;
+}
+
+@media (width >= 900px) {
+  .category-links .category-links-list {
+    gap: 30px 65px;
+  }
+}
