@@ -85,6 +85,7 @@
         "title",
         "hero",
         "carousel",
+        "banner",
         "cards",
         "columns",
         "fragment"
