@@ -26,7 +26,7 @@
   --brand-cream: #fcedec;
 
   /* fonts */
-  --body-font-family: amaranth, amaranth-fallback, sans-serif;
+  --body-font-family: lato, lato-fallback, sans-serif;
   --heading-font-family: amaranth, amaranth-fallback, sans-serif;
 
   /* body sizes */
@@ -77,7 +77,7 @@
 body {
   display: none;
   margin: 0;
-  background-color: var(--light-color);
+  background-color: var(--background-color);
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
@@ -90,6 +90,18 @@ body.appear {
 
 header {
   height: var(--nav-height);
+}
+
+/* like the original site, the page is a centred column of at most 1366px */
+header .nav-wrapper,
+main,
+footer {
+  max-width: 1366px;
+  margin-inline: auto;
+}
+
+main {
+  background-color: var(--light-color);
 }
 
 header .header,
@@ -369,15 +381,15 @@ main .section.pasta-decor .default-content-wrapper h2 {
 }
 
 /* centered section headings get a sparkle on both sides */
-main .section.centered .default-content-wrapper h2 {
+main .section.centered .default-content-wrapper:first-child h2 {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 14px;
 }
 
-main .section.centered .default-content-wrapper h2::before,
-main .section.centered .default-content-wrapper h2::after {
+main .section.centered .default-content-wrapper:first-child h2::before,
+main .section.centered .default-content-wrapper:first-child h2::after {
   content: '\2727' / '';
   flex: 0 0 auto;
   color: var(--text-color);
@@ -386,19 +398,13 @@ main .section.centered .default-content-wrapper h2::after {
   font-weight: 400;
 }
 
-/* slider dots read better in white on orange */
-main .section.orange .slider-dot::after {
-  border-color: var(--background-color);
-  background-color: var(--background-color);
-}
-
-main .section.orange .slider-dot[aria-current='true']::after {
-  border-color: var(--brand-red);
-  background-color: var(--brand-red);
-}
-
 main .section.centered .default-content-wrapper {
   text-align: center;
+}
+
+/* wavy lines either side of the first heading */
+main .section.wave-heading > .default-content-wrapper:first-child {
+  position: relative;
 }
 
 @media (width >= 900px) {
@@ -422,6 +428,25 @@ main .section.centered .default-content-wrapper {
 
   main .section.pasta-decor:has(.cards.product) .default-content-wrapper h2 {
     font-size: 32px;
+  }
+
+  main .section.wave-heading > .default-content-wrapper:first-child::before,
+  main .section.wave-heading > .default-content-wrapper:first-child::after {
+    content: '';
+    position: absolute;
+    top: 30px;
+    width: calc(50% - 250px);
+    height: 20px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cg fill='none' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M0 7 Q10 0 20 7 T40 7' stroke='%23fff'/%3E%3Cpath d='M0 13 Q10 6 20 13 T40 13' stroke='%23ffe08a'/%3E%3C/g%3E%3C/svg%3E") repeat-x left center / 40px 20px;
+    pointer-events: none;
+  }
+
+  main .section.wave-heading > .default-content-wrapper:first-child::before {
+    left: -32px;
+  }
+
+  main .section.wave-heading > .default-content-wrapper:first-child::after {
+    right: -32px;
   }
 
   main .section.pasta-decor::before {

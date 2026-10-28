@@ -177,20 +177,16 @@
   white-space: nowrap;
 }
 
-/* category: small round icons with a bold label */
+/* category: food icons with a label underneath */
 .cards.category > ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px 28px;
+  gap: 20px 40px;
 }
 
 .cards.category .cards-card {
-  width: 74px;
-}
-
-.cards.category .cards-card-image {
-  filter: drop-shadow(0 4px 6px rgb(0 0 0 / 15%));
+  width: 100px;
 }
 
 .cards.category .cards-card img {
@@ -199,22 +195,25 @@
 }
 
 .cards.category .cards-card-body {
-  margin: 8px 0 0;
+  margin: 0;
   text-align: center;
 }
 
 .cards.category .cards-card-body a:any-link {
+  display: inline-block;
+  padding-bottom: 6px;
+  border-bottom: 4px solid transparent;
   color: var(--text-color);
-  font-family: var(--heading-font-family);
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.2;
+  font-family: lato, lato-fallback, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 20px;
 }
 
-/* recipe: full-bleed photo, white title and a minutes badge on top */
+/* recipe: the recipe image is the card, white title and a minutes badge on top */
 .cards.recipe .cards-card {
-  height: 360px;
-  border-radius: 38px;
+  height: 408px;
+  border-radius: 30px;
   overflow: hidden;
   background: linear-gradient(180deg, #ffca34 0%, #ffa115 100%);
 }
@@ -222,13 +221,6 @@
 .cards.recipe .cards-card-image {
   position: absolute;
   inset: 0;
-}
-
-.cards.recipe .cards-card-image::after {
-  content: '';
-  position: absolute;
-  inset: 45% 0 0;
-  background: linear-gradient(to top, rgb(0 0 0 / 60%), transparent);
 }
 
 .cards.recipe .cards-card img {
@@ -245,34 +237,49 @@
   justify-content: space-between;
   gap: 14px;
   margin: 0;
-  padding: 0 22px 26px;
+  padding: 0 16px 28px;
   text-align: left;
 }
 
 .cards.recipe .cards-card-body h3 {
+  display: -webkit-box;
   flex: 1 1 auto;
   margin: 0;
+  overflow: hidden;
   color: var(--background-color);
-  font-size: 22px;
-  line-height: 1.15;
-  text-shadow: 0 1px 3px rgb(0 0 0 / 30%);
+  font-size: 24px;
+  line-height: 1.2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
-.cards.recipe .cards-card-meta {
+.cards.recipe .cards-card-time {
   display: flex;
-  flex: 0 0 52px;
+  flex: 0 0 50px;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  font-family: lato, lato-fallback, sans-serif;
+  line-height: 1;
+}
+
+.cards.recipe .cards-card-time-value {
+  display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px;
-  margin: 0;
-  border-radius: 24px 24px 22px 22px;
+  width: 50px;
+  height: 51px;
+  border-radius: 25px 25px 22px 22px;
   background-color: var(--background-color);
-  box-shadow: 0 4px 10px rgb(0 0 0 / 12%);
   color: var(--text-color);
-  font-size: 13px;
+  font-size: 24px;
   font-weight: 700;
-  line-height: 1.05;
-  text-align: center;
+}
+
+.cards.recipe .cards-card-time-unit {
+  margin-top: 4px;
+  color: var(--background-color);
+  font-size: 18px;
 }
 
 /* the recipe link covers the card; its text stays available to screen readers */
@@ -289,6 +296,13 @@
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
+}
+
+/* category label: bold with an underline on hover / focus */
+.cards.category .cards-card:hover .cards-card-body a:any-link,
+.cards.category .cards-card:focus-within .cards-card-body a:any-link {
+  border-bottom-color: var(--text-color);
+  font-weight: 700;
 }
 
 /* initiative: illustration above a red title and short text */
@@ -535,7 +549,15 @@ main .section .cards-wrapper:has(.cards.social) + .default-content-wrapper {
   }
 
   .cards.category > ul {
-    gap: 36px;
+    gap: 30px 65px;
+  }
+
+  /* recipe slider: three 306px cards centred, arrows out at the section edges */
+  .cards.recipe .cards-slider {
+    --slider-arrow-offset: -70px;
+
+    max-width: 990px;
+    margin-inline: auto;
   }
 
   .cards.social > ul {
@@ -544,10 +566,6 @@ main .section .cards-wrapper:has(.cards.social) + .default-content-wrapper {
 
   .cards .cards-slider > ul {
     gap: 32px;
-  }
-
-  .cards.recipe .cards-card {
-    height: 410px;
   }
 
   .cards.video .cards-card {
@@ -560,10 +578,6 @@ main .section .cards-wrapper:has(.cards.social) + .default-content-wrapper {
 
   .cards .cards-slider .cards-card {
     width: calc((100% - 64px) / 3);
-  }
-
-  .cards.recipe .cards-card-body h3 {
-    font-size: 27px;
   }
 
   .cards.product .cards-slider .cards-card {

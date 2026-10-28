@@ -76,6 +76,15 @@ export default async function decorate(block) {
     li.querySelectorAll('.cards-card-body p').forEach((p) => {
       if (!p.querySelector('a') && p.textContent.trim()) p.classList.add('cards-card-meta');
     });
+    // recipe cooking time such as "15 Mins": number in a badge, unit below it
+    if (block.classList.contains('recipe')) {
+      const meta = li.querySelector('.cards-card-meta');
+      const time = meta?.textContent.trim().match(/^(\d+)\s*(.*)$/);
+      if (time) {
+        meta.classList.add('cards-card-time');
+        meta.innerHTML = `<span class="cards-card-time-value">${time[1]}</span><span class="cards-card-time-unit">${time[2]}</span>`;
+      }
+    }
     decorateCardLink(li);
     ul.append(li);
   });

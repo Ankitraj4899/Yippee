@@ -166,6 +166,10 @@
             "value": "pasta-decor"
           },
           {
+            "name": "Wave Heading",
+            "value": "wave-heading"
+          },
+          {
             "name": "Centered Text",
             "value": "centered"
           }
