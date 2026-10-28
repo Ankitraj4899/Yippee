@@ -59,6 +59,10 @@
               "value": "stripes"
             },
             {
+              "name": "Pasta Decorations",
+              "value": "pasta-decor"
+            },
+            {
               "name": "Centered Text",
               "value": "centered"
             }
