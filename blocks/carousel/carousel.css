@@ -10,9 +10,6 @@
   margin: 0;
   padding: 0;
   list-style: none;
-
-  /* avoids a scrollbar flash until the shared slider styles have loaded */
-  overflow: hidden;
 }
 
 .carousel .carousel-slide {
