@@ -187,17 +187,28 @@ button.button {
   justify-content: center;
   max-width: 100%;
   margin: 0;
+  min-height: 40px;
   border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.6em 2em;
-  font: inherit;
-  font-weight: 700;
+  border-radius: 30px;
+  padding: 8px 38px;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 600;
   line-height: 1.25;
   text-decoration: none;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+@media (width >= 900px) {
+  a.button:any-link,
+  button.button {
+    min-height: 56px;
+    padding: 11px 38px;
+    font-size: 24px;
+  }
 }
 
 a.button[aria-disabled="true"],
