@@ -1,6 +1,7 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 import createSlider from '../../scripts/slider.js';
+import openVideoModal from '../../scripts/video-modal.js';
 
 /**
  * Adds a play button linking to the slide's video.
@@ -12,9 +13,11 @@ function addPlayButton(media, link, title) {
   const play = document.createElement('a');
   play.className = 'carousel-play';
   play.href = link.href;
-  play.target = '_blank';
-  play.rel = 'noopener noreferrer';
   play.setAttribute('aria-label', title ? `Play video: ${title}` : 'Play video');
+  play.addEventListener('click', (e) => {
+    e.preventDefault();
+    openVideoModal(link.href, title || 'Video');
+  });
   moveInstrumentation(link, play);
   media.append(play);
 }
