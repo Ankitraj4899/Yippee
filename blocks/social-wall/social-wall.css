@@ -83,16 +83,25 @@ main .section .social-wall-wrapper + .default-content-wrapper {
 }
 
 @media (width >= 900px) {
+  /* four columns of two posts, short and tall alternating, like the original */
+  .social-wall {
+    max-width: 940px;
+    margin-inline: auto;
+  }
+
   .social-wall .social-wall-list {
     columns: 4;
+    column-gap: 18px;
   }
 
   .social-wall .social-wall-item {
-    height: 250px;
+    height: 220px;
+    margin-bottom: 18px;
+    border-radius: 14px;
   }
 
   .social-wall .social-wall-item:nth-child(4n + 2),
   .social-wall .social-wall-item:nth-child(4n + 3) {
-    height: 350px;
+    height: 320px;
   }
 }
