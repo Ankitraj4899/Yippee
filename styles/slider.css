@@ -37,9 +37,19 @@
   padding: 0;
   border: 0;
   border-radius: 50%;
-  background-color: var(--brand-red);
+  background: none;
   color: var(--background-color);
   cursor: pointer;
+}
+
+/* starburst badge behind the chevron */
+.slider .slider-prev::before,
+.slider .slider-next::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--brand-red);
+  clip-path: polygon(50.0% 0.0%, 58.4% 7.8%, 69.1% 3.8%, 73.9% 14.2%, 85.4% 14.6%, 85.8% 26.1%, 96.2% 30.9%, 92.2% 41.6%, 100.0% 50.0%, 92.2% 58.4%, 96.2% 69.1%, 85.8% 73.9%, 85.4% 85.4%, 73.9% 85.8%, 69.1% 96.2%, 58.4% 92.2%, 50.0% 100.0%, 41.6% 92.2%, 30.9% 96.2%, 26.1% 85.8%, 14.6% 85.4%, 14.2% 73.9%, 3.8% 69.1%, 7.8% 58.4%, 0.0% 50.0%, 7.8% 41.6%, 3.8% 30.9%, 14.2% 26.1%, 14.6% 14.6%, 26.1% 14.2%, 30.9% 3.8%, 41.6% 7.8%);
 }
 
 .slider .slider-prev {
@@ -72,8 +82,12 @@
 
 .slider .slider-prev:disabled,
 .slider .slider-next:disabled {
-  background-color: #e8a8a8;
   cursor: default;
+}
+
+.slider .slider-prev:disabled::before,
+.slider .slider-next:disabled::before {
+  background-color: #e8a8a8;
 }
 
 .slider .slider-dots {
@@ -98,14 +112,14 @@
 .slider .slider-dot::after {
   content: '';
   position: absolute;
-  inset: 5px;
-  border: 2px solid var(--brand-red);
+  inset: 4px;
+  border: 2px solid #da001c;
   border-radius: 50%;
   background-color: var(--background-color);
 }
 
 .slider .slider-dot[aria-current='true']::after {
-  background-color: var(--brand-red);
+  background-color: #da001c;
 }
 
 .slider .slider-prev:focus-visible,

@@ -166,7 +166,7 @@ header nav .nav-brand a {
 header nav .nav-brand img {
   display: block;
   width: auto;
-  height: 52px;
+  height: 48px;
 }
 
 @media (width >= 900px) {
@@ -254,9 +254,9 @@ header nav .nav-sections ul > li > ul > li {
   header nav .nav-sections ul {
     display: flex;
     justify-content: center;
-    gap: 16px 32px;
+    gap: 16px 40px;
     margin: 0;
-    font-size: var(--heading-font-size-xs);
+    font-size: 20px;
   }
 
   header nav .nav-sections ul > li {
