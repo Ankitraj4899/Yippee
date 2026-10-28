@@ -422,11 +422,11 @@ main .section.wave-heading > .default-content-wrapper:first-child {
     border-radius: 90px 0 0 90px;
   }
 
-  main .section:has(.cards.product) .default-content-wrapper h2 {
+  main .section:has(.product-range) .default-content-wrapper h2 {
     font-size: 46px;
   }
 
-  main .section.pasta-decor:has(.cards.product) .default-content-wrapper h2 {
+  main .section.pasta-decor:has(.product-range) .default-content-wrapper h2 {
     font-size: 32px;
   }
 

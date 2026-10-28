@@ -1,0 +1,79 @@
+{
+  "definitions": [
+    {
+      "title": "Video Gallery",
+      "id": "video-gallery",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Video Gallery",
+              "filter": "video-gallery"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Video",
+      "id": "video-gallery-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Video",
+              "model": "video-gallery-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "video-gallery-item",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Thumbnail",
+          "description": "Portrait card image, 3:4",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Thumbnail Alt Text",
+          "value": ""
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "video",
+          "label": "Video Link",
+          "description": "YouTube video or MP4 link; it plays in the video pop-up"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "videoText",
+          "label": "Video Title",
+          "value": "",
+          "description": "Read out by screen readers, e.g. DIY Envelope"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "video-gallery",
+      "components": [
+        "video-gallery-item"
+      ]
+    }
+  ]
+}

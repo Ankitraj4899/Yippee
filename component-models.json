@@ -219,52 +219,44 @@
     ]
   },
   {
-    "id": "cards",
+    "id": "better-world-item",
     "fields": [
       {
-        "component": "select",
-        "name": "classes",
-        "value": "",
-        "label": "Card Style",
-        "description": "Controls the look of the cards",
+        "component": "reference",
         "valueType": "string",
-        "options": [
-          {
-            "name": "Default",
-            "value": ""
-          },
-          {
-            "name": "Product",
-            "value": "product"
-          },
-          {
-            "name": "Category",
-            "value": "category"
-          },
-          {
-            "name": "Recipe",
-            "value": "recipe"
-          },
-          {
-            "name": "Initiative",
-            "value": "initiative"
-          },
-          {
-            "name": "Video",
-            "value": "video"
-          },
-          {
-            "name": "Social",
-            "value": "social"
-          }
-        ]
+        "name": "image",
+        "label": "Image",
+        "description": "Square illustration, ideally a transparent PNG",
+        "multi": false
       },
       {
-        "component": "boolean",
-        "name": "classes_carousel",
-        "label": "Show as Slider",
-        "description": "Show the cards in a horizontal slider with arrows and dots",
-        "valueType": "boolean"
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": "",
+        "description": "Short text or statistic, e.g. 5000 schools involved in driving change"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Link",
+        "description": "Optional. Makes the whole card clickable"
       }
     ]
   },
@@ -279,27 +271,11 @@
         "multi": false
       },
       {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Image Alt Text",
-        "value": ""
-      },
-      {
         "component": "richtext",
         "name": "text",
         "value": "",
         "label": "Text",
-        "valueType": "string",
-        "description": "Title (heading), details such as cooking time, and a link. A single link makes the whole card clickable"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "tab",
-        "label": "Tab Label",
-        "value": "",
-        "description": "Optional. Cards with the same label are grouped under a tab button, e.g. Instant Noodles / Cup Noodles"
+        "valueType": "string"
       }
     ]
   },
@@ -334,6 +310,39 @@
         "name": "video",
         "label": "Video Link",
         "description": "Optional. Shows a play button on the image that opens this video"
+      }
+    ]
+  },
+  {
+    "id": "category-links-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Icon",
+        "description": "Square food icon, ideally a transparent PNG",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Icon Alt Text",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Category Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linkText",
+        "label": "Category Name",
+        "value": ""
       }
     ]
   },
@@ -389,6 +398,150 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "product-range-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Product Image",
+        "description": "Pack shot, ideally a transparent PNG",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Product Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linkText",
+        "label": "Product Name",
+        "value": "",
+        "description": "Read out by screen readers; the name printed on the pack is shown visually"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "tab",
+        "label": "Tab Label",
+        "value": "",
+        "description": "Optional. Products with the same label are grouped under a tab button, e.g. Instant Noodles / Cup Noodles"
+      }
+    ]
+  },
+  {
+    "id": "recipes-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Recipe Image",
+        "description": "Portrait card image, 3:4",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Recipe Title",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "time",
+        "label": "Cooking Time",
+        "value": "",
+        "description": "e.g. 15 Mins - the number is shown in the white badge"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Recipe Link"
+      }
+    ]
+  },
+  {
+    "id": "social-wall-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Post Link",
+        "description": "e.g. the Instagram post or profile"
+      }
+    ]
+  },
+  {
+    "id": "video-gallery-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Thumbnail",
+        "description": "Portrait card image, 3:4",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Thumbnail Alt Text",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "video",
+        "label": "Video Link",
+        "description": "YouTube video or MP4 link; it plays in the video pop-up"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "videoText",
+        "label": "Video Title",
+        "value": "",
+        "description": "Read out by screen readers, e.g. DIY Envelope"
       }
     ]
   }

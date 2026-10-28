@@ -1,0 +1,109 @@
+.product-range {
+  --slider-arrow-offset: -12px;
+
+  margin: 24px 0;
+}
+
+/* tabs: pill buttons, yellow when selected */
+.product-range .product-range-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 32px 0 24px;
+}
+
+.product-range .product-range-tab {
+  min-width: 150px;
+  min-height: 48px;
+  margin: 0;
+  padding: 8px 24px;
+  border: 0;
+  border-radius: 50px;
+  background-color: #e7e7e7;
+  color: var(--text-color);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.product-range .product-range-tab[aria-pressed='true'] {
+  background-color: #ffd044;
+  font-weight: 700;
+}
+
+.product-range .product-range-tab:focus-visible {
+  outline: 3px solid var(--text-color);
+  outline-offset: 2px;
+}
+
+/* slider of pack shots */
+.product-range .product-range-list {
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 24px 4px 12px;
+  list-style: none;
+}
+
+.product-range .product-range-item {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  width: 72%;
+}
+
+.product-range .product-range-item[hidden] {
+  display: none;
+}
+
+.product-range .product-range-card {
+  display: block;
+  line-height: 0;
+}
+
+.product-range .product-range-card:focus-visible {
+  outline: 3px solid var(--text-color);
+  outline-offset: 4px;
+}
+
+/* the transparent product shot on its own, no frame or crop */
+.product-range .product-range-card img {
+  width: 100%;
+  aspect-ratio: 692 / 530;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+@media (width >= 600px) {
+  .product-range .product-range-item {
+    width: calc((100% - 32px) / 3);
+  }
+}
+
+@media (width >= 900px) {
+  .product-range {
+    --slider-arrow-offset: -24px;
+  }
+
+  .product-range .product-range-tabs {
+    margin: 54px 0 48px;
+  }
+
+  .product-range .product-range-tab {
+    min-width: 200px;
+    min-height: 60px;
+    padding: 8px 30px;
+    font-size: 18px;
+  }
+
+  .product-range .product-range-list {
+    gap: 32px;
+  }
+
+  .product-range .product-range-item {
+    width: calc((100% - 64px) / 3);
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "definitions": [
+    {
+      "title": "Recipes",
+      "id": "recipes",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Recipes",
+              "filter": "recipes"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Recipe",
+      "id": "recipes-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Recipe",
+              "model": "recipes-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "recipes-item",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Recipe Image",
+          "description": "Portrait card image, 3:4",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Image Alt Text",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Recipe Title",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "time",
+          "label": "Cooking Time",
+          "value": "",
+          "description": "e.g. 15 Mins - the number is shown in the white badge"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "link",
+          "label": "Recipe Link"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "recipes",
+      "components": [
+        "recipes-item"
+      ]
+    }
+  ]
+}
