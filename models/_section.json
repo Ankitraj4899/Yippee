@@ -33,6 +33,22 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "Orange Background",
+              "value": "orange"
+            },
+            {
+              "name": "Light Background",
+              "value": "light"
+            },
+            {
+              "name": "Rounded Corners",
+              "value": "rounded"
+            },
+            {
+              "name": "Centered Text",
+              "value": "centered"
             }
           ]
         }
@@ -48,6 +64,7 @@
         "button",
         "title",
         "hero",
+        "carousel",
         "cards",
         "columns",
         "fragment"

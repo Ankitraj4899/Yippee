@@ -1,20 +1,124 @@
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  background-color: var(--brand-orange);
+  color: var(--text-color);
+  font-size: var(--body-font-size-s);
 }
 
 footer .footer > div {
   margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+  padding: 0;
 }
 
 footer .footer p {
   margin: 0;
 }
 
+footer .footer .section > div {
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 24px;
+}
+
+footer .footer a:any-link {
+  color: currentcolor;
+}
+
+footer .footer a:hover {
+  text-decoration: underline;
+}
+
+/* brand */
+footer .footer .footer-brand {
+  padding-top: 48px;
+  text-align: center;
+}
+
+footer .footer .footer-brand img {
+  width: auto;
+  height: 80px;
+}
+
+/* links */
+footer .footer .footer-links {
+  padding: 24px 0 40px;
+}
+
+footer .footer .footer-links .default-content-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 24px;
+  max-width: 720px;
+}
+
+footer .footer .footer-links ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+footer .footer .footer-links li {
+  padding: 8px 0;
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+}
+
+/* bottom bar */
+footer .footer .footer-bottom {
+  background-color: var(--brand-red);
+  color: var(--background-color);
+  font-size: var(--body-font-size-xs);
+}
+
+footer .footer .footer-bottom .default-content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 24px;
+  padding-block: 16px;
+  text-align: center;
+}
+
+footer .footer .footer-bottom .footer-social-links {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+footer .footer .footer-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+}
+
+footer .footer .footer-social:focus-visible {
+  outline: 2px solid var(--background-color);
+  outline-offset: -4px;
+}
+
+@media (width >= 600px) {
+  footer .footer .footer-links .default-content-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    text-align: center;
+  }
+}
+
 @media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+  footer .footer .section > div {
+    padding: 0 32px;
+  }
+
+  footer .footer .footer-bottom .default-content-wrapper {
+    justify-content: flex-start;
+    padding-block: 12px;
+  }
+
+  footer .footer .footer-bottom .footer-social-links {
+    margin-left: auto;
   }
 }
