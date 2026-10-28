@@ -66,10 +66,10 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border: solid currentcolor;
-  border-width: 2px 2px 0 0;
+  border-width: 3px 3px 0 0;
 }
 
 .slider .slider-prev::after {
