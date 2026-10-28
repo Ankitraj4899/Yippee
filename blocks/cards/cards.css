@@ -554,8 +554,6 @@ main .section .cards-wrapper:has(.cards.social) + .default-content-wrapper {
 
   /* recipe slider: three 306px cards centred, arrows out at the section edges */
   .cards.recipe .cards-slider {
-    --slider-arrow-offset: -70px;
-
     max-width: 990px;
     margin-inline: auto;
   }
@@ -587,5 +585,12 @@ main .section .cards-wrapper:has(.cards.social) + .default-content-wrapper {
   .cards.social .cards-card:nth-child(4n + 2),
   .cards.social .cards-card:nth-child(4n + 3) {
     height: 350px;
+  }
+}
+
+/* wide screens: recipe arrows sit out at the section edges */
+@media (width >= 1200px) {
+  .cards.recipe .cards-slider {
+    --slider-arrow-offset: -70px;
   }
 }
