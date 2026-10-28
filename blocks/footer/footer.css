@@ -60,7 +60,7 @@ footer .footer .footer-links ul {
 }
 
 footer .footer .footer-links li {
-  font-family: var(--body-font-family);
+  font-family: lato, lato-fallback, sans-serif;
   font-weight: 400;
   line-height: 22px;
 }
@@ -143,6 +143,10 @@ footer .footer .footer-social:focus-visible {
   footer .footer .footer-links ul {
     gap: 25px;
     padding: 0 37px 0 47px;
+  }
+
+  footer .footer .footer-links ul + ul {
+    border-left: 1px solid var(--text-color);
   }
 
   footer .footer .footer-bottom {

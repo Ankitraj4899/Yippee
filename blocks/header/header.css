@@ -38,9 +38,9 @@ header nav[aria-expanded='true'] {
   header nav {
     display: flex;
     justify-content: flex-start;
-    gap: 0 60px;
-    max-width: none;
-    padding: 0 38px;
+    gap: 0 43px;
+    max-width: 1204px;
+    padding: 0 32px;
   }
 
   header nav[aria-expanded='true'] {
@@ -255,9 +255,9 @@ header nav .nav-sections ul > li > ul > li {
     display: flex;
     justify-content: center;
     justify-content: flex-start;
-    gap: 16px 44px;
+    gap: 16px 40px;
     margin: 0;
-    font-size: 22px;
+    font-size: 20px;
   }
 
   header nav .nav-sections ul > li {
@@ -334,8 +334,13 @@ header nav .nav-tools .icon {
     margin-left: auto;
   }
 
+  header nav .nav-tools a:any-link {
+    gap: 6px;
+    font-size: 10px;
+  }
+
   header nav .nav-tools .icon {
-    width: 36px;
-    height: 36px;
+    width: 26px;
+    height: 26px;
   }
 }

@@ -26,7 +26,7 @@
   --brand-cream: #fcedec;
 
   /* fonts */
-  --body-font-family: amaranth, amaranth-fallback, sans-serif;
+  --body-font-family: lato, lato-fallback, sans-serif;
   --heading-font-family: amaranth, amaranth-fallback, sans-serif;
 
   /* body sizes */
@@ -70,14 +70,14 @@
     --heading-font-size-xs: 18px;
 
     /* nav height */
-    --nav-height: 120px;
+    --nav-height: 100px;
   }
 }
 
 body {
   display: none;
   margin: 0;
-  background-color: var(--light-color);
+  background-color: var(--background-color);
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
@@ -90,6 +90,18 @@ body.appear {
 
 header {
   height: var(--nav-height);
+}
+
+/* like the original site, the page is a centred column of at most 1366px */
+header .nav-wrapper,
+main,
+footer {
+  max-width: 1366px;
+  margin-inline: auto;
+}
+
+main {
+  background-color: var(--light-color);
 }
 
 header .header,
@@ -187,14 +199,14 @@ button.button {
   justify-content: center;
   max-width: 100%;
   margin: 0;
+  min-height: 40px;
   border: 2px solid transparent;
-  border-radius: 50px;
-  padding: 11px 36px;
-  font-family: var(--body-font-family);
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: 0.2px;
+  border-radius: 30px;
+  padding: 8px 40px;
+  font-family: lato, lato-fallback, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
   text-decoration: none;
   cursor: pointer;
   overflow: hidden;
@@ -205,8 +217,9 @@ button.button {
 @media (width >= 900px) {
   a.button:any-link,
   button.button {
-    padding: 13px 44px;
-    font-size: 19px;
+    min-height: 56px;
+    padding: 11px 40px;
+    font-size: 24px;
   }
 }
 
@@ -221,8 +234,7 @@ button.button.primary {
   border-color: var(--brand-red);
   background-color: var(--brand-red);
   color: var(--background-color);
-  box-shadow: 0 4px 14px rgb(181 4 4 / 28%);
-  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  transition: background-color 0.25s ease;
 }
 
 a.button.primary:hover,
@@ -232,7 +244,6 @@ button.button.primary:focus-visible {
   border-color: #920303;
   background-color: #920303;
   color: var(--background-color);
-  box-shadow: 0 6px 18px rgb(181 4 4 / 38%);
 }
 
 a.button.secondary,
@@ -349,21 +360,36 @@ main .section.stripes {
   box-shadow: 30px 0 0 var(--brand-red), 60px 0 0 var(--brand-yellow);
 }
 
+/* pasta decorations: yellow fusilli doodles around the heading, red heading */
+main .section.pasta-decor {
+  position: relative;
+  overflow: hidden;
+}
+
+main .section.pasta-decor > div {
+  position: relative;
+  z-index: 1;
+}
+
 /* long playful words (e.g. YiPPeeeeee!) wrap instead of overflowing the narrower block */
 main .section.stripes .default-content-wrapper h2 {
   overflow-wrap: anywhere;
 }
 
+main .section.pasta-decor .default-content-wrapper h2 {
+  color: var(--brand-red);
+}
+
 /* centered section headings get a sparkle on both sides */
-main .section.centered .default-content-wrapper h2 {
+main .section.centered .default-content-wrapper:first-child h2 {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 14px;
 }
 
-main .section.centered .default-content-wrapper h2::before,
-main .section.centered .default-content-wrapper h2::after {
+main .section.centered .default-content-wrapper:first-child h2::before,
+main .section.centered .default-content-wrapper:first-child h2::after {
   content: '\2727' / '';
   flex: 0 0 auto;
   color: var(--text-color);
@@ -372,19 +398,13 @@ main .section.centered .default-content-wrapper h2::after {
   font-weight: 400;
 }
 
-/* slider dots read better in white on orange */
-main .section.orange .slider-dot::after {
-  border-color: var(--background-color);
-  background-color: var(--background-color);
-}
-
-main .section.orange .slider-dot[aria-current='true']::after {
-  border-color: var(--brand-red);
-  background-color: var(--brand-red);
-}
-
 main .section.centered .default-content-wrapper {
   text-align: center;
+}
+
+/* wavy lines either side of the first heading */
+main .section.wave-heading > .default-content-wrapper:first-child {
+  position: relative;
 }
 
 @media (width >= 900px) {
@@ -400,6 +420,48 @@ main .section.centered .default-content-wrapper {
 
   main .section.rounded-left {
     border-radius: 90px 0 0 90px;
+  }
+
+  main .section:has(.cards.product) .default-content-wrapper h2 {
+    font-size: 46px;
+  }
+
+  main .section.pasta-decor:has(.cards.product) .default-content-wrapper h2 {
+    font-size: 32px;
+  }
+
+  main .section.wave-heading > .default-content-wrapper:first-child::before,
+  main .section.wave-heading > .default-content-wrapper:first-child::after {
+    content: '';
+    position: absolute;
+    top: 30px;
+    width: calc(50% - 250px);
+    height: 20px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cg fill='none' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M0 7 Q10 0 20 7 T40 7' stroke='%23fff'/%3E%3Cpath d='M0 13 Q10 6 20 13 T40 13' stroke='%23ffe08a'/%3E%3C/g%3E%3C/svg%3E") repeat-x left center / 40px 20px;
+    pointer-events: none;
+  }
+
+  main .section.wave-heading > .default-content-wrapper:first-child::before {
+    left: -32px;
+  }
+
+  main .section.wave-heading > .default-content-wrapper:first-child::after {
+    right: -32px;
+  }
+
+  main .section.pasta-decor::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-20 -68 240 200'%3E%3Cg transform='rotate%28-50 100 32%29'%3E%3Cg fill='none' stroke='%23ffe08a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M36 30 C40 12 60 12 64 30 C68 12 88 12 92 30 C96 12 116 12 120 30 C124 12 144 12 148 30'/%3E%3Cpath d='M50 34 C54 52 74 52 78 34 C82 52 102 52 106 34 C110 52 130 52 134 34 C138 52 158 52 162 34'/%3E%3Cpath d='M36 30 C28 26 20 20 14 16 C20 22 24 27 26 32 C24 38 20 44 18 50 C30 48 42 42 50 34'/%3E%3Cpath d='M148 30 C160 24 176 18 186 16 C180 22 176 28 174 32 C176 38 180 44 186 50 C176 48 168 42 162 34'/%3E%3Cpath d='M50 17 C56 26 60 36 64 47'/%3E%3Cpath d='M78 17 C84 26 88 36 92 47'/%3E%3Cpath d='M106 17 C112 26 116 36 120 47'/%3E%3Cpath d='M134 17 C140 26 144 36 148 47'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-20 -68 240 200'%3E%3Cg transform='rotate%2860 100 32%29'%3E%3Cg fill='none' stroke='%23ffe08a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M36 30 C40 12 60 12 64 30 C68 12 88 12 92 30 C96 12 116 12 120 30 C124 12 144 12 148 30'/%3E%3Cpath d='M50 34 C54 52 74 52 78 34 C82 52 102 52 106 34 C110 52 130 52 134 34 C138 52 158 52 162 34'/%3E%3Cpath d='M36 30 C28 26 20 20 14 16 C20 22 24 27 26 32 C24 38 20 44 18 50 C30 48 42 42 50 34'/%3E%3Cpath d='M148 30 C160 24 176 18 186 16 C180 22 176 28 174 32 C176 38 180 44 186 50 C176 48 168 42 162 34'/%3E%3Cpath d='M50 17 C56 26 60 36 64 47'/%3E%3Cpath d='M78 17 C84 26 88 36 92 47'/%3E%3Cpath d='M106 17 C112 26 116 36 120 47'/%3E%3Cpath d='M134 17 C140 26 144 36 148 47'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-20 -68 240 200'%3E%3Cg transform='rotate%28-35 100 32%29'%3E%3Cg fill='none' stroke='%23ffe08a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M36 30 C40 12 60 12 64 30 C68 12 88 12 92 30 C96 12 116 12 120 30 C124 12 144 12 148 30'/%3E%3Cpath d='M50 34 C54 52 74 52 78 34 C82 52 102 52 106 34 C110 52 130 52 134 34 C138 52 158 52 162 34'/%3E%3Cpath d='M36 30 C28 26 20 20 14 16 C20 22 24 27 26 32 C24 38 20 44 18 50 C30 48 42 42 50 34'/%3E%3Cpath d='M148 30 C160 24 176 18 186 16 C180 22 176 28 174 32 C176 38 180 44 186 50 C176 48 168 42 162 34'/%3E%3Cpath d='M50 17 C56 26 60 36 64 47'/%3E%3Cpath d='M78 17 C84 26 88 36 92 47'/%3E%3Cpath d='M106 17 C112 26 116 36 120 47'/%3E%3Cpath d='M134 17 C140 26 144 36 148 47'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-20 -68 240 200'%3E%3Cg transform='rotate%2835 100 32%29'%3E%3Cg fill='none' stroke='%23ffe08a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M36 30 C40 12 60 12 64 30 C68 12 88 12 92 30 C96 12 116 12 120 30 C124 12 144 12 148 30'/%3E%3Cpath d='M50 34 C54 52 74 52 78 34 C82 52 102 52 106 34 C110 52 130 52 134 34 C138 52 158 52 162 34'/%3E%3Cpath d='M36 30 C28 26 20 20 14 16 C20 22 24 27 26 32 C24 38 20 44 18 50 C30 48 42 42 50 34'/%3E%3Cpath d='M148 30 C160 24 176 18 186 16 C180 22 176 28 174 32 C176 38 180 44 186 50 C176 48 168 42 162 34'/%3E%3Cpath d='M50 17 C56 26 60 36 64 47'/%3E%3Cpath d='M78 17 C84 26 88 36 92 47'/%3E%3Cpath d='M106 17 C112 26 116 36 120 47'/%3E%3Cpath d='M134 17 C140 26 144 36 148 47'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-position: calc(12.9% - 90px) 66px, calc(24.3% - 90px) 9px, calc(76.7% - 90px) 13px, calc(87.7% - 90px) 79px;
+    background-repeat: no-repeat;
+    background-size: 180px 150px;
+    pointer-events: none;
   }
 
   main .section.rounded-right {
