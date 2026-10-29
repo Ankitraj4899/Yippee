@@ -83,7 +83,9 @@ function indexedCard(recipe) {
   const title = document.createElement('h3');
   title.className = 'recipes-title';
   title.textContent = recipe.title;
-  const picture = recipe.image
+  // pages without a photo get the site's default share image, which the card skips
+  const hasPhoto = recipe.image && !recipe.image.startsWith('/default-meta-image');
+  const picture = hasPhoto
     ? createOptimizedPicture(recipe.image, recipe.title, false, [{ width: '750' }])
     : null;
   return buildCard({
@@ -100,6 +102,8 @@ function emptyState() {
 
 export default async function decorate(block) {
   const rows = [...block.children];
+  // read the label before the cards add their own headings to the section
+  const label = sectionLabel(block, 'Recipes');
   // block properties come first as one-cell rows; recipes are four-cell rows
   const source = rows.find((row) => row.children.length === 1)?.textContent.trim();
   const recipeRows = rows.filter((row) => row.children.length > 1);
@@ -113,7 +117,7 @@ export default async function decorate(block) {
   if (!source) {
     recipeRows.forEach((row) => list.append(authoredCard(row)));
     block.replaceChildren(slider);
-    await createSlider(slider, list, sectionLabel(block, 'Recipes'));
+    await createSlider(slider, list, label);
     return;
   }
 
@@ -129,7 +133,7 @@ export default async function decorate(block) {
   };
   render();
   block.replaceChildren(slider);
-  const api = await createSlider(slider, list, sectionLabel(block, 'Recipes'));
+  const api = await createSlider(slider, list, label);
   section?.addEventListener('recipes:filter', () => {
     render();
     api.update();

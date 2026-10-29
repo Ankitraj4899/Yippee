@@ -1,0 +1,9 @@
+kind: "EdgeFunctions"
+version: "1"
+data:
+  functions:
+    - name: json-ld
+  # optional: point the function at another Edge Delivery origin (not available on sandbox programs)
+  # configs:
+  #   - key: AEM_ORIGIN
+  #     value: https://main--yippee--ankitraj4899.aem.live

@@ -1,0 +1,12 @@
+# Fastly Compute package description used by `aio aem edge-functions build`
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+authors = []
+description = "Adds schema.org JSON-LD to YiPPee! pages"
+language = "javascript"
+manifest_version = 3
+name = "json-ld"
+service_id = ""
+
+[scripts]
+  build = "npm run build"
+  post_init = "npm install"

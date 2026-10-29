@@ -1,0 +1,16 @@
+kind: "CDN"
+version: "1"
+data:
+  originSelectors:
+    rules:
+      # send page requests (no extension, .html or a trailing slash) through the json-ld function;
+      # scripts, styles, images and JSON keep going straight to Edge Delivery
+      - name: route-pages-to-json-ld
+        when:
+          allOf:
+            - { reqProperty: tier, equals: "publish" }
+            - { reqProperty: domain, equals: "main--yippee--ankitraj4899.aem.live/" } # TODO: replace with the site's custom domain
+            - { reqProperty: originalPath, matches: '(/[^./]+|\.html|/)$' }
+        action:
+          type: selectAemOrigin
+          originName: edgefunction-json-ld
