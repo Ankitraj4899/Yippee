@@ -76,9 +76,24 @@ function buildAutoBlocks() {
  * serves test pages under /content/, the live site from the root.
  */
 function pagePath() {
-  const segments = window.location.pathname.split('/').filter(Boolean);
-  const isLocalTest = window.location.hostname === 'localhost' && segments[0] === 'content';
-  return { segments: isLocalTest ? segments.slice(1) : segments, base: isLocalTest ? '/content' : '' };
+  let segments = window.location.pathname.replace(/\.html$/, '').split('/').filter(Boolean);
+  let base = '';
+  let ext = '';
+  if (segments[0] === 'content') {
+    if (window.location.hostname === 'localhost') {
+      // local preview: test pages under /content/
+      base = '/content';
+      segments = segments.slice(1);
+    } else {
+      // AEM author / Universal Editor: /content/<site>/<page>.html
+      base = `/content/${segments[1]}`;
+      segments = segments.slice(2);
+      ext = '.html';
+    }
+  }
+  // the homepage is /index on the author and in local tests
+  if (segments.at(-1) === 'index') segments = segments.slice(0, -1);
+  return { segments, base, ext };
 }
 
 /**
@@ -89,8 +104,8 @@ function pagePath() {
 function buildBreadcrumb(main) {
   // only the page itself: header and footer fragments are decorated as a main too
   if (main.parentElement !== document.body) return;
-  const { segments, base } = pagePath();
-  if (!segments.length || segments[0] === 'index' || main.querySelector(':scope > .breadcrumb')) return;
+  const { segments, base, ext } = pagePath();
+  if (!segments.length || main.querySelector(':scope > .breadcrumb')) return;
   if (getMetadata('breadcrumb').toLowerCase() === 'off') return;
 
   const nav = document.createElement('nav');
@@ -106,10 +121,10 @@ function buildBreadcrumb(main) {
     li.append(el);
     list.append(li);
   };
-  crumb('Home Page', `${base}/`);
+  crumb('Home Page', ext ? `${base}/index${ext}` : `${base}/`);
   segments.slice(0, -1).forEach((segment, i) => {
     const name = segment.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-    crumb(name, `${base}/${segments.slice(0, i + 1).join('/')}`);
+    crumb(name, `${base}/${segments.slice(0, i + 1).join('/')}${ext}`);
   });
   // the current page by its title, without the " | Sunfeast YiPPee!" suffix
   crumb(document.title.split(' | ')[0].trim() || segments.at(-1));

@@ -423,9 +423,9 @@ main .section.page-title .default-content-wrapper:first-child h1::after {
   font-weight: 400;
 }
 
-/* breadcrumb above the first section: orange pills, the current page in red */
+/* breadcrumb above the first section: orange pills on a white strip, the current page in red */
 main > .breadcrumb {
-  padding: 10px 16px;
+  padding: 12px 16px;
   background-color: var(--background-color);
 }
 
@@ -436,7 +436,10 @@ main > .breadcrumb ol {
   margin: 0;
   padding: 0;
   list-style: none;
+  font-family: lato, lato-fallback, sans-serif;
   font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
 }
 
 main > .breadcrumb a:any-link,
@@ -445,22 +448,31 @@ main > .breadcrumb [aria-current] {
   align-items: center;
   gap: 6px;
   border-radius: 16px;
-  padding: 4px 12px;
+  padding: 4px 8px;
   background-color: var(--brand-orange);
   color: var(--text-color);
 }
 
+main > .breadcrumb a:any-link {
+  padding-right: 6px;
+}
+
 main > .breadcrumb a:any-link::after {
   content: '>' / '';
+  width: 8px;
+}
+
+main > .breadcrumb a:hover {
+  text-decoration: none;
 }
 
 main > .breadcrumb [aria-current] {
-  color: var(--brand-red);
+  color: #aa1f2e;
 }
 
 @media (width >= 900px) {
   main > .breadcrumb {
-    padding: 14px 40px;
+    padding: 12px 40px;
   }
 }
 
