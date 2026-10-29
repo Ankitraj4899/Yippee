@@ -12,6 +12,11 @@
   list-style: none;
 }
 
+/* room above the cards for their starburst badge (the slider track hides overflow) */
+.video-gallery .slider .slider-track.video-gallery-list {
+  padding-top: 28px;
+}
+
 .video-gallery .video-gallery-item {
   box-sizing: border-box;
   flex: 0 0 auto;
@@ -125,7 +130,7 @@
   overflow: hidden;
   color: var(--background-color);
   font-family: var(--heading-font-family);
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   line-height: 1.2;
   text-align: center;
@@ -134,13 +139,31 @@
 }
 
 @media (width >= 900px) {
-  /* three cards, as wide as the recipe grid */
+  /* like the original: three 306px cards, 36px apart, as wide as the recipe grid */
   .video-gallery.titled {
     max-width: 990px;
     margin-inline: auto;
   }
 
+  .video-gallery.titled .slider .slider-track.video-gallery-list {
+    gap: 36px;
+  }
+
+  .video-gallery.titled .video-gallery-item {
+    width: calc((100% - 72px) / 3);
+  }
+
   .video-gallery.titled .video-gallery-card {
     height: 408px;
+  }
+
+  .video-gallery.titled a.video-gallery-card picture::before {
+    width: 80px;
+    height: 80px;
+  }
+
+  .video-gallery.titled a.video-gallery-card picture::after {
+    margin-left: 4px;
+    border-width: 14px 0 14px 22px;
   }
 }
