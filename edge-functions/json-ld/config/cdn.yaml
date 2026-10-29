@@ -9,7 +9,7 @@ data:
         when:
           allOf:
             - { reqProperty: tier, equals: "publish" }
-            - { reqProperty: domain, equals: "www.example.com" } # TODO: replace with the site's custom domain
+            - { reqProperty: domain, equals: "main--yippee--ankitraj4899.aem.live/" } # TODO: replace with the site's custom domain
             - { reqProperty: originalPath, matches: '(/[^./]+|\.html|/)$' }
         action:
           type: selectAemOrigin
