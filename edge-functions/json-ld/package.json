@@ -1,0 +1,17 @@
+{
+  "name": "yippee-json-ld-edge-function",
+  "private": true,
+  "description": "AEM Edge Function that adds schema.org JSON-LD to YiPPee! pages",
+  "type": "module",
+  "dependencies": {
+    "@fastly/js-compute": "3.38.2"
+  },
+  "scripts": {
+    "build": "js-compute-runtime ./src/index.js ./bin/main.wasm",
+    "test": "mocha",
+    "fixtures": "node test/update-fixtures.js"
+  },
+  "devDependencies": {
+    "mocha": "12.0.0-beta-5"
+  }
+}
