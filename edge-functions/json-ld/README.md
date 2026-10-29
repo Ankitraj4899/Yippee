@@ -24,7 +24,7 @@ Cache purges keep working. The response carries the surrogate keys of the page, 
 | File | Purpose |
 |---|---|
 | `src/index.js` | Request handler: proxy to Edge Delivery, add JSON-LD, merge cache headers |
-| `src/jsonld.js` | Builds and injects the JSON-LD (plain functions, no Fastly APIs) |
+| `../../scripts/jsonld.js` | Builds and injects the JSON-LD (plain functions, shared with the site, which adds the same data itself while this function is not deployed) |
 | `config/edgeFunctions.yaml` | Declares the `json-ld` edge function |
 | `config/cdn.yaml` | Routes page requests on the site domain to the function |
 | `test/` | Mocha tests against saved copies of live pages (`npm run fixtures` refreshes them) |

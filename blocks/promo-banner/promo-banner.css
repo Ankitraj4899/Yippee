@@ -1,0 +1,73 @@
+/* orange banner rounded on the left, with outlined hearts on the right */
+.promo-banner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 60px 0 0 60px;
+  padding: 40px 24px;
+  background-color: var(--brand-orange);
+  text-align: center;
+}
+
+.promo-banner::after {
+  content: '';
+  position: absolute;
+  right: -40px;
+  bottom: -30px;
+  width: 200px;
+  height: 180px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 180' fill='none' stroke='%23ffd9a8' stroke-width='2.5'%3E%3Cpath d='M100 170 C40 120 8 88 8 54 C8 26 30 8 56 8 C76 8 92 20 100 36 C108 20 124 8 144 8 C170 8 192 26 192 54 C192 88 160 120 100 170Z'/%3E%3Cpath d='M100 146 C58 110 34 86 34 60 C34 42 48 30 64 30 C80 30 92 40 100 54 C108 40 120 30 136 30 C152 30 166 42 166 60 C166 86 142 110 100 146Z'/%3E%3C/svg%3E") center / contain no-repeat;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.promo-banner .promo-banner-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.promo-banner .promo-banner-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0;
+  color: var(--text-color);
+  font-size: var(--heading-font-size-l);
+}
+
+.promo-banner .promo-banner-title::before,
+.promo-banner .promo-banner-title::after {
+  content: '\2727' / '';
+  font-family: Arial, sans-serif;
+  font-size: 0.9em;
+  font-weight: 400;
+}
+
+.promo-banner .promo-banner-text p {
+  margin: 12px 0 0;
+  font-size: 16px;
+}
+
+.promo-banner .promo-banner-action {
+  margin: 24px 0 0;
+}
+
+@media (width >= 900px) {
+  .promo-banner {
+    border-radius: 100px 0 0 100px;
+    padding: 48px 32px 56px;
+  }
+
+  .promo-banner::after {
+    right: -10px;
+    bottom: -20px;
+    width: 220px;
+    height: 200px;
+  }
+
+  .promo-banner .promo-banner-title {
+    font-size: 32px;
+  }
+}

@@ -69,6 +69,10 @@
             {
               "name": "Centered Text",
               "value": "centered"
+            },
+            {
+              "name": "Page Title",
+              "value": "page-title"
             }
           ]
         }
@@ -90,6 +94,7 @@
         "category-links",
         "recipes",
         "recipe-info",
+        "promo-banner",
         "better-world",
         "video-gallery",
         "social-wall",

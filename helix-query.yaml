@@ -29,3 +29,9 @@ indices:
       duration:
         select: head > meta[name="duration"]
         value: attribute(el, "content")
+      products:
+        select: head > meta[name="products"]
+        value: attribute(el, "content")
+      diet:
+        select: head > meta[name="diet"]
+        value: attribute(el, "content")

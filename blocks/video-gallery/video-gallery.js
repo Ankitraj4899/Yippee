@@ -4,6 +4,7 @@ import openVideoModal from '../../scripts/video-modal.js';
 import { optimizedPicture, sectionLabel } from '../../scripts/block-helpers.js';
 
 export default async function decorate(block) {
+  const showTitles = block.classList.contains('titled');
   const list = document.createElement('ul');
   list.className = 'video-gallery-list';
 
@@ -21,6 +22,12 @@ export default async function decorate(block) {
     if (link) {
       const title = link.textContent.trim();
       const name = title && title !== link.href ? title : picture?.querySelector('img')?.alt;
+      if (showTitles && name) {
+        const caption = document.createElement('span');
+        caption.className = 'video-gallery-title';
+        caption.textContent = name;
+        card.append(caption);
+      }
       card.href = link.href;
       card.setAttribute('aria-label', name ? `Play video: ${name}` : 'Play video');
       moveInstrumentation(link, card);

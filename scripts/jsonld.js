@@ -1,6 +1,7 @@
 /*
  * Builds schema.org JSON-LD for a YiPPee! page from the HTML Edge Delivery serves.
- * Pure functions only (no Fastly APIs), so they run and are tested in Node too.
+ * Shared by the JSON-LD edge function (edge-functions/json-ld) and the page itself
+ * (scripts/structured-data.js), so pure functions only: no DOM, no Fastly APIs.
  */
 
 const SITE_NAME = 'Sunfeast YiPPee!';
@@ -13,6 +14,8 @@ const SOCIAL_PROFILES = [
 ];
 // recipe-info block rows, in the order of its model
 const RECIPE_INFO_FIELDS = ['prepTime', 'cookTime', 'serves', 'difficulty'];
+// Diet page property → schema.org RestrictedDiet
+const DIETS = { veg: 'https://schema.org/VegetarianDiet' };
 
 const ENTITIES = {
   amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ',
@@ -170,7 +173,9 @@ export function buildJsonLd(html, { url, logo, recipes = [] }) {
     breadcrumb: isHome ? undefined : { '@id': `${pageId}#breadcrumb` },
   });
   const graph = [organization, website, webpage];
-  if (!isHome) graph.push(breadcrumb(origin, path, heading || title, pageId));
+  // the page's own name, without the " | Sunfeast YiPPee!" suffix (as in the visible breadcrumb)
+  const pageName = title.split(' | ')[0].trim();
+  if (!isHome) graph.push(breadcrumb(origin, path, pageName || heading, pageId));
 
   if (isRecipe && heading) {
     const info = recipeInfo(main);
@@ -190,6 +195,7 @@ export function buildJsonLd(html, { url, logo, recipes = [] }) {
       author: { '@id': organization['@id'] },
       datePublished: meta(html, 'published-time') || undefined,
       recipeCategory: category,
+      suitableForDiet: DIETS[meta(html, 'diet').toLowerCase()],
       keywords: [category, SITE_NAME].filter(Boolean).join(', '),
       prepTime: isoDuration(prep),
       cookTime: isoDuration(cook),

@@ -60,6 +60,80 @@
         "name": "duration",
         "label": "Cooking Time",
         "description": "Recipe pages only: total time shown on the recipe card, e.g. 25 mins"
+      },
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "products",
+        "label": "Products",
+        "description": "Recipe pages only: the YiPPee! products the recipe uses, for the Products filter",
+        "options": [
+          {
+            "name": "Magic Masala Noodles",
+            "value": "Magic Masala Noodles"
+          },
+          {
+            "name": "Mood Masala Noodles",
+            "value": "Mood Masala Noodles"
+          },
+          {
+            "name": "Power Up Atta Noodles",
+            "value": "Power Up Atta Noodles"
+          },
+          {
+            "name": "Wow Masala Noodles",
+            "value": "Wow Masala Noodles"
+          },
+          {
+            "name": "Magic Millet Noodles",
+            "value": "Magic Millet Noodles"
+          },
+          {
+            "name": "Pasta Treat Masala",
+            "value": "Pasta Treat Masala"
+          },
+          {
+            "name": "Pasta Treat Tomato Cheese",
+            "value": "Pasta Treat Tomato Cheese"
+          },
+          {
+            "name": "Pasta Treat Cheese",
+            "value": "Pasta Treat Cheese"
+          },
+          {
+            "name": "Pasta Treat Sour Cream Onion",
+            "value": "Pasta Treat Sour Cream Onion"
+          },
+          {
+            "name": "Tricolor Pasta Creamy Corn",
+            "value": "Tricolor Pasta Creamy Corn"
+          },
+          {
+            "name": "Tricolor Pasta Masala",
+            "value": "Tricolor Pasta Masala"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "diet",
+        "label": "Diet",
+        "description": "Recipe pages only: for the Diet filter",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Veg",
+            "value": "Veg"
+          },
+          {
+            "name": "Non Veg",
+            "value": "Non Veg"
+          }
+        ]
       }
     ]
   },
@@ -212,6 +286,10 @@
           {
             "name": "Centered Text",
             "value": "centered"
+          },
+          {
+            "name": "Page Title",
+            "value": "page-title"
           }
         ]
       }
@@ -362,6 +440,13 @@
         "name": "classes_filter",
         "label": "Filter Recipes",
         "description": "Turn the categories into tabs that filter the Recipes block in the same section (that Recipes block needs a Recipe Index)"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "classes_all",
+        "label": "Show All Recipes First",
+        "description": "With Filter Recipes: no category is picked at first, so every recipe shows; picking a category again shows all recipes again"
       }
     ]
   },
@@ -496,6 +581,39 @@
     ]
   },
   {
+    "id": "promo-banner",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": "",
+        "description": "e.g. #Sunfeastyippee"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Text",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Button Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linkText",
+        "label": "Button Text",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "recipe-info",
     "fields": [
       {
@@ -541,6 +659,13 @@
         "label": "Recipe Index",
         "value": "",
         "description": "Optional. e.g. /query-index.json - lists the recipe pages under /recipes/ automatically and follows the category selected in Category Links. Leave empty to add recipes by hand."
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "classes_grid",
+        "label": "Grid with Filters",
+        "description": "With a Recipe Index: show all recipes in a grid with a Filters panel (Products, Diet), Load More, and a Promo Banner from the same section after the first six"
       }
     ]
   },
@@ -608,6 +733,18 @@
         "name": "link",
         "label": "Post Link",
         "description": "e.g. the Instagram post or profile"
+      }
+    ]
+  },
+  {
+    "id": "video-gallery",
+    "fields": [
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "classes_titled",
+        "label": "Show Titles",
+        "description": "Show each video's title on its card, below a smaller image"
       }
     ]
   },

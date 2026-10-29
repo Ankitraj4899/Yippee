@@ -7,7 +7,7 @@
  */
 import { ConfigStore } from 'fastly:config-store';
 import { CacheOverride } from 'fastly:cache-override';
-import { buildJsonLd, injectJsonLd, logoFromNav } from './jsonld.js';
+import { buildJsonLd, injectJsonLd, logoFromNav } from '../../../scripts/jsonld.js';
 
 // Edge Delivery origin; can be overridden with the AEM_ORIGIN config value
 const DEFAULT_ORIGIN = 'https://main--yippee--ankitraj4899.aem.live';

@@ -42,6 +42,13 @@
           "name": "classes_filter",
           "label": "Filter Recipes",
           "description": "Turn the categories into tabs that filter the Recipes block in the same section (that Recipes block needs a Recipe Index)"
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "classes_all",
+          "label": "Show All Recipes First",
+          "description": "With Filter Recipes: no category is picked at first, so every recipe shows; picking a category again shows all recipes again"
         }
       ]
     },

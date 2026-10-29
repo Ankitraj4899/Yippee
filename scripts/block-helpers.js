@@ -11,6 +11,13 @@ import { moveInstrumentation } from './scripts.js';
 export function optimizedPicture(cell, width = '750') {
   const img = cell?.querySelector('picture img');
   if (!img) return null;
+  // images from another host (e.g. an image server link in local test content)
+  // can't take Edge Delivery's resize parameters, so they are used as they are
+  if (new URL(img.src, window.location.href).origin !== window.location.origin) {
+    const picture = img.closest('picture').cloneNode(true);
+    moveInstrumentation(img, picture.querySelector('img'));
+    return picture;
+  }
   const picture = createOptimizedPicture(img.src, img.alt, false, [{ width }]);
   moveInstrumentation(img, picture.querySelector('img'));
   return picture;
