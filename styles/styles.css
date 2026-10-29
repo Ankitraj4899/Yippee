@@ -402,6 +402,80 @@ main .section.centered .default-content-wrapper {
   text-align: center;
 }
 
+/* page title: the first h1 in red with a sparkle on both sides, like the section headings */
+main .section.page-title .default-content-wrapper:first-child h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 0;
+  color: var(--brand-red);
+  font-size: var(--heading-font-size-xl);
+}
+
+main .section.page-title .default-content-wrapper:first-child h1::before,
+main .section.page-title .default-content-wrapper:first-child h1::after {
+  content: '\2727' / '';
+  flex: 0 0 auto;
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  font-size: 0.9em;
+  font-weight: 400;
+}
+
+/* breadcrumb above the first section: orange pills on a white strip, the current page in red */
+main > .breadcrumb {
+  padding: 12px 16px;
+  background-color: var(--background-color);
+}
+
+main > .breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: lato, lato-fallback, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+main > .breadcrumb a:any-link,
+main > .breadcrumb [aria-current] {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 16px;
+  padding: 4px 8px;
+  background-color: var(--brand-orange);
+  color: var(--text-color);
+}
+
+main > .breadcrumb a:any-link {
+  padding-right: 6px;
+}
+
+main > .breadcrumb a:any-link::after {
+  content: '>' / '';
+  width: 8px;
+}
+
+main > .breadcrumb a:hover {
+  text-decoration: none;
+}
+
+main > .breadcrumb [aria-current] {
+  color: #aa1f2e;
+}
+
+@media (width >= 900px) {
+  main > .breadcrumb {
+    padding: 12px 40px;
+  }
+}
+
 /* wavy lines either side of the first heading */
 main .section.wave-heading > .default-content-wrapper:first-child {
   position: relative;

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   buildJsonLd, injectJsonLd, logoFromNav, minutesOf, isoDuration, decodeEntities,
-} from '../src/jsonld.js';
+} from '../../../scripts/jsonld.js';
 
 const SITE = 'https://www.example.com';
 const fixture = (name) => readFileSync(new URL(`./fixtures/${name}`, import.meta.url), 'utf8');
@@ -49,8 +49,16 @@ describe('buildJsonLd', () => {
     assert.equal(recipe.author['@id'], `${SITE}/#organization`);
 
     const crumbs = byType(doc, 'BreadcrumbList').itemListElement;
-    assert.deepEqual(crumbs.map((c) => c.name), ['Home', 'Recipes', 'Yippee Pasta Tikki']);
+    assert.deepEqual(crumbs.map((c) => c.name), ['Home', 'Recipes', 'Yippee Pasta Tikki Recipe']);
     assert.deepEqual(crumbs.map((c) => c.item), [`${SITE}/`, `${SITE}/recipes`, `${SITE}/recipes/pasta-tikki`]);
+  });
+
+  it('marks vegetarian recipes and leaves other diets out', () => {
+    const page = (diet) => fixture('pasta-tikki.html').replace('</head>', `<meta name="diet" content="${diet}"></head>`);
+    const veg = byType(buildJsonLd(page('Veg'), { url: `${SITE}/recipes/pasta-tikki` }), 'Recipe');
+    assert.equal(veg.suitableForDiet, 'https://schema.org/VegetarianDiet');
+    const nonVeg = byType(buildJsonLd(page('Non Veg'), { url: `${SITE}/recipes/pasta-tikki` }), 'Recipe');
+    assert.equal(nonVeg.suitableForDiet, undefined);
   });
 
   it('leaves out the image of a recipe without a photo', () => {

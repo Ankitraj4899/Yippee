@@ -9,6 +9,7 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  getMetadata,
 } from './aem.js';
 
 /**
@@ -71,6 +72,67 @@ function buildAutoBlocks() {
 }
 
 /**
+ * Path of the current page and the prefix its links need: the local preview
+ * serves test pages under /content/, the live site from the root.
+ */
+function pagePath() {
+  let segments = window.location.pathname.replace(/\.html$/, '').split('/').filter(Boolean);
+  let base = '';
+  let ext = '';
+  if (segments[0] === 'content') {
+    if (window.location.hostname === 'localhost') {
+      // local preview: test pages under /content/
+      base = '/content';
+      segments = segments.slice(1);
+    } else {
+      // AEM author / Universal Editor: /content/<site>/<page>.html
+      base = `/content/${segments[1]}`;
+      segments = segments.slice(2);
+      ext = '.html';
+    }
+  }
+  // the homepage is /index on the author and in local tests
+  if (segments.at(-1) === 'index') segments = segments.slice(0, -1);
+  return { segments, base, ext };
+}
+
+/**
+ * Breadcrumb at the top of every page but the homepage: Home Page > … > this page.
+ * Pages can opt out with the page metadata "breadcrumb: off".
+ * @param {Element} main The main element
+ */
+function buildBreadcrumb(main) {
+  // only the page itself: header and footer fragments are decorated as a main too
+  if (main.parentElement !== document.body) return;
+  const { segments, base, ext } = pagePath();
+  if (!segments.length || main.querySelector(':scope > .breadcrumb')) return;
+  if (getMetadata('breadcrumb').toLowerCase() === 'off') return;
+
+  const nav = document.createElement('nav');
+  nav.className = 'breadcrumb';
+  nav.setAttribute('aria-label', 'Breadcrumb');
+  const list = document.createElement('ol');
+  const crumb = (text, href) => {
+    const li = document.createElement('li');
+    const el = document.createElement(href ? 'a' : 'span');
+    el.textContent = text;
+    if (href) el.href = href;
+    else el.setAttribute('aria-current', 'page');
+    li.append(el);
+    list.append(li);
+  };
+  crumb('Home Page', ext ? `${base}/index${ext}` : `${base}/`);
+  segments.slice(0, -1).forEach((segment, i) => {
+    const name = segment.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    crumb(name, `${base}/${segments.slice(0, i + 1).join('/')}${ext}`);
+  });
+  // the current page by its title, without the " | Sunfeast YiPPee!" suffix
+  crumb(document.title.split(' | ')[0].trim() || segments.at(-1));
+  nav.append(list);
+  main.prepend(nav);
+}
+
+/**
  * Decorates formatted links to style them as buttons.
  * @param {HTMLElement} main The main container element
  */
@@ -116,6 +178,7 @@ export function decorateButtons(main) {
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   decorateIcons(main);
+  buildBreadcrumb(main);
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
@@ -126,11 +189,15 @@ export function decorateMain(main) {
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
  */
+// the page content as served, read before decoration for the structured data
+let rawMain = '';
+
 async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
+    rawMain = main.innerHTML;
     decorateMain(main);
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);
@@ -164,6 +231,12 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+
+  // schema.org JSON-LD, unless the edge function already added it to the HTML
+  import('./structured-data.js')
+    .then(({ default: addStructuredData }) => addStructuredData({ rawMain, ...pagePath() }))
+    // eslint-disable-next-line no-console
+    .catch((error) => console.error('Structured data failed', error));
 }
 
 /**

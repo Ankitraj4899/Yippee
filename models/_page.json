@@ -61,6 +61,38 @@
           "name": "duration",
           "label": "Cooking Time",
           "description": "Recipe pages only: total time shown on the recipe card, e.g. 25 mins"
+        },
+        {
+          "component": "multiselect",
+          "valueType": "string",
+          "name": "products",
+          "label": "Products",
+          "description": "Recipe pages only: the YiPPee! products the recipe uses, for the Products filter",
+          "options": [
+            { "name": "Magic Masala Noodles", "value": "Magic Masala Noodles" },
+            { "name": "Mood Masala Noodles", "value": "Mood Masala Noodles" },
+            { "name": "Power Up Atta Noodles", "value": "Power Up Atta Noodles" },
+            { "name": "Wow Masala Noodles", "value": "Wow Masala Noodles" },
+            { "name": "Magic Millet Noodles", "value": "Magic Millet Noodles" },
+            { "name": "Pasta Treat Masala", "value": "Pasta Treat Masala" },
+            { "name": "Pasta Treat Tomato Cheese", "value": "Pasta Treat Tomato Cheese" },
+            { "name": "Pasta Treat Cheese", "value": "Pasta Treat Cheese" },
+            { "name": "Pasta Treat Sour Cream Onion", "value": "Pasta Treat Sour Cream Onion" },
+            { "name": "Tricolor Pasta Creamy Corn", "value": "Tricolor Pasta Creamy Corn" },
+            { "name": "Tricolor Pasta Masala", "value": "Tricolor Pasta Masala" }
+          ]
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "diet",
+          "label": "Diet",
+          "description": "Recipe pages only: for the Diet filter",
+          "options": [
+            { "name": "None", "value": "" },
+            { "name": "Veg", "value": "Veg" },
+            { "name": "Non Veg", "value": "Non Veg" }
+          ]
         }
       ]
     }

@@ -43,6 +43,13 @@
           "label": "Recipe Index",
           "value": "",
           "description": "Optional. e.g. /query-index.json - lists the recipe pages under /recipes/ automatically and follows the category selected in Category Links. Leave empty to add recipes by hand."
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "classes_grid",
+          "label": "Grid with Filters",
+          "description": "With a Recipe Index: show all recipes in a grid with a Filters panel (Products, Diet), Load More, and a Promo Banner from the same section after the first six"
         }
       ]
     },
