@@ -80,7 +80,8 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   button.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
   // enable nav dropdown keyboard accessibility
   if (navSections) {
-    const navDrops = navSections.querySelectorAll('.nav-drop');
+    // drop-downs labelled with a link are reached through that link instead
+    const navDrops = navSections.querySelectorAll('.nav-drop:not(.nav-drop-link)');
     if (isDesktop.matches) {
       navDrops.forEach((drop) => {
         if (!drop.hasAttribute('tabindex')) {
@@ -154,6 +155,30 @@ export default async function decorate(block) {
   if (navSections) {
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
       if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
+      // a drop-down labelled with a link (e.g. Blogs): the link goes to its page, and on
+      // large screens the pages under it show on hover or keyboard focus
+      if (navSection.matches('.nav-drop') && navSection.querySelector(':scope > p > a, :scope > a')) {
+        navSection.classList.add('nav-drop-link');
+        let closing;
+        const open = () => {
+          if (!isDesktop.matches) return;
+          clearTimeout(closing);
+          toggleAllNavSections(navSections);
+          navSection.setAttribute('aria-expanded', 'true');
+        };
+        // a short delay lets the pointer cross the gap to the drop-down
+        const close = () => {
+          if (!isDesktop.matches) return;
+          closing = setTimeout(() => navSection.setAttribute('aria-expanded', 'false'), 250);
+        };
+        navSection.addEventListener('mouseenter', open);
+        navSection.addEventListener('mouseleave', close);
+        navSection.addEventListener('focusin', open);
+        navSection.addEventListener('focusout', (e) => {
+          if (!navSection.contains(e.relatedTarget)) close();
+        });
+        return;
+      }
       navSection.addEventListener('click', () => {
         if (isDesktop.matches) {
           const expanded = navSection.getAttribute('aria-expanded') === 'true';

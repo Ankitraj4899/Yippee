@@ -251,6 +251,16 @@ header nav .nav-sections ul > li > ul > li {
     transform: rotate(315deg);
   }
 
+  /* a drop-down labelled with a link (e.g. Blogs) has no arrow: it opens on hover */
+  header nav .nav-sections .nav-drop.nav-drop-link {
+    padding-right: 0;
+    cursor: auto;
+  }
+
+  header nav .nav-sections .nav-drop.nav-drop-link::after {
+    content: none;
+  }
+
   header nav .nav-sections ul {
     display: flex;
     justify-content: center;
@@ -302,6 +312,17 @@ header nav .nav-sections ul > li > ul > li {
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
     padding: 8px 0;
+  }
+
+  /* the last item's drop-down (e.g. Blogs) opens leftwards so it stays on screen */
+  header nav .nav-sections .default-content-wrapper > ul > li:last-child[aria-expanded='true'] > ul {
+    right: -24px;
+    left: auto;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li:last-child > ul::before {
+    right: 24px;
+    left: auto;
   }
 }
 
