@@ -1,0 +1,56 @@
+/* ingredients one per row with lines between, the product pack beside them */
+.recipe-ingredients {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.recipe-ingredients .recipe-ingredients-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.recipe-ingredients .recipe-ingredients-list li {
+  border-top: 1px solid #dcdcdc;
+  padding: 16px 20px;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.recipe-ingredients .recipe-ingredients-list li:last-child {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.recipe-ingredients .recipe-ingredients-pack {
+  align-self: center;
+  width: min(100%, 320px);
+  margin: 0;
+}
+
+.recipe-ingredients .recipe-ingredients-pack img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (width >= 900px) {
+  /* like the original: a 532px list, the 413px pack on the right */
+  .recipe-ingredients {
+    display: grid;
+    grid-template-columns: minmax(0, 532px) 413px;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1142px;
+    margin-inline: auto;
+  }
+
+  .recipe-ingredients .recipe-ingredients-list li {
+    padding: 20px 31px;
+    font-size: 18px;
+  }
+
+  .recipe-ingredients .recipe-ingredients-pack {
+    width: 413px;
+  }
+}

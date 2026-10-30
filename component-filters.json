@@ -38,6 +38,8 @@
       "callout",
       "data-table",
       "accordion",
+      "reel-grid",
+      "video-embeds",
       "product-grid",
       "better-world",
       "video-gallery",
@@ -147,6 +149,12 @@
     ]
   },
   {
+    "id": "reel-grid",
+    "components": [
+      "reel-grid-item"
+    ]
+  },
+  {
     "id": "showcase",
     "components": [
       "showcase-item"
@@ -168,6 +176,12 @@
     "id": "value-tiles",
     "components": [
       "value-tiles-item"
+    ]
+  },
+  {
+    "id": "video-embeds",
+    "components": [
+      "video-embeds-item"
     ]
   },
   {

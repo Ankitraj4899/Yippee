@@ -1,0 +1,51 @@
+/* white cards side by side on large screens */
+.recipe-notes {
+  display: grid;
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.recipe-notes .recipe-notes-card {
+  border-radius: 16px;
+  padding: 24px;
+  background-color: var(--background-color);
+}
+
+.recipe-notes .recipe-notes-card h2 {
+  margin: 0 0 12px;
+  color: var(--brand-red);
+  font-size: 22px;
+}
+
+.recipe-notes .recipe-notes-card p,
+.recipe-notes .recipe-notes-card li {
+  margin: 0 0 6px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.recipe-notes .recipe-notes-card ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+@media (width >= 900px) {
+  .recipe-notes {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    max-width: 1140px;
+    margin-inline: auto;
+  }
+
+  .recipe-notes .recipe-notes-card {
+    padding: 28px 32px;
+  }
+
+  .recipe-notes .recipe-notes-card h2 {
+    font-size: 24px;
+  }
+
+  .recipe-notes .recipe-notes-card p,
+  .recipe-notes .recipe-notes-card li {
+    font-size: 18px;
+  }
+}

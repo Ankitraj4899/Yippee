@@ -55,10 +55,6 @@
   line-height: 1.45;
 }
 
-.better-world a.better-world-card:hover .better-world-title {
-  text-decoration: underline;
-}
-
 @media (width >= 600px) {
   .better-world .better-world-list {
     grid-template-columns: repeat(3, 1fr);

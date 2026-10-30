@@ -73,6 +73,32 @@ export default function decorate(block) {
     return li;
   });
 
+  // the Load More option shows the chosen category 6 videos at a time
+  const pageSize = block.classList.contains('paged') ? 6 : Infinity;
+  let currentCategory = 0;
+  let shown = pageSize;
+  const more = document.createElement('p');
+  more.className = 'button-wrapper craft-videos-more';
+  const moreButton = document.createElement('button');
+  moreButton.type = 'button';
+  moreButton.className = 'button primary';
+  moreButton.textContent = 'Load more';
+  more.append(moreButton);
+  const show = () => {
+    const matching = cards.filter((li) => li.dataset.category === categories[currentCategory]);
+    cards.forEach((li) => { li.hidden = true; });
+    matching.slice(0, shown).forEach((li) => { li.hidden = false; });
+    more.hidden = matching.length <= shown;
+  };
+  moreButton.addEventListener('click', () => {
+    const category = categories[currentCategory];
+    const first = cards.find((li) => li.hidden && li.dataset.category === category);
+    shown += pageSize;
+    show();
+    // move on to the first of the new videos
+    first?.querySelector('a, [tabindex]')?.focus();
+  });
+
   const select = (index, focus = false) => {
     tabs.forEach((tab, i) => {
       const selected = i === index;
@@ -80,7 +106,9 @@ export default function decorate(block) {
       tab.tabIndex = selected ? 0 : -1;
       if (selected) list.setAttribute('aria-labelledby', tab.id);
     });
-    cards.forEach((li) => { li.hidden = li.dataset.category !== categories[index]; });
+    currentCategory = index;
+    shown = pageSize;
+    show();
     if (focus) tabs[index].focus();
   };
   tabs.forEach((tab, i) => {
@@ -99,5 +127,6 @@ export default function decorate(block) {
   });
 
   block.replaceChildren(tablist, list);
+  if (pageSize !== Infinity) block.append(more);
   if (tabs.length) select(0);
 }

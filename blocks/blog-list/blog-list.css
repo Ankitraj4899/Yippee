@@ -243,13 +243,10 @@
   color: inherit;
   overflow: hidden;
   text-decoration: none;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .blog-list .blog-list-card:hover {
-  box-shadow: 0 8px 20px rgb(0 0 0 / 12%);
   text-decoration: none;
-  transform: translateY(-2px);
 }
 
 .blog-list .blog-list-card:focus-visible {

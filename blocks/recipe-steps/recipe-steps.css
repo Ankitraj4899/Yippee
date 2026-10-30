@@ -1,0 +1,85 @@
+/* a tick box with a line down to the next step, "STEP n" and the step */
+.recipe-steps .recipe-steps-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.recipe-steps .recipe-steps-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding-bottom: 32px;
+}
+
+.recipe-steps .recipe-steps-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 32px;
+  left: 10px;
+  width: 2px;
+  height: 14px;
+  background-color: #a7a7a7;
+}
+
+.recipe-steps .recipe-steps-check {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  margin: 3px 0 0;
+  accent-color: var(--brand-red);
+  cursor: pointer;
+}
+
+.recipe-steps .recipe-steps-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.recipe-steps .recipe-steps-number {
+  flex: 0 0 auto;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  text-transform: uppercase;
+}
+
+.recipe-steps .recipe-steps-text {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* a ticked step fades */
+.recipe-steps .recipe-steps-check:checked + .recipe-steps-label {
+  opacity: 0.55;
+}
+
+@media (width >= 900px) {
+  /* like the original: STEP n in a 78px column, the text 24px after it */
+  .recipe-steps {
+    max-width: 1140px;
+    margin-inline: auto;
+  }
+
+  .recipe-steps .recipe-steps-item {
+    padding-bottom: 46px;
+  }
+
+  .recipe-steps .recipe-steps-label {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 24px;
+  }
+
+  .recipe-steps .recipe-steps-number {
+    min-width: 78px;
+    font-size: 24px;
+  }
+
+  .recipe-steps .recipe-steps-text {
+    font-size: 18px;
+  }
+}

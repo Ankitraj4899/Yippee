@@ -685,6 +685,22 @@
     ]
   },
   {
+    "id": "craft-videos",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Options",
+        "options": [
+          {
+            "name": "Load More (6 videos at a time)",
+            "value": "paged"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "craft-videos-item",
     "fields": [
       {
@@ -1192,6 +1208,33 @@
     ]
   },
   {
+    "id": "reel-grid-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Thumbnail",
+        "description": "Portrait, 3:4 (e.g. 306 x 408)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Thumbnail Alt Text",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Reel Link",
+        "description": "e.g. the Instagram reel; opens in a new tab"
+      }
+    ]
+  },
+  {
     "id": "section-tabs",
     "fields": [
       {
@@ -1452,6 +1495,26 @@
         "label": "Text",
         "value": "",
         "description": "Optional"
+      }
+    ]
+  },
+  {
+    "id": "video-embeds-item",
+    "fields": [
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "video",
+        "label": "YouTube Link",
+        "description": "e.g. https://youtu.be/QN-wPGbQUrk; plays in place"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Video Name",
+        "value": "",
+        "description": "Read out with the play button, e.g. YiPPee! Power Up Atta Noodles TV ad"
       }
     ]
   },
