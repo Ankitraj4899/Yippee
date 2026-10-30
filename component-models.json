@@ -318,8 +318,22 @@
           {
             "name": "Compact Title",
             "value": "title-compact"
+          },
+          {
+            "name": "Full Width",
+            "value": "full-width"
+          },
+          {
+            "name": "Chopsticks Swirls",
+            "value": "chopsticks"
           }
         ]
+      },
+      {
+        "component": "text",
+        "name": "tab",
+        "label": "Tab Label",
+        "description": "Optional. Shows this section as a tab of the Section Tabs block in the section above (sections with the same label share a tab)"
       }
     ]
   },
@@ -531,6 +545,42 @@
     ]
   },
   {
+    "id": "craft-videos-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "category",
+        "label": "Category",
+        "value": "",
+        "description": "e.g. Craft; videos with the same category are shown together, the categories in the order they first appear"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Thumbnail",
+        "description": "Portrait, 3:4 (e.g. 306 x 408)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Thumbnail Alt Text",
+        "value": "",
+        "description": "The craft's name, e.g. Envelope; read out with the play button"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "video",
+        "label": "Video",
+        "description": "MP4 or YouTube link, opened in the video pop-up"
+      }
+    ]
+  },
+  {
     "id": "fragment",
     "fields": [
       {
@@ -617,6 +667,68 @@
     ]
   },
   {
+    "id": "impact-story",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "description": "Shown beside the text, about 4:3 (e.g. 530 x 398)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Text",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "video",
+        "label": "Video",
+        "description": "Optional. MP4 or YouTube link; adds a play button on the image that opens the video pop-up"
+      }
+    ]
+  },
+  {
+    "id": "impact-story-stat",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "value",
+        "label": "Figure",
+        "value": "",
+        "description": "e.g. 300k +"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Label",
+        "value": "",
+        "description": "e.g. Bags reused"
+      }
+    ]
+  },
+  {
     "id": "jump-links-item",
     "fields": [
       {
@@ -633,6 +745,53 @@
         "label": "Text",
         "value": "",
         "description": "e.g. Noodles"
+      }
+    ]
+  },
+  {
+    "id": "process-steps",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Heading",
+        "value": "",
+        "description": "e.g. How Schools Process Waste"
+      }
+    ]
+  },
+  {
+    "id": "process-steps-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "description": "Square (e.g. 240 x 240)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Step Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Text",
+        "value": ""
       }
     ]
   },
@@ -865,6 +1024,59 @@
     ]
   },
   {
+    "id": "section-tabs",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Tabs Label",
+        "value": "",
+        "description": "Optional, read out by screen readers; defaults to this section's heading. The tabs are the sections below with a Tab Label (in the section's properties)"
+      }
+    ]
+  },
+  {
+    "id": "showcase",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Text",
+        "value": "",
+        "description": "Cut to two lines with a Read More button"
+      }
+    ]
+  },
+  {
+    "id": "showcase-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "description": "Portrait, 3:4 (e.g. 306 x 408)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "social-wall-item",
     "fields": [
       {
@@ -914,6 +1126,23 @@
         "name": "title",
         "label": "Title",
         "value": ""
+      },
+      {
+        "component": "select",
+        "name": "titleType",
+        "label": "Title Type",
+        "value": "h2",
+        "description": "h1 when the banner's title is the page heading (e.g. Better World)",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          },
+          {
+            "name": "h2",
+            "value": "h2"
+          }
+        ]
       },
       {
         "component": "richtext",
@@ -983,6 +1212,41 @@
         "valueType": "string",
         "name": "text",
         "label": "Review",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "titled-image",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": "",
+        "description": "e.g. Use the Trainers -"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "highlight",
+        "label": "Highlighted Words",
+        "value": "",
+        "description": "Optional, shown in red after the title, e.g. Super Easy!"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
         "value": ""
       }
     ]
@@ -1067,6 +1331,34 @@
         "label": "Video Title",
         "value": "",
         "description": "Read out by screen readers, e.g. DIY Envelope"
+      }
+    ]
+  },
+  {
+    "id": "video-picks-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "description": "About 4:3 (e.g. 306 x 226), its label drawn in",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": "",
+        "description": "e.g. Beginner; read out with the play button"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "video",
+        "label": "Video",
+        "description": "MP4 or YouTube link, opened in the video pop-up"
       }
     ]
   }

@@ -35,7 +35,10 @@ export default function decorate(block) {
   content.className = 'story-banner-content';
   const titleText = titleRow?.textContent.trim();
   if (titleText) {
-    const title = document.createElement('h2');
+    // a title authored as h1 (Title Type) is the page heading
+    const pageHeading = Boolean(titleRow.querySelector('h1'));
+    block.classList.toggle('page-heading', pageHeading);
+    const title = document.createElement(pageHeading ? 'h1' : 'h2');
     title.className = 'story-banner-title';
     title.textContent = titleText;
     moveInstrumentation(titleRow.firstElementChild || titleRow, title);

@@ -1,0 +1,85 @@
+{
+  "definitions": [
+    {
+      "title": "Showcase",
+      "id": "showcase",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Showcase",
+              "filter": "showcase",
+              "model": "showcase"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Showcase Image",
+      "id": "showcase-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Showcase Image",
+              "model": "showcase-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "showcase",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title",
+          "value": ""
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "text",
+          "label": "Text",
+          "value": "",
+          "description": "Cut to two lines with a Read More button"
+        }
+      ]
+    },
+    {
+      "id": "showcase-item",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "description": "Portrait, 3:4 (e.g. 306 x 408)",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Image Alt Text",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "showcase",
+      "components": [
+        "showcase-item"
+      ]
+    }
+  ]
+}

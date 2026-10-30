@@ -101,8 +101,22 @@
             {
               "name": "Compact Title",
               "value": "title-compact"
+            },
+            {
+              "name": "Full Width",
+              "value": "full-width"
+            },
+            {
+              "name": "Chopsticks Swirls",
+              "value": "chopsticks"
             }
           ]
+        },
+        {
+          "component": "text",
+          "name": "tab",
+          "label": "Tab Label",
+          "description": "Optional. Shows this section as a tab of the Section Tabs block in the section above (sections with the same label share a tab)"
         }
       ]
     }
@@ -128,6 +142,13 @@
         "history",
         "value-tiles",
         "story-banner",
+        "section-tabs",
+        "impact-story",
+        "craft-videos",
+        "process-steps",
+        "showcase",
+        "video-picks",
+        "titled-image",
         "product-grid",
         "better-world",
         "video-gallery",

@@ -43,6 +43,23 @@
           "value": ""
         },
         {
+          "component": "select",
+          "name": "titleType",
+          "label": "Title Type",
+          "value": "h2",
+          "description": "h1 when the banner's title is the page heading (e.g. Better World)",
+          "options": [
+            {
+              "name": "h1",
+              "value": "h1"
+            },
+            {
+              "name": "h2",
+              "value": "h2"
+            }
+          ]
+        },
+        {
           "component": "richtext",
           "valueType": "string",
           "name": "text",

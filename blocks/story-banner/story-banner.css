@@ -94,6 +94,11 @@
     font-size: 32px;
   }
 
+  /* as the page heading (Better World), the text sits a little lower, like the original */
+  .story-banner.page-heading .story-banner-content {
+    padding-top: 64px;
+  }
+
   .story-banner .story-banner-text p {
     font-size: 18px;
   }

@@ -25,6 +25,13 @@
       "history",
       "value-tiles",
       "story-banner",
+      "section-tabs",
+      "impact-story",
+      "craft-videos",
+      "process-steps",
+      "showcase",
+      "video-picks",
+      "titled-image",
       "product-grid",
       "better-world",
       "video-gallery",
@@ -74,15 +81,33 @@
     ]
   },
   {
+    "id": "craft-videos",
+    "components": [
+      "craft-videos-item"
+    ]
+  },
+  {
     "id": "history",
     "components": [
       "history-item"
     ]
   },
   {
+    "id": "impact-story",
+    "components": [
+      "impact-story-stat"
+    ]
+  },
+  {
     "id": "jump-links",
     "components": [
       "jump-links-item"
+    ]
+  },
+  {
+    "id": "process-steps",
+    "components": [
+      "process-steps-item"
     ]
   },
   {
@@ -101,6 +126,12 @@
     "id": "recipes",
     "components": [
       "recipes-item"
+    ]
+  },
+  {
+    "id": "showcase",
+    "components": [
+      "showcase-item"
     ]
   },
   {
@@ -125,6 +156,12 @@
     "id": "video-gallery",
     "components": [
       "video-gallery-item"
+    ]
+  },
+  {
+    "id": "video-picks",
+    "components": [
+      "video-picks-item"
     ]
   }
 ]
