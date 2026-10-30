@@ -1,5 +1,6 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
+import decorateSearch from './header-search.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -206,4 +207,8 @@ export default async function decorate(block) {
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
+
+  // the Search link opens a search bar under the navbar
+  const searchLink = nav.querySelector('.nav-tools a[href$="/search"]');
+  if (searchLink) decorateSearch(searchLink, navWrapper);
 }

@@ -4,6 +4,7 @@ import { optimizedPicture, sectionLabel, textElement } from '../../scripts/block
 import {
   loadIndex, buildTime, buildCard, indexedCard, emptyState,
 } from './recipes-cards.js';
+import { popupController, addCardMenu } from './recipes-menu.js';
 
 /** Card for an authored recipe row: image, title, cooking time, link. */
 function authoredCard(row) {
@@ -54,10 +55,17 @@ export default async function decorate(block) {
   }
 
   const section = block.closest('.section');
+  const popups = popupController();
+  const card = (recipe) => {
+    const li = indexedCard(recipe);
+    addCardMenu(li, recipe, popups);
+    return li;
+  };
   const render = () => {
     const category = section?.dataset.recipeCategory?.toLowerCase();
     const matches = recipes.filter((r) => !category || r.category?.toLowerCase() === category);
-    list.replaceChildren(...(matches.length ? matches.map(indexedCard) : [emptyState()]));
+    popups.close();
+    list.replaceChildren(...(matches.length ? matches.map(card) : [emptyState()]));
     list.scrollTo({ left: 0 });
   };
   render();

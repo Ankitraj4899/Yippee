@@ -108,14 +108,6 @@
   outline-offset: 4px;
 }
 
-.recipe-hero .recipe-hero-status {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  margin-top: 6px;
-  font-size: 14px;
-}
-
 /* the photo, cut round, on a yellow starburst with two orange sparkles */
 .recipe-hero .recipe-hero-media {
   position: relative;
