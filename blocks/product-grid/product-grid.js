@@ -79,6 +79,20 @@ function openStores(name, links, note, opener) {
   d.showModal();
 }
 
+/** An image field: a picture, or a link to an image (possibly wrapped in a paragraph). */
+const isImage = (el) => el.querySelector('picture, img')
+  || /\.(png|jpe?g|gif|webp|avif|svg)([?#]|$)|\/is\/image\//i.test(el.querySelector('a[href]')?.href || '');
+
+/** The store links: a list, several links, or a link to a known store. */
+const isStores = (el) => el.querySelector('ul, ol') || el.querySelectorAll('a[href]').length > 1
+  || [...el.querySelectorAll('a[href]')].some((a) => {
+    try {
+      return STORES.some((store) => store.host.test(new URL(a.href).hostname));
+    } catch {
+      return false;
+    }
+  });
+
 /**
  * Product packs in a grid, each with a Buy Now button that opens a pop-up of
  * online stores selling it.
@@ -86,18 +100,27 @@ function openStores(name, links, note, opener) {
  */
 export default function decorate(block) {
   const rows = [...block.children];
-  // the block's own field (the pop-up note) is a one-cell row before the products
-  const note = rows.find((row) => row.children.length === 1)?.textContent.trim() || DEFAULT_NOTE;
+  // AEM can leave out empty fields, so rows and cells are told apart by what they hold:
+  // products have a pack image or store links; the block's own field (the note) has neither
+  const isProduct = (row) => [...row.children].some((c) => isImage(c) || isStores(c));
+  const note = rows.find((row) => !isProduct(row))?.textContent.trim() || DEFAULT_NOTE;
 
   const list = document.createElement('ul');
   list.className = 'product-grid-list';
-  rows.filter((row) => row.children.length > 1).forEach((row) => {
-    const [imageCell, nameCell, linkCell, storesCell] = [...row.children];
+  rows.filter(isProduct).forEach((row) => {
+    const cells = [...row.children];
+    const imageCell = cells.find(isImage);
+    const storesCell = cells.find((c) => c !== imageCell && isStores(c));
+    const others = cells.filter((c) => c !== imageCell && c !== storesCell && c.textContent.trim());
+    const linkCell = others.find((c) => c.querySelector('a[href]'));
+    const nameCell = others.find((c) => c !== linkCell);
     const li = document.createElement('li');
     li.className = 'product-grid-item';
     moveInstrumentation(row, li);
 
-    const name = nameCell?.textContent.trim() || '';
+    // without a name field, the pack's alt text (e.g. "Magic Masala Noodles pack") names it
+    const alt = imageCell?.querySelector('img')?.alt || imageCell?.querySelector('a')?.textContent || '';
+    const name = nameCell?.textContent.trim() || alt.trim().replace(/\s+pack$/i, '');
     const link = linkCell?.querySelector('a[href]');
     const media = document.createElement(link ? 'a' : 'div');
     media.className = 'product-grid-media';

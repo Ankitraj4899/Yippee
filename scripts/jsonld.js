@@ -146,12 +146,20 @@ function productsIn(main, pageUrl) {
   let m = blocks.exec(main);
   while (m) {
     childDivs(divAt(main, m.index)).forEach((row) => {
-      const [imageCell, nameCell, linkCell] = childDivs(row);
-      if (!nameCell) return; // the block's own one-cell field row
-      const src = imageCell?.match(/<img\s[^>]*src="([^"]+)"/i)?.[1]
-        || imageCell?.match(/<a\s[^>]*href="([^"]+)"/i)?.[1];
+      // AEM can leave out empty fields: find the image, store list, link and name by content
+      const cells = childDivs(row);
+      const imageCell = cells.find((c) => /<(picture|img)[\s>]/i.test(c)
+        || /<a\s[^>]*href="[^"]*(\.(png|jpe?g|gif|webp|avif|svg)([?#&"]|$)|\/is\/image\/)/i.test(c));
+      if (!imageCell) return; // the block's own field row
+      const rest = cells.filter((c) => c !== imageCell && !/<(ul|ol)[\s>]/i.test(c) && textOf(c));
+      const linkCell = rest.find((c) => /<a\s/i.test(c));
+      const nameCell = rest.find((c) => c !== linkCell);
+      const src = imageCell.match(/<img\s[^>]*src="([^"]+)"/i)?.[1]
+        || imageCell.match(/<a\s[^>]*href="([^"]+)"/i)?.[1];
       const href = linkCell?.match(/<a\s[^>]*href="([^"]+)"/i)?.[1];
-      const name = textOf(nameCell);
+      // without a name field, the pack's alt text (e.g. "Magic Masala Noodles pack") names it
+      const alt = decodeEntities(imageCell.match(/<img\s[^>]*alt="([^"]*)"/i)?.[1] || textOf(imageCell));
+      const name = (nameCell ? textOf(nameCell) : '') || alt.replace(/\s+pack$/i, '');
       if (!name) return;
       const abs = (u) => (u ? new URL(decodeEntities(u), pageUrl).href : undefined);
       products.push({ name, image: abs(src), url: abs(href) });
