@@ -109,6 +109,10 @@
             {
               "name": "Chopsticks Swirls",
               "value": "chopsticks"
+            },
+            {
+              "name": "Blog (cream, article text)",
+              "value": "blog"
             }
           ]
         },
@@ -149,6 +153,12 @@
         "showcase",
         "video-picks",
         "titled-image",
+        "blog-list",
+        "article-header",
+        "article-contents",
+        "callout",
+        "data-table",
+        "accordion",
         "product-grid",
         "better-world",
         "video-gallery",

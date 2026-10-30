@@ -1,0 +1,43 @@
+{
+  "definitions": [
+    {
+      "title": "Blog List",
+      "id": "blog-list",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Blog List",
+              "model": "blog-list",
+              "title": "Explore All Blogs"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "blog-list",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Heading",
+          "value": "Explore All Blogs"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "source",
+          "label": "Index",
+          "value": "",
+          "description": "Optional. The query index listing the blog pages (under /blog-listing/); default /query-index.json. Each blog's topic, date and reading time come from its page properties"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

@@ -169,6 +169,29 @@ function productsIn(main, pageUrl) {
   return products;
 }
 
+/** Questions and answers of the page's Accordion blocks (e.g. an article's FAQs). */
+function faqsIn(main) {
+  const faqs = [];
+  const blocks = /<div class="accordion(?:\s[^"]*)?">/gi;
+  let m = blocks.exec(main);
+  while (m) {
+    childDivs(divAt(main, m.index)).forEach((row) => {
+      const [question, answer] = childDivs(row).map(textOf);
+      if (question && answer) faqs.push({ question, answer });
+    });
+    m = blocks.exec(main);
+  }
+  return faqs;
+}
+
+/** The reviewer in a blog article's Article Header block, e.g. "Yippee Culinary Team". */
+function articleAuthor(main) {
+  const at = main.search(/<div class="article-header(?:\s[^"]*)?">/i);
+  if (at === -1) return '';
+  const rows = childDivs(divAt(main, at)).filter((row) => !/<h[1-6][\s>]/i.test(row));
+  return textOf(rows[0] || '').replace(/^reviewed by\s+/i, '');
+}
+
 /** Drops empty values so the output only states what the page actually has. */
 function compact(object) {
   return Object.fromEntries(Object.entries(object)
@@ -202,6 +225,7 @@ export function buildJsonLd(html, { url, logo, recipes = [] }) {
   const isHome = path === '/';
   const isRecipe = /^\/recipes\/[^/]+$/.test(path);
   const isRecipeList = path === '/recipes';
+  const isBlogPost = /^\/blog-listing\/[^/]+$/.test(path);
   const products = productsIn(main, pageId);
   const isProductList = products.length > 0;
 
@@ -266,6 +290,38 @@ export function buildJsonLd(html, { url, logo, recipes = [] }) {
         '@type': 'HowToStep', position: i + 1, text,
       })),
     }));
+  }
+
+  if (isBlogPost && heading) {
+    const author = articleAuthor(main);
+    const topic = meta(html, 'topic');
+    graph.push(compact({
+      '@type': 'BlogPosting',
+      '@id': `${pageId}#article`,
+      mainEntityOfPage: { '@id': webpage['@id'] },
+      headline: heading,
+      name: pageName || undefined,
+      description,
+      image: image ? [image] : undefined,
+      datePublished: meta(html, 'published') || meta(html, 'published-time') || undefined,
+      author: author ? { '@type': 'Organization', name: author } : { '@id': organization['@id'] },
+      publisher: { '@id': organization['@id'] },
+      articleSection: topic || undefined,
+      keywords: [topic, SITE_NAME].filter(Boolean).join(', '),
+    }));
+  }
+
+  const faqs = faqsIn(main);
+  if (faqs.length) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${pageId}#faq`,
+      mainEntity: faqs.map(({ question, answer }) => ({
+        '@type': 'Question',
+        name: question,
+        acceptedAnswer: { '@type': 'Answer', text: answer },
+      })),
+    });
   }
 
   if (isRecipeList && recipes.length) {

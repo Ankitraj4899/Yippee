@@ -32,6 +32,12 @@
       "showcase",
       "video-picks",
       "titled-image",
+      "blog-list",
+      "article-header",
+      "article-contents",
+      "callout",
+      "data-table",
+      "accordion",
       "product-grid",
       "better-world",
       "video-gallery",
@@ -39,6 +45,12 @@
       "cards",
       "columns",
       "fragment"
+    ]
+  },
+  {
+    "id": "accordion",
+    "components": [
+      "accordion-item"
     ]
   },
   {
@@ -84,6 +96,12 @@
     "id": "craft-videos",
     "components": [
       "craft-videos-item"
+    ]
+  },
+  {
+    "id": "data-table",
+    "components": [
+      "data-table-row"
     ]
   },
   {

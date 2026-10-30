@@ -535,6 +535,74 @@ main .section.chopsticks .video-picks-wrapper + .titled-image-wrapper {
   }
 }
 
+/* blog: the listing and articles on cream, articles 1092px wide in the original's type */
+main > .section.blog {
+  margin: 0;
+  padding: 16px 0 64px;
+  background-color: #fff7ec;
+}
+
+main > .section.blog > div {
+  max-width: 1092px;
+}
+
+main > .section.blog > div:not(:first-child) {
+  margin-top: 28px;
+}
+
+main .section.blog .default-content-wrapper {
+  color: #6b5847;
+}
+
+main .section.blog .default-content-wrapper p:not(.button-wrapper),
+main .section.blog .default-content-wrapper li {
+  font-size: 14.5px;
+  line-height: 1.75;
+}
+
+main .section.blog .default-content-wrapper p:not(.button-wrapper) {
+  margin: 0 0 12px;
+}
+
+main .section.blog .default-content-wrapper h2,
+main .section.blog .default-content-wrapper h3 {
+  margin: 40px 0 14px;
+  color: #2b1b10;
+  font-size: 22px;
+  line-height: 1.2;
+  scroll-margin-top: 120px;
+}
+
+main .section.blog .default-content-wrapper h3 {
+  font-size: 18px;
+}
+
+main .section.blog .default-content-wrapper > :first-child {
+  margin-top: 0;
+}
+
+main .section.blog .default-content-wrapper > :last-child {
+  margin-bottom: 0;
+}
+
+/* an article's own images: rounded, packs shown on orange */
+main .section.blog .default-content-wrapper p > picture img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2;
+  border-radius: 16px;
+  background-color: var(--brand-orange);
+  object-fit: contain;
+  object-position: right center;
+}
+
+@media (width >= 900px) {
+  main .section.blog .default-content-wrapper h2 {
+    font-size: 23px;
+  }
+}
+
 /* title band: a light strip with the page title (h1) at its foot */
 main .section.title-band {
   margin: 0;
@@ -881,4 +949,10 @@ main .section.wave-heading > .default-content-wrapper:first-child {
 /* the banner's see-through wave edge over the white of the tabs */
 main > .section.orange-wave:has(+ .section.section-tabs-container) {
   background-color: var(--background-color);
+}
+
+/* links in blog articles: bold orange-red, like the original */
+main .section.blog .default-content-wrapper a:any-link {
+  color: #c7401a;
+  font-weight: 700;
 }

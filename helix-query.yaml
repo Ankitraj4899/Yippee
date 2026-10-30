@@ -35,3 +35,15 @@ indices:
       diet:
         select: head > meta[name="diet"]
         value: attribute(el, "content")
+      pagetitle:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      topic:
+        select: head > meta[name="topic"]
+        value: attribute(el, "content")
+      published:
+        select: head > meta[name="published"]
+        value: attribute(el, "content")
+      readtime:
+        select: head > meta[name="readtime"]
+        value: attribute(el, "content")

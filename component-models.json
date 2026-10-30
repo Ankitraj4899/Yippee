@@ -134,6 +134,27 @@
             "value": "Non Veg"
           }
         ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "topic",
+        "label": "Blog Topic",
+        "description": "Blog pages only: shown on the article and its card, and offered in the blog Filters, e.g. Noodles"
+      },
+      {
+        "component": "date-time",
+        "valueType": "date-time",
+        "name": "published",
+        "label": "Blog Published Date",
+        "description": "Blog pages only: shown on the article and its card; the blog list sorts by it"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "readtime",
+        "label": "Blog Reading Time",
+        "description": "Blog pages only, e.g. 5 min read"
       }
     ]
   },
@@ -326,6 +347,10 @@
           {
             "name": "Chopsticks Swirls",
             "value": "chopsticks"
+          },
+          {
+            "name": "Blog (cream, article text)",
+            "value": "blog"
           }
         ]
       },
@@ -334,6 +359,70 @@
         "name": "tab",
         "label": "Tab Label",
         "description": "Optional. Shows this section as a tab of the Section Tabs block in the section above (sections with the same label share a tab)"
+      }
+    ]
+  },
+  {
+    "id": "accordion-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "question",
+        "label": "Question",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "answer",
+        "label": "Answer",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "article-contents",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": "In this article",
+        "description": "The links are made from the headings (h2) after this block"
+      }
+    ]
+  },
+  {
+    "id": "article-header",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": "",
+        "description": "The article's heading. Its topic, date and reading time come from the page's Blog properties"
+      },
+      {
+        "component": "select",
+        "name": "titleType",
+        "label": "Title Type",
+        "value": "h1",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "author",
+        "label": "Reviewed By",
+        "value": "Reviewed by Yippee Culinary Team"
       }
     ]
   },
@@ -417,6 +506,57 @@
         "name": "link",
         "label": "Link",
         "description": "Optional. Makes the whole card clickable"
+      }
+    ]
+  },
+  {
+    "id": "blog-list",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Heading",
+        "value": "Explore All Blogs"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "source",
+        "label": "Index",
+        "value": "",
+        "description": "Optional. The query index listing the blog pages (under /blog-listing/); default /query-index.json. Each blog's topic, date and reading time come from its page properties"
+      }
+    ]
+  },
+  {
+    "id": "callout",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": "",
+        "description": "Optional, e.g. Summary or Did You Know?"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Text",
+        "value": ""
+      },
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Style",
+        "options": [
+          {
+            "name": "Summary (orange heading, text in italics)",
+            "value": "summary"
+          }
+        ]
       }
     ]
   },
@@ -577,6 +717,34 @@
         "name": "video",
         "label": "Video",
         "description": "MP4 or YouTube link, opened in the video pop-up"
+      }
+    ]
+  },
+  {
+    "id": "data-table-row",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column1",
+        "label": "Column 1",
+        "value": "",
+        "description": "The first row holds the column headings"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column2",
+        "label": "Column 2",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column3",
+        "label": "Column 3",
+        "value": "",
+        "description": "Optional"
       }
     ]
   },

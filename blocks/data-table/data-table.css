@@ -1,0 +1,43 @@
+.data-table .data-table-scroller {
+  overflow-x: auto;
+  border: 1px solid #f3dec4;
+  border-radius: 14px;
+  background-color: var(--background-color);
+}
+
+.data-table .data-table-scroller:focus-visible {
+  outline: 2px solid #c7401a;
+  outline-offset: 2px;
+}
+
+.data-table table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  color: #6b5847;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.data-table th,
+.data-table td {
+  border-bottom: 1px solid #f3dec4;
+  padding: 12px 16px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.data-table th {
+  background-color: #fff1dd;
+  color: #2b1b10;
+  font-weight: 700;
+}
+
+.data-table td:first-child {
+  color: #2b1b10;
+  font-weight: 700;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: 0;
+}
