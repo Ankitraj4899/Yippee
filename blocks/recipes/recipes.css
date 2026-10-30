@@ -182,13 +182,20 @@
 
 .recipes.grid .recipes-more[hidden],
 .recipes.grid .recipes-filters-panel[hidden],
-.recipes.grid .recipes-menu[hidden],
 .recipes.grid .recipes-filters-options[hidden] {
   display: none;
 }
 
 /* three white dots on the card open a Share / Download menu */
-.recipes.grid .recipes-menu-toggle {
+.recipes .recipes-item-has-menu {
+  position: relative;
+}
+
+.recipes .recipes-menu[hidden] {
+  display: none;
+}
+
+.recipes .recipes-menu-toggle {
   position: absolute;
   top: 18px;
   right: 14px;
@@ -205,14 +212,14 @@
   cursor: pointer;
 }
 
-.recipes.grid .recipes-menu-toggle:focus-visible,
-.recipes.grid .recipes-menu button:focus-visible,
-.recipes.grid .recipes-menu a:focus-visible {
+.recipes .recipes-menu-toggle:focus-visible,
+.recipes .recipes-menu button:focus-visible,
+.recipes .recipes-menu a:focus-visible {
   outline: 2px solid var(--background-color);
   outline-offset: 2px;
 }
 
-.recipes.grid .recipes-menu {
+.recipes .recipes-menu {
   position: absolute;
   top: 14px;
   right: 12px;
@@ -227,8 +234,8 @@
   box-shadow: 0 6px 16px rgb(0 0 0 / 25%);
 }
 
-.recipes.grid .recipes-menu-share,
-.recipes.grid .recipes-menu-download {
+.recipes .recipes-menu-share,
+.recipes .recipes-menu-download {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -241,9 +248,9 @@
   cursor: pointer;
 }
 
-.recipes.grid .recipes-menu-share::before,
-.recipes.grid .recipes-menu-download::before,
-.recipes.grid .recipes-menu-close::before {
+.recipes .recipes-menu-share::before,
+.recipes .recipes-menu-download::before,
+.recipes .recipes-menu-close::before {
   content: '';
   flex: 0 0 auto;
   width: 22px;
@@ -252,15 +259,15 @@
   mask: var(--icon) center / contain no-repeat;
 }
 
-.recipes.grid .recipes-menu-share::before {
+.recipes .recipes-menu-share::before {
   --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 5l7 7-7 7'/%3E%3Cpath d='M21 12H11a8 8 0 0 0-8 8'/%3E%3C/svg%3E");
 }
 
-.recipes.grid .recipes-menu-download::before {
+.recipes .recipes-menu-download::before {
   --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12'/%3E%3Cpath d='M7 10l5 5 5-5'/%3E%3Cpath d='M4 20h16'/%3E%3C/svg%3E");
 }
 
-.recipes.grid .recipes-menu-close {
+.recipes .recipes-menu-close {
   position: absolute;
   top: 8px;
   right: 8px;
@@ -272,22 +279,13 @@
   cursor: pointer;
 }
 
-.recipes.grid .recipes-menu-close::before {
+.recipes .recipes-menu-close::before {
   width: 18px;
   height: 18px;
 
   --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M5 5l14 14M19 5L5 19'/%3E%3C/svg%3E");
 }
 
-.recipes.grid .recipes-menu-status {
-  margin: 0;
-  color: var(--background-color);
-  font-size: 14px;
-}
-
-.recipes.grid .recipes-menu-status:empty {
-  display: none;
-}
 
 /* Filters: an outlined pill that opens a panel of checkboxes */
 .recipes.grid .recipes-filters {
