@@ -290,6 +290,18 @@
           {
             "name": "Page Title",
             "value": "page-title"
+          },
+          {
+            "name": "Title Band",
+            "value": "title-band"
+          },
+          {
+            "name": "White Background",
+            "value": "white"
+          },
+          {
+            "name": "Sparkle Headings",
+            "value": "sparkle-headings"
           }
         ]
       }
@@ -535,6 +547,82 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "jump-links-item",
+    "fields": [
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Link",
+        "description": "Optional. #id of the heading to jump to; without it, the first heading on the page containing the link text is used (e.g. Pasta → Explore Our Pasta Range)"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linkText",
+        "label": "Text",
+        "value": "",
+        "description": "e.g. Noodles"
+      }
+    ]
+  },
+  {
+    "id": "product-grid",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "note",
+        "label": "Buy Now Note",
+        "value": "",
+        "description": "Line under the store icons in the Buy Now pop-up. Default: This product is now available at your nearby stores"
+      }
+    ]
+  },
+  {
+    "id": "product-grid-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Pack Image",
+        "description": "Product pack, about 4:3 (e.g. 346 x 265)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Product Name",
+        "value": "",
+        "description": "e.g. Magic Masala Noodles; read out with the Buy Now button"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Product Page",
+        "description": "Optional. The pack image links here"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "stores",
+        "label": "Buy Now Stores",
+        "value": "",
+        "description": "A list of links to the product on online stores (Blinkit, Zepto, BigBasket, Swiggy Instamart, Amazon, Flipkart, JioMart get their logo). Leave empty to hide Buy Now."
       }
     ]
   },

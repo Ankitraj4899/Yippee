@@ -1,0 +1,152 @@
+/* product packs in centred rows, a Buy Now button under each */
+.product-grid .product-grid-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px 8px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.product-grid .product-grid-item {
+  display: flex;
+  flex: 0 0 calc(50% - 4px);
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.product-grid .product-grid-media {
+  display: block;
+  width: 100%;
+}
+
+.product-grid .product-grid-media picture,
+.product-grid .product-grid-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 254 / 191;
+  object-fit: contain;
+}
+
+.product-grid a.product-grid-media:focus-visible {
+  outline: 3px solid var(--brand-red);
+  outline-offset: 4px;
+}
+
+.product-grid .product-grid-buy {
+  padding-inline: 28px;
+}
+
+.product-grid .product-grid-sr,
+.product-grid-dialog .product-grid-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (width >= 600px) {
+  .product-grid .product-grid-item {
+    flex-basis: 254px;
+  }
+}
+
+@media (width >= 900px) {
+  /* four 254px packs a row, 8px apart, like the original */
+  .product-grid .product-grid-list {
+    max-width: 1040px;
+    gap: 48px 8px;
+  }
+
+  .product-grid .product-grid-item {
+    gap: 40px;
+  }
+
+  .product-grid .product-grid-buy {
+    padding-inline: 40px;
+  }
+}
+
+/* Buy Now pop-up: yellow card of store logos over a dimmed page */
+.product-grid-dialog {
+  box-sizing: border-box;
+  width: min(300px, calc(100vw - 32px));
+  border: 0;
+  padding: 16px 16px 20px;
+  background-color: #ffcc5f;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.product-grid-dialog::backdrop {
+  background-color: rgb(0 0 0 / 75%);
+}
+
+.product-grid-dialog h2 {
+  margin: 4px 32px 16px;
+  color: var(--text-color);
+  font-size: 28px;
+}
+
+.product-grid-dialog .product-grid-dialog-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  padding: 0;
+  background-color: var(--text-color);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 6l12 12M18 6L6 18'/%3E%3C/svg%3E") center / 24px no-repeat;
+  cursor: pointer;
+}
+
+.product-grid-dialog .product-grid-stores {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px 20px;
+  margin: 0 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.product-grid-dialog .product-grid-store {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 20px;
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.product-grid-dialog .product-grid-store:not(:has(img)) {
+  padding: 0 12px;
+  background-color: var(--background-color);
+}
+
+.product-grid-dialog .product-grid-store img {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
+.product-grid-dialog .product-grid-note {
+  margin: 16px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.product-grid-dialog .product-grid-dialog-close:focus-visible,
+.product-grid-dialog .product-grid-store:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: 2px;
+}

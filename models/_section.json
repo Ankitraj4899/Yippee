@@ -73,6 +73,18 @@
             {
               "name": "Page Title",
               "value": "page-title"
+            },
+            {
+              "name": "Title Band",
+              "value": "title-band"
+            },
+            {
+              "name": "White Background",
+              "value": "white"
+            },
+            {
+              "name": "Sparkle Headings",
+              "value": "sparkle-headings"
             }
           ]
         }
@@ -95,6 +107,8 @@
         "recipes",
         "recipe-info",
         "promo-banner",
+        "jump-links",
+        "product-grid",
         "better-world",
         "video-gallery",
         "social-wall",

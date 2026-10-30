@@ -79,6 +79,30 @@ describe('buildJsonLd', () => {
     assert.ok(list.itemListElement.every((item) => item.url.startsWith(`${SITE}/recipes/`) && item.name));
   });
 
+  it('lists the products of the product listing page', () => {
+    const doc = buildJsonLd(fixture('product-listing.html'), { url: `${SITE}/product-listing`, logo });
+    const page = byType(doc, 'CollectionPage');
+    const list = byType(doc, 'ItemList');
+    assert.equal(page.mainEntity['@id'], list['@id']);
+    assert.equal(list.numberOfItems, 16);
+    const first = list.itemListElement[0];
+    assert.equal(first.position, 1);
+    assert.equal(first.item['@type'], 'Product');
+    assert.equal(first.item.name, 'Magic Masala Noodles');
+    assert.match(first.item.image, /^https:\/\/s7ap1\.scene7\.com\/is\/image\/itcportalprod\/346x265-04\?/);
+    assert.equal(first.item.brand.name, 'Sunfeast YiPPee!');
+    assert.equal(list.itemListElement.at(-1).item.name, 'Korean Spicy Kimchi Style');
+  });
+
+  it('reads pack images that AEM delivers as links', () => {
+    // AEM renders an outside image address without a file extension as a link
+    const html = fixture('product-listing.html')
+      .replace(/<picture><img src="([^"]+)" alt="([^"]+)"[^>]*><\/picture>/g, '<a href="$1">$2</a>');
+    const list = byType(buildJsonLd(html, { url: `${SITE}/product-listing` }), 'ItemList');
+    assert.equal(list.numberOfItems, 16);
+    assert.match(list.itemListElement[1].item.image, /346x265-05/);
+  });
+
   it('uses the public domain, not the aem.live canonical host', () => {
     const doc = buildJsonLd(fixture('pasta-tikki.html'), { url: `${SITE}/recipes/pasta-tikki` });
     const json = JSON.stringify(doc);
