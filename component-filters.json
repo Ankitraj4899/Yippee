@@ -20,6 +20,8 @@
       "recipes",
       "recipe-info",
       "promo-banner",
+      "jump-links",
+      "product-grid",
       "better-world",
       "video-gallery",
       "social-wall",
@@ -65,6 +67,18 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "jump-links",
+    "components": [
+      "jump-links-item"
+    ]
+  },
+  {
+    "id": "product-grid",
+    "components": [
+      "product-grid-item"
     ]
   },
   {

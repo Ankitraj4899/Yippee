@@ -111,6 +111,56 @@ function breadcrumb(origin, path, pageName, pageId) {
   };
 }
 
+/** The whole <div …>…</div> element starting at `start`, nested divs included. */
+function divAt(html, start) {
+  const tags = /<div[\s>]|<\/div>/gi;
+  tags.lastIndex = start;
+  let depth = 0;
+  let m = tags.exec(html);
+  while (m) {
+    depth += m[0].startsWith('</') ? -1 : 1;
+    if (depth === 0) return html.slice(start, m.index + m[0].length);
+    m = tags.exec(html);
+  }
+  return html.slice(start);
+}
+
+/** The direct child divs of a div element. */
+function childDivs(element) {
+  const inner = element.slice(element.indexOf('>') + 1, element.lastIndexOf('</div>'));
+  const children = [];
+  let at = inner.search(/<div[\s>]/i);
+  while (at !== -1) {
+    const child = divAt(inner, at);
+    children.push(child);
+    const next = inner.slice(at + child.length).search(/<div[\s>]/i);
+    at = next === -1 ? -1 : at + child.length + next;
+  }
+  return children;
+}
+
+/** Products in the page's Product Grid blocks: name, pack image and optional page. */
+function productsIn(main, pageUrl) {
+  const products = [];
+  const blocks = /<div class="product-grid(?:\s[^"]*)?">/gi;
+  let m = blocks.exec(main);
+  while (m) {
+    childDivs(divAt(main, m.index)).forEach((row) => {
+      const [imageCell, nameCell, linkCell] = childDivs(row);
+      if (!nameCell) return; // the block's own one-cell field row
+      const src = imageCell?.match(/<img\s[^>]*src="([^"]+)"/i)?.[1]
+        || imageCell?.match(/<a\s[^>]*href="([^"]+)"/i)?.[1];
+      const href = linkCell?.match(/<a\s[^>]*href="([^"]+)"/i)?.[1];
+      const name = textOf(nameCell);
+      if (!name) return;
+      const abs = (u) => (u ? new URL(decodeEntities(u), pageUrl).href : undefined);
+      products.push({ name, image: abs(src), url: abs(href) });
+    });
+    m = blocks.exec(main);
+  }
+  return products;
+}
+
 /** Drops empty values so the output only states what the page actually has. */
 function compact(object) {
   return Object.fromEntries(Object.entries(object)
@@ -144,6 +194,8 @@ export function buildJsonLd(html, { url, logo, recipes = [] }) {
   const isHome = path === '/';
   const isRecipe = /^\/recipes\/[^/]+$/.test(path);
   const isRecipeList = path === '/recipes';
+  const products = productsIn(main, pageId);
+  const isProductList = products.length > 0;
 
   const organization = compact({
     '@type': 'Organization',
@@ -162,7 +214,7 @@ export function buildJsonLd(html, { url, logo, recipes = [] }) {
     publisher: { '@id': organization['@id'] },
   };
   const webpage = compact({
-    '@type': isRecipeList ? 'CollectionPage' : 'WebPage',
+    '@type': isRecipeList || isProductList ? 'CollectionPage' : 'WebPage',
     '@id': `${pageId}#webpage`,
     url: pageId,
     name: title || heading,
@@ -220,6 +272,28 @@ export function buildJsonLd(html, { url, logo, recipes = [] }) {
         position: i + 1,
         url: new URL(recipe.path, origin).href,
         name: recipe.title,
+      })),
+    });
+  }
+
+  if (isProductList) {
+    webpage.mainEntity = { '@id': `${pageId}#products` };
+    graph.push({
+      '@type': 'ItemList',
+      '@id': `${pageId}#products`,
+      name: heading || pageName,
+      numberOfItems: products.length,
+      itemListElement: products.map((product, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        item: compact({
+          '@type': 'Product',
+          name: product.name,
+          image: product.image,
+          url: product.url,
+          brand: { '@type': 'Brand', name: SITE_NAME },
+          manufacturer: { '@id': organization['@id'] },
+        }),
       })),
     });
   }

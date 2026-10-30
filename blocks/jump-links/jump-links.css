@@ -1,0 +1,49 @@
+/* grey pills, the section in view in yellow */
+.jump-links .jump-links-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.jump-links .jump-links-link {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  border-radius: 30px;
+  padding: 8px 20px;
+  background-color: #e8e8e8;
+  color: var(--text-color);
+  font-family: lato, lato-fallback, sans-serif;
+  font-size: 16px;
+  line-height: 1.25;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.jump-links .jump-links-link:hover {
+  background-color: #ddd;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.jump-links .jump-links-link[aria-current] {
+  background-color: var(--brand-yellow);
+}
+
+.jump-links .jump-links-link:focus-visible {
+  outline: 2px solid var(--brand-red);
+  outline-offset: 2px;
+}
+
+@media (width >= 900px) {
+  .jump-links .jump-links-link {
+    min-height: 56px;
+    padding: 13px 30px;
+    font-size: 18px;
+  }
+}

@@ -380,6 +380,59 @@ main .section.pasta-decor .default-content-wrapper h2 {
   color: var(--brand-red);
 }
 
+/* title band: a light strip with the page title (h1) at its foot */
+main .section.title-band {
+  margin: 0;
+  padding: 48px 0 0;
+  text-align: center;
+}
+
+main .section.title-band .default-content-wrapper h1 {
+  margin: 0;
+  font-size: var(--heading-font-size-xxl);
+}
+
+/* white background, for content on white like the original product listing */
+main .section.white {
+  margin: 0;
+  padding: 48px 0 64px;
+  background-color: var(--background-color);
+}
+
+/* sparkle headings: every h2 in red with a sparkle on both sides, h3 as sub-headings */
+main .section.sparkle-headings .default-content-wrapper {
+  text-align: center;
+}
+
+main .section.sparkle-headings .default-content-wrapper h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 48px 0 32px;
+  color: var(--brand-red);
+  font-size: var(--heading-font-size-xl);
+}
+
+main .section.sparkle-headings .default-content-wrapper h2::before,
+main .section.sparkle-headings .default-content-wrapper h2::after {
+  content: '\2727' / '';
+  flex: 0 0 auto;
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  font-size: 0.9em;
+  font-weight: 400;
+}
+
+main .section.sparkle-headings .default-content-wrapper h3 {
+  margin: 40px 0 28px;
+  font-size: var(--heading-font-size-xl);
+}
+
+main .section.sparkle-headings .default-content-wrapper h2 + h3 {
+  margin-top: 0;
+}
+
 /* centered section headings get a sparkle on both sides */
 main .section.centered .default-content-wrapper:first-child h2 {
   display: flex;
@@ -473,6 +526,33 @@ main > .breadcrumb [aria-current] {
 @media (width >= 900px) {
   main > .breadcrumb {
     padding: 12px 40px;
+  }
+
+  /* like the original: the title sits at the foot of a 153px band, headings are 32px */
+  main .section.title-band {
+    padding-top: 114px;
+  }
+
+  main .section.title-band .default-content-wrapper h1,
+  main .section.sparkle-headings .default-content-wrapper h2,
+  main .section.sparkle-headings .default-content-wrapper h3 {
+    font-size: 32px;
+  }
+
+  main .section.white {
+    padding: 145px 0 80px;
+  }
+
+  main .section.sparkle-headings .default-content-wrapper h2 {
+    margin: 64px 0 48px;
+  }
+
+  main .section.sparkle-headings .jump-links-wrapper + .default-content-wrapper h2:first-child {
+    margin-top: 32px;
+  }
+
+  main .section.sparkle-headings .default-content-wrapper h3 {
+    margin: 40px 0;
   }
 }
 
