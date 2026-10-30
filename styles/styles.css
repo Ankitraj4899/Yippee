@@ -376,6 +376,38 @@ main .section.stripes .default-content-wrapper h2 {
   overflow-wrap: anywhere;
 }
 
+/* the intro, sized like the original: the YiPPeeee! heading in four colours, smaller text */
+main .section.stripes .default-content-wrapper h2.yippee-word {
+  margin: 20px 0 16px;
+  font-size: 24px;
+  line-height: 42px;
+}
+
+main .section.stripes .yippee-word-2 {
+  color: var(--brand-red);
+}
+
+main .section.stripes .yippee-word-3 {
+  color: var(--brand-yellow);
+}
+
+main .section.stripes .yippee-word-4 {
+  color: var(--brand-cream);
+}
+
+main .section.stripes .yippee-word-text {
+  margin-top: 0;
+  font-size: var(--body-font-size-s);
+  line-height: 28px;
+  letter-spacing: 0.36px;
+}
+
+@media (width >= 900px) {
+  main .section.stripes .default-content-wrapper h2.yippee-word {
+    font-size: 32px;
+  }
+}
+
 main .section.pasta-decor .default-content-wrapper h2 {
   color: var(--brand-red);
 }

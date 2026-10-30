@@ -230,11 +230,35 @@ export function decorateButtons(main) {
  * @param {Element} main The main element
  */
 // eslint-disable-next-line import/prefer-default-export
+/**
+ * The long "YiPPeeeee…!" heading of the intro (Stripes section) runs from black through
+ * red and yellow to cream, like the original: "YiPPee", then 7 red e's, 9 yellow, the rest cream.
+ * @param {Element} main The container element
+ */
+function decorateYippeeWord(main) {
+  main.querySelectorAll('.section.stripes h2').forEach((heading) => {
+    const match = heading.textContent.trim().match(/^(YiPPee)(e+)(!*)$/i);
+    if (!match) return;
+    const [, start, es, end] = match;
+    const parts = [start, es.slice(0, 7), es.slice(7, 16), es.slice(16) + end];
+    heading.replaceChildren(...parts.filter(Boolean).map((text, i) => {
+      const span = document.createElement('span');
+      span.className = `yippee-word-${i + 1}`;
+      span.textContent = text;
+      return span;
+    }));
+    heading.classList.add('yippee-word');
+    const text = heading.nextElementSibling;
+    if (text?.matches('p')) text.classList.add('yippee-word-text');
+  });
+}
+
 export function decorateMain(main) {
   decorateIcons(main);
   buildBreadcrumb(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateYippeeWord(main);
   decorateBlocks(main);
   decorateButtons(main);
 }
