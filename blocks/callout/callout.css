@@ -1,0 +1,72 @@
+/* a cream box with a yellow edge, like the original's tips and notes */
+.callout {
+  border: 1px solid #fdb515;
+  border-radius: 14px;
+  padding: 20px;
+  background-color: #fbeedb;
+  color: #6b5847;
+}
+
+.callout .callout-title {
+  margin: 0 0 8px;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.callout .callout-text > :first-child {
+  margin-top: 0;
+}
+
+.callout .callout-text > :last-child {
+  margin-bottom: 0;
+}
+
+.callout .callout-text p,
+.callout .callout-text li {
+  font-size: 14.5px;
+  line-height: 1.75;
+}
+
+.callout .callout-text p {
+  margin: 0 0 8px;
+}
+
+/* summary: an orange dot and heading, the text in italics */
+.callout.summary {
+  background-color: #fff1dd;
+}
+
+.callout.summary .callout-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: #c7401a;
+  font-family: var(--heading-font-family);
+  font-size: 18px;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.callout.summary .callout-title::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #f1611e;
+}
+
+.callout.summary .callout-text {
+  font-style: italic;
+}
+
+@media (width >= 900px) {
+  .callout {
+    padding: 24px;
+  }
+
+  .callout.summary {
+    padding: 22px 24px;
+  }
+}

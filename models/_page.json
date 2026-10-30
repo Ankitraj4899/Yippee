@@ -93,6 +93,27 @@
             { "name": "Veg", "value": "Veg" },
             { "name": "Non Veg", "value": "Non Veg" }
           ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "topic",
+          "label": "Blog Topic",
+          "description": "Blog pages only: shown on the article and its card, and offered in the blog Filters, e.g. Noodles"
+        },
+        {
+          "component": "date-time",
+          "valueType": "date-time",
+          "name": "published",
+          "label": "Blog Published Date",
+          "description": "Blog pages only: shown on the article and its card; the blog list sorts by it"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "readtime",
+          "label": "Blog Reading Time",
+          "description": "Blog pages only, e.g. 5 min read"
         }
       ]
     }

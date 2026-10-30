@@ -110,6 +110,32 @@ describe('buildJsonLd', () => {
     assert.equal(byType(doc, 'WebPage').url, `${SITE}/recipes/pasta-tikki`);
   });
 
+  it('describes a blog article as a BlogPosting with its FAQs', () => {
+    const url = `${SITE}/blog-listing/korean-noodles`;
+    const doc = buildJsonLd(fixture('blog-article.html'), { url, logo });
+    const post = byType(doc, 'BlogPosting');
+    assert.equal(post['@id'], `${url}#article`);
+    assert.equal(post.headline, 'New to Korean Noodles? Start Right Here');
+    assert.equal(post.name, "Korean Noodles: A Complete Beginner's Guide");
+    assert.equal(post.datePublished, '2026-09-16');
+    assert.equal(post.articleSection, 'Noodles');
+    assert.deepEqual(post.author, { '@type': 'Organization', name: 'Yippee Culinary Team' });
+    assert.equal(post.publisher['@id'], `${SITE}/#organization`);
+    assert.match(post.image[0], /media_1a2b3c4d\.jpg/);
+    const faq = byType(doc, 'FAQPage');
+    assert.equal(faq.mainEntity.length, 5);
+    assert.equal(faq.mainEntity[0].name, '1. Is Korean-style instant noodles the same as ramen?');
+    assert.match(faq.mainEntity[0].acceptedAnswer.text, /^Not exactly\./);
+    const crumbs = byType(doc, 'BreadcrumbList').itemListElement.map((c) => c.name);
+    assert.deepEqual(crumbs, ['Home', 'Blog Listing', "Korean Noodles: A Complete Beginner's Guide"]);
+  });
+
+  it('adds no article or FAQ data to other pages', () => {
+    const doc = buildJsonLd(fixture('pasta-tikki.html'), { url: `${SITE}/recipes/pasta-tikki`, logo });
+    assert.equal(byType(doc, 'BlogPosting'), undefined);
+    assert.equal(byType(doc, 'FAQPage'), undefined);
+  });
+
   it('skips fragments and noindex pages', () => {
     assert.equal(buildJsonLd(fixture('nav.html'), { url: `${SITE}/nav.plain.html` }), null);
     const noindex = fixture('pasta-tikki.html').replace('<head>', '<head><meta name="robots" content="noindex, nofollow">');

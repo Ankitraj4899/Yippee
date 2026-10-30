@@ -1,0 +1,175 @@
+/* a bar per category, orange when chosen; they scroll sideways on small screens */
+.craft-videos .craft-videos-categories {
+  display: flex;
+  gap: 6px;
+  margin: 0 -24px 32px;
+  padding: 0 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.craft-videos .craft-videos-category {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 92px;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  cursor: pointer;
+}
+
+.craft-videos .craft-videos-bar {
+  width: 100%;
+  height: 12px;
+  border-radius: 10px;
+  background-color: #808080;
+}
+
+.craft-videos .craft-videos-category[aria-selected="true"] {
+  font-weight: 500;
+}
+
+.craft-videos .craft-videos-category[aria-selected="true"] .craft-videos-bar {
+  background-color: #ffa500;
+}
+
+.craft-videos .craft-videos-category:focus-visible {
+  outline: 3px solid var(--text-color);
+  outline-offset: 4px;
+}
+
+/* yellow-edged cards with a starburst badge on top and a play button, two across on small screens */
+.craft-videos .craft-videos-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.craft-videos .craft-videos-item {
+  width: calc((100% - 12px) / 2);
+  max-width: 306px;
+  padding-top: 18px;
+}
+
+.craft-videos .craft-videos-item[hidden] {
+  display: none;
+}
+
+.craft-videos .craft-videos-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 306 / 408;
+}
+
+.craft-videos .craft-videos-card::before {
+  content: '';
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  width: 44px;
+  height: 40px;
+  background-color: #ffd044;
+  transform: translateX(-50%);
+  clip-path: polygon(50% 0%, 58% 10%, 67% 4%, 69% 16%, 80% 11%, 79% 23%, 92% 20%, 87% 32%, 100% 36%, 90% 45%, 100% 53%, 89% 60%, 96% 72%, 83% 70%, 84% 84%, 72% 78%, 67% 96%, 57% 86%, 50% 100%, 43% 86%, 33% 96%, 28% 80%, 16% 86%, 18% 72%, 4% 74%, 11% 61%, 0% 54%, 10% 45%, 0% 37%, 13% 32%, 8% 20%, 21% 23%, 20% 10%, 32% 16%, 33% 4%, 42% 10%);
+}
+
+.craft-videos .craft-videos-card:focus-visible {
+  outline: 3px solid var(--text-color);
+  outline-offset: 4px;
+}
+
+.craft-videos .craft-videos-card picture {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.craft-videos .craft-videos-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* white starburst play button with a red triangle */
+.craft-videos a.craft-videos-card picture::before,
+.craft-videos a.craft-videos-card picture::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+}
+
+.craft-videos a.craft-videos-card picture::before {
+  width: 54px;
+  height: 54px;
+  background-color: var(--background-color);
+  clip-path: polygon(50% 0%, 58% 10%, 67% 4%, 69% 16%, 80% 11%, 79% 23%, 92% 20%, 87% 32%, 100% 36%, 90% 45%, 100% 53%, 89% 60%, 96% 72%, 83% 70%, 84% 84%, 72% 78%, 67% 96%, 57% 86%, 50% 100%, 43% 86%, 33% 96%, 28% 80%, 16% 86%, 18% 72%, 4% 74%, 11% 61%, 0% 54%, 10% 45%, 0% 37%, 13% 32%, 8% 20%, 21% 23%, 20% 10%, 32% 16%, 33% 4%, 42% 10%);
+}
+
+.craft-videos a.craft-videos-card picture::after {
+  margin-left: 3px;
+  border-style: solid;
+  border-width: 10px 0 10px 16px;
+  border-color: transparent transparent transparent var(--brand-red);
+}
+
+@media (width >= 900px) {
+  /* like the original: 114px bars 6px apart; 306 x 408 cards, 20px apart, three across */
+  .craft-videos .craft-videos-categories {
+    justify-content: center;
+    margin: 0 0 48px;
+    padding: 0;
+  }
+
+  .craft-videos .craft-videos-category {
+    width: 114px;
+    font-size: 18px;
+  }
+
+  .craft-videos .craft-videos-list {
+    gap: 20px;
+    max-width: 958px;
+    margin-inline: auto;
+  }
+
+  .craft-videos .craft-videos-item {
+    width: 306px;
+    padding-top: 24px;
+  }
+
+  .craft-videos .craft-videos-card::before {
+    top: -24px;
+    width: 60px;
+    height: 52px;
+  }
+
+  .craft-videos .craft-videos-card picture {
+    border-radius: 30px;
+  }
+
+  .craft-videos a.craft-videos-card picture::before {
+    width: 80px;
+    height: 80px;
+  }
+
+  .craft-videos a.craft-videos-card picture::after {
+    margin-left: 4px;
+    border-width: 14px 0 14px 22px;
+  }
+}

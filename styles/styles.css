@@ -380,6 +380,229 @@ main .section.pasta-decor .default-content-wrapper h2 {
   color: var(--brand-red);
 }
 
+/* tab panels: sections with a Tab Label, shown one at a time by the Section Tabs block above;
+   the tabs and their panels on white, like the original (padding, not margins, so no grey
+   shows between them) */
+main > .section.section-tabs-container,
+main > .section[data-tab] {
+  margin: 0;
+  background-color: var(--background-color);
+}
+
+main > .section.section-tabs-container {
+  padding: 1px 0 32px;
+}
+
+main > .section[data-tab] {
+  padding: 0 0 40px;
+}
+
+
+main > .section[data-tab][hidden] {
+  display: none;
+}
+
+main .section[data-tab] .default-content-wrapper {
+  text-align: center;
+}
+
+main .section[data-tab] .default-content-wrapper h2 {
+  margin: 48px 0 16px;
+  color: var(--brand-red);
+  font-size: 24px;
+}
+
+main .section[data-tab] .default-content-wrapper h3 {
+  margin: 24px 0;
+  font-size: 20px;
+}
+
+main .section[data-tab] .default-content-wrapper p:not(.button-wrapper) {
+  margin: 0 0 16px;
+}
+
+main .section[data-tab] .block-wrapper + .default-content-wrapper p.button-wrapper:first-child {
+  margin-top: 40px;
+}
+
+/* full width: images edge to edge, e.g. a banner */
+main > .section.full-width {
+  margin: 0;
+}
+
+main > .section.full-width > div {
+  max-width: none;
+  padding: 0;
+}
+
+main .section.full-width .default-content-wrapper p:not(.button-wrapper) {
+  margin: 0;
+}
+
+main .section.full-width .default-content-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Yippee Chopsticks Challenge: faint noodle swirls, centred headings, red sub-headings
+   between curved arrows */
+main > .section.chopsticks {
+  margin: 0;
+  padding: 40px 0;
+  background: url('images/chopsticks-swirls.webp') center top / cover no-repeat;
+  text-align: center;
+}
+
+main .section.chopsticks .default-content-wrapper h1 {
+  margin: 0 0 32px;
+  font-size: 24px;
+}
+
+main .section.chopsticks .default-content-wrapper h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 0 32px;
+  color: #e22727;
+  font-size: 20px;
+}
+
+main .section.chopsticks .default-content-wrapper h2::before,
+main .section.chopsticks .default-content-wrapper h2::after {
+  content: '';
+  flex: 0 0 auto;
+  width: 49px;
+  height: 20px;
+  background: url('images/curved-arrow.svg') center / contain no-repeat;
+}
+
+main .section.chopsticks .default-content-wrapper h2::after {
+  transform: scaleX(-1);
+}
+
+main .section.chopsticks .video-picks-wrapper + .titled-image-wrapper {
+  margin-top: 48px;
+}
+
+@media (width >= 900px) {
+  main > .section.section-tabs-container {
+    padding: 16px 0 48px;
+  }
+
+  main > .section[data-tab] {
+    padding: 0 0 24px;
+  }
+
+  main .section[data-tab] .default-content-wrapper h2 {
+    margin-top: 64px;
+  }
+
+  main .section[data-tab] .default-content-wrapper h3 {
+    margin-top: 32px;
+    font-size: 24px;
+  }
+
+  main .section[data-tab] .default-content-wrapper p:not(.button-wrapper) {
+    margin-bottom: 32px;
+    font-size: 18px;
+  }
+
+  /* like the original: the title 64px under the banner, the levels 48px under their heading */
+  main > .section.chopsticks {
+    padding: 64px 0 32px;
+  }
+
+  main .section.chopsticks .default-content-wrapper h1 {
+    margin-bottom: 48px;
+    font-size: 32px;
+  }
+
+  main .section.chopsticks .default-content-wrapper h2 {
+    gap: 16px;
+    margin-bottom: 48px;
+    font-size: 24px;
+  }
+
+  main .section.chopsticks .default-content-wrapper h2::before,
+  main .section.chopsticks .default-content-wrapper h2::after {
+    width: 80px;
+  }
+
+  main .section.chopsticks .video-picks-wrapper + .titled-image-wrapper {
+    margin-top: 50px;
+  }
+}
+
+/* blog: the listing and articles on cream, articles 1092px wide in the original's type */
+main > .section.blog {
+  margin: 0;
+  padding: 16px 0 64px;
+  background-color: #fff7ec;
+}
+
+main > .section.blog > div {
+  max-width: 1092px;
+}
+
+main > .section.blog > div:not(:first-child) {
+  margin-top: 28px;
+}
+
+main .section.blog .default-content-wrapper {
+  color: #6b5847;
+}
+
+main .section.blog .default-content-wrapper p:not(.button-wrapper),
+main .section.blog .default-content-wrapper li {
+  font-size: 14.5px;
+  line-height: 1.75;
+}
+
+main .section.blog .default-content-wrapper p:not(.button-wrapper) {
+  margin: 0 0 12px;
+}
+
+main .section.blog .default-content-wrapper h2,
+main .section.blog .default-content-wrapper h3 {
+  margin: 40px 0 14px;
+  color: #2b1b10;
+  font-size: 22px;
+  line-height: 1.2;
+  scroll-margin-top: 120px;
+}
+
+main .section.blog .default-content-wrapper h3 {
+  font-size: 18px;
+}
+
+main .section.blog .default-content-wrapper > :first-child {
+  margin-top: 0;
+}
+
+main .section.blog .default-content-wrapper > :last-child {
+  margin-bottom: 0;
+}
+
+/* an article's own images: rounded, packs shown on orange */
+main .section.blog .default-content-wrapper p > picture img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2;
+  border-radius: 16px;
+  background-color: var(--brand-orange);
+  object-fit: contain;
+  object-position: right center;
+}
+
+@media (width >= 900px) {
+  main .section.blog .default-content-wrapper h2 {
+    font-size: 23px;
+  }
+}
+
 /* title band: a light strip with the page title (h1) at its foot */
 main .section.title-band {
   margin: 0;
@@ -431,6 +654,55 @@ main .section.sparkle-headings .default-content-wrapper h3 {
 
 main .section.sparkle-headings .default-content-wrapper h2 + h3 {
   margin-top: 0;
+}
+
+main .section.sparkle-headings .default-content-wrapper p:not(.button-wrapper) {
+  max-width: 870px;
+  margin-inline: auto;
+}
+
+/* Our Story backgrounds from the original: orange with a sparkle and a noodle-wave lower edge,
+   orange with a red squiggle and a heart, yellow with hearts */
+main .section.orange-wave,
+main .section.orange-squiggle,
+main .section.yellow-hearts {
+  margin: 0;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* no fill colour: the wave and rounded corners are see-through parts of the image */
+main .section.orange-wave {
+  padding: 32px 0 96px;
+  background-image: url('images/our-story-wave-mobile.png');
+}
+
+main .section.orange-squiggle {
+  padding: 40px 0 48px;
+  background-image: url('images/orange-squiggle-mobile.png');
+}
+
+main .section.yellow-hearts {
+  padding: 48px 0 64px;
+  background-color: var(--brand-yellow);
+  background-image: url('images/yellow-hearts-mobile.png');
+}
+
+main .section.yellow-hearts .default-content-wrapper h2 {
+  color: var(--text-color);
+}
+
+/* compact title: the page h1, centred, straight after the section above */
+main .section.title-compact {
+  margin: 0;
+  padding: 24px 0 0;
+  text-align: center;
+}
+
+main .section.title-compact .default-content-wrapper h1 {
+  margin: 0;
+  font-size: var(--heading-font-size-xl);
 }
 
 /* centered section headings get a sparkle on both sides */
@@ -543,6 +815,36 @@ main > .breadcrumb [aria-current] {
     padding: 145px 0 80px;
   }
 
+  /* Our Story: 640px banners with the 468px image 40px below the top, like the original */
+  main .section.orange-wave,
+  main .section.orange-squiggle {
+    box-sizing: border-box;
+    min-height: 640px;
+    padding: 40px 0;
+  }
+
+  main .section.orange-wave {
+    padding-bottom: 132px;
+    background-image: url('images/our-story-wave.png');
+  }
+
+  main .section.orange-squiggle {
+    background-image: url('images/orange-squiggle.png');
+  }
+
+  main .section.yellow-hearts {
+    padding: 64px 0 115px;
+    background-image: url('images/yellow-hearts.png');
+  }
+
+  main .section.title-compact {
+    padding-top: 0;
+  }
+
+  main .section.title-compact .default-content-wrapper h1 {
+    font-size: 32px;
+  }
+
   main .section.sparkle-headings .default-content-wrapper h2 {
     margin: 64px 0 48px;
   }
@@ -642,4 +944,15 @@ main .section.wave-heading > .default-content-wrapper:first-child {
     margin: 0 0 0 8.3%;
     padding: 0;
   }
+}
+
+/* the banner's see-through wave edge over the white of the tabs */
+main > .section.orange-wave:has(+ .section.section-tabs-container) {
+  background-color: var(--background-color);
+}
+
+/* links in blog articles: bold orange-red, like the original */
+main .section.blog .default-content-wrapper a:any-link {
+  color: #c7401a;
+  font-weight: 700;
 }

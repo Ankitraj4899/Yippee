@@ -134,6 +134,27 @@
             "value": "Non Veg"
           }
         ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "topic",
+        "label": "Blog Topic",
+        "description": "Blog pages only: shown on the article and its card, and offered in the blog Filters, e.g. Noodles"
+      },
+      {
+        "component": "date-time",
+        "valueType": "date-time",
+        "name": "published",
+        "label": "Blog Published Date",
+        "description": "Blog pages only: shown on the article and its card; the blog list sorts by it"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "readtime",
+        "label": "Blog Reading Time",
+        "description": "Blog pages only, e.g. 5 min read"
       }
     ]
   },
@@ -302,8 +323,106 @@
           {
             "name": "Sparkle Headings",
             "value": "sparkle-headings"
+          },
+          {
+            "name": "Orange Wave",
+            "value": "orange-wave"
+          },
+          {
+            "name": "Orange Squiggle",
+            "value": "orange-squiggle"
+          },
+          {
+            "name": "Yellow Hearts",
+            "value": "yellow-hearts"
+          },
+          {
+            "name": "Compact Title",
+            "value": "title-compact"
+          },
+          {
+            "name": "Full Width",
+            "value": "full-width"
+          },
+          {
+            "name": "Chopsticks Swirls",
+            "value": "chopsticks"
+          },
+          {
+            "name": "Blog (cream, article text)",
+            "value": "blog"
           }
         ]
+      },
+      {
+        "component": "text",
+        "name": "tab",
+        "label": "Tab Label",
+        "description": "Optional. Shows this section as a tab of the Section Tabs block in the section above (sections with the same label share a tab)"
+      }
+    ]
+  },
+  {
+    "id": "accordion-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "question",
+        "label": "Question",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "answer",
+        "label": "Answer",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "article-contents",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": "In this article",
+        "description": "The links are made from the headings (h2) after this block"
+      }
+    ]
+  },
+  {
+    "id": "article-header",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": "",
+        "description": "The article's heading. Its topic, date and reading time come from the page's Blog properties"
+      },
+      {
+        "component": "select",
+        "name": "titleType",
+        "label": "Title Type",
+        "value": "h1",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "author",
+        "label": "Reviewed By",
+        "value": "Reviewed by Yippee Culinary Team"
       }
     ]
   },
@@ -387,6 +506,57 @@
         "name": "link",
         "label": "Link",
         "description": "Optional. Makes the whole card clickable"
+      }
+    ]
+  },
+  {
+    "id": "blog-list",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Heading",
+        "value": "Explore All Blogs"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "source",
+        "label": "Index",
+        "value": "",
+        "description": "Optional. The query index listing the blog pages (under /blog-listing/); default /query-index.json. Each blog's topic, date and reading time come from its page properties"
+      }
+    ]
+  },
+  {
+    "id": "callout",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": "",
+        "description": "Optional, e.g. Summary or Did You Know?"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Text",
+        "value": ""
+      },
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Style",
+        "options": [
+          {
+            "name": "Summary (orange heading, text in italics)",
+            "value": "summary"
+          }
+        ]
       }
     ]
   },
@@ -515,6 +685,70 @@
     ]
   },
   {
+    "id": "craft-videos-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "category",
+        "label": "Category",
+        "value": "",
+        "description": "e.g. Craft; videos with the same category are shown together, the categories in the order they first appear"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Thumbnail",
+        "description": "Portrait, 3:4 (e.g. 306 x 408)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Thumbnail Alt Text",
+        "value": "",
+        "description": "The craft's name, e.g. Envelope; read out with the play button"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "video",
+        "label": "Video",
+        "description": "MP4 or YouTube link, opened in the video pop-up"
+      }
+    ]
+  },
+  {
+    "id": "data-table-row",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column1",
+        "label": "Column 1",
+        "value": "",
+        "description": "The first row holds the column headings"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column2",
+        "label": "Column 2",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column3",
+        "label": "Column 3",
+        "value": "",
+        "description": "Optional"
+      }
+    ]
+  },
+  {
     "id": "fragment",
     "fields": [
       {
@@ -551,6 +785,118 @@
     ]
   },
   {
+    "id": "history-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "year",
+        "label": "Year",
+        "value": "",
+        "description": "e.g. 2010. Milestones of the same year share one entry on the timeline"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "logo",
+        "label": "Timeline Logo",
+        "description": "Small logo beside the year on the timeline (the first milestone of a year sets it)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "logoAlt",
+        "label": "Timeline Logo Alt Text",
+        "value": ""
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Card Image",
+        "description": "Square, e.g. 284 x 284",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Card Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Text",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "impact-story",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "description": "Shown beside the text, about 4:3 (e.g. 530 x 398)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Text",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "video",
+        "label": "Video",
+        "description": "Optional. MP4 or YouTube link; adds a play button on the image that opens the video pop-up"
+      }
+    ]
+  },
+  {
+    "id": "impact-story-stat",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "value",
+        "label": "Figure",
+        "value": "",
+        "description": "e.g. 300k +"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Label",
+        "value": "",
+        "description": "e.g. Bags reused"
+      }
+    ]
+  },
+  {
     "id": "jump-links-item",
     "fields": [
       {
@@ -567,6 +913,53 @@
         "label": "Text",
         "value": "",
         "description": "e.g. Noodles"
+      }
+    ]
+  },
+  {
+    "id": "process-steps",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Heading",
+        "value": "",
+        "description": "e.g. How Schools Process Waste"
+      }
+    ]
+  },
+  {
+    "id": "process-steps-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "description": "Square (e.g. 240 x 240)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Step Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Text",
+        "value": ""
       }
     ]
   },
@@ -799,6 +1192,59 @@
     ]
   },
   {
+    "id": "section-tabs",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Tabs Label",
+        "value": "",
+        "description": "Optional, read out by screen readers; defaults to this section's heading. The tabs are the sections below with a Tab Label (in the section's properties)"
+      }
+    ]
+  },
+  {
+    "id": "showcase",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Text",
+        "value": "",
+        "description": "Cut to two lines with a Read More button"
+      }
+    ]
+  },
+  {
+    "id": "showcase-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "description": "Portrait, 3:4 (e.g. 306 x 408)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "social-wall-item",
     "fields": [
       {
@@ -821,6 +1267,191 @@
         "name": "link",
         "label": "Post Link",
         "description": "e.g. the Instagram post or profile"
+      }
+    ]
+  },
+  {
+    "id": "story-banner",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "description": "Shown beside the text, square (e.g. 468 x 468), its frame or shape drawn in",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "name": "titleType",
+        "label": "Title Type",
+        "value": "h2",
+        "description": "h1 when the banner's title is the page heading (e.g. Better World)",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          },
+          {
+            "name": "h2",
+            "value": "h2"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Text",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "video",
+        "label": "Video",
+        "description": "Optional. MP4 or YouTube link; adds a play button on the image that opens the video pop-up"
+      }
+    ]
+  },
+  {
+    "id": "testimonials-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Photo",
+        "description": "Optional, square. Without it a yellow avatar is shown",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "author",
+        "label": "Name",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "rating",
+        "label": "Stars",
+        "value": "5",
+        "options": [
+          {
+            "name": "5",
+            "value": "5"
+          },
+          {
+            "name": "4",
+            "value": "4"
+          },
+          {
+            "name": "3",
+            "value": "3"
+          },
+          {
+            "name": "2",
+            "value": "2"
+          },
+          {
+            "name": "1",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Review",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "titled-image",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": "",
+        "description": "e.g. Use the Trainers -"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "highlight",
+        "label": "Highlighted Words",
+        "value": "",
+        "description": "Optional, shown in red after the title, e.g. Super Easy!"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "value-tiles-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Icon",
+        "description": "Icon on its coloured shape, about 276 x 239",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Icon Alt Text",
+        "value": "",
+        "description": "Leave empty when the title says it all"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Text",
+        "value": "",
+        "description": "Optional"
       }
     ]
   },
@@ -868,6 +1499,34 @@
         "label": "Video Title",
         "value": "",
         "description": "Read out by screen readers, e.g. DIY Envelope"
+      }
+    ]
+  },
+  {
+    "id": "video-picks-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "description": "About 4:3 (e.g. 306 x 226), its label drawn in",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": "",
+        "description": "e.g. Beginner; read out with the play button"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "video",
+        "label": "Video",
+        "description": "MP4 or YouTube link, opened in the video pop-up"
       }
     ]
   }

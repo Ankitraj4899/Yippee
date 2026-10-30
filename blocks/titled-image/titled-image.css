@@ -1,0 +1,29 @@
+.titled-image {
+  text-align: center;
+}
+
+.titled-image .titled-image-title {
+  margin: 0 0 24px;
+  color: var(--text-color);
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.titled-image .titled-image-highlight {
+  color: #e22727;
+}
+
+.titled-image img {
+  display: block;
+  width: 100%;
+  max-width: 1138px;
+  height: auto;
+  margin-inline: auto;
+}
+
+@media (width >= 900px) {
+  .titled-image .titled-image-title {
+    margin-bottom: 40px;
+    font-size: 24px;
+  }
+}

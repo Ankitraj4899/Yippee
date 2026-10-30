@@ -1,0 +1,148 @@
+/* red heading with a sparkle on both sides */
+.process-steps .process-steps-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 48px 0 32px;
+  color: var(--brand-red);
+  font-size: 24px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.process-steps .process-steps-title::before,
+.process-steps .process-steps-title::after {
+  content: '\2727' / '';
+  flex: 0 0 auto;
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  font-size: 0.9em;
+  font-weight: 400;
+}
+
+/* steps one above the other, the image above its words on small screens */
+.process-steps .process-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.process-steps .process-steps-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.process-steps .process-steps-image {
+  flex: 0 0 auto;
+  width: 200px;
+}
+
+.process-steps .process-steps-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.process-steps .process-steps-name {
+  margin: 0 0 12px;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.process-steps .process-steps-text p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media (width >= 900px) {
+  /* like the original: 80px under what comes before it */
+  .process-steps .process-steps-title {
+    margin: 80px 0 49px;
+  }
+
+  /* 240px images, 48px from 472px of text, swapping sides each step, a star and a curly
+     line on the far side */
+  .process-steps .process-steps-list {
+    gap: 26px;
+    max-width: 939px;
+    margin-inline: auto;
+    padding-bottom: 13px;
+  }
+
+  .process-steps .process-steps-item {
+    flex-direction: row;
+    gap: 48px;
+    min-height: 246px;
+    padding: 6px 39px 0;
+    box-sizing: border-box;
+    text-align: left;
+  }
+
+  .process-steps .process-steps-item:nth-child(even) {
+    flex-direction: row-reverse;
+    padding-inline: 0 24px;
+  }
+
+  .process-steps .process-steps-image {
+    align-self: flex-start;
+    width: 240px;
+  }
+
+  .process-steps .process-steps-body {
+    width: 472px;
+  }
+
+  .process-steps .process-steps-name {
+    margin-bottom: 18px;
+    font-size: 24px;
+  }
+
+  .process-steps .process-steps-text p {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .process-steps .process-steps-item::before,
+  .process-steps .process-steps-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .process-steps .process-steps-item::before {
+    left: 815px;
+    width: 40px;
+    height: 40px;
+    background-image: url('star.svg');
+  }
+
+  .process-steps .process-steps-item::after {
+    right: 0;
+    width: 84px;
+    height: 132px;
+    background-image: url('arrow-right.svg');
+  }
+
+  .process-steps .process-steps-item:nth-child(even)::before {
+    left: 84px;
+  }
+
+  .process-steps .process-steps-item:nth-child(even)::after {
+    right: auto;
+    left: 30px;
+    background-image: url('arrow-left.svg');
+  }
+}

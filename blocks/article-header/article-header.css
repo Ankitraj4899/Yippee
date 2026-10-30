@@ -1,0 +1,138 @@
+/* topic pill, title, then the reviewer with the share buttons beside it */
+.article-header .article-header-topic {
+  display: inline-block;
+  margin: 0 0 16px;
+  border-radius: 999px;
+  padding: 6px 14px;
+  background-color: #f1611e;
+  color: var(--background-color);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.article-header .article-header-title {
+  margin: 0 0 24px;
+  color: #2b1b10;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.article-header .article-header-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+}
+
+.article-header .article-header-byline {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.article-header .article-header-avatar {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffb03a, #f1611e);
+}
+
+.article-header .article-header-byline p {
+  margin: 0;
+}
+
+.article-header .article-header-author {
+  color: #2b1b10;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+}
+
+.article-header .article-header-meta {
+  margin-top: 2px;
+  color: #7a6552;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.article-header .article-header-share {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.article-header .article-header-share-label {
+  margin-right: 4px;
+  color: #7a6552;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.article-header .article-header-share button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #f3dec4;
+  border-radius: 50%;
+  padding: 0;
+  background-color: var(--background-color);
+  color: #c7401a;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.article-header .article-header-share button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.article-header .article-header-share .article-header-share-whatsapp {
+  border-color: #25d366;
+  background-color: #25d366;
+  color: var(--background-color);
+}
+
+.article-header .article-header-share button:hover {
+  background-color: #fff1dd;
+}
+
+.article-header .article-header-share .article-header-share-whatsapp:hover {
+  background-color: #1ebe5b;
+}
+
+.article-header .article-header-share button:focus-visible {
+  outline: 2px solid #c7401a;
+  outline-offset: 2px;
+}
+
+.article-header .article-header-share-status {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 6px;
+  color: #7a6552;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+@media (width >= 900px) {
+  .article-header .article-header-title {
+    margin-bottom: 26px;
+    font-size: 38px;
+  }
+
+  /* like the original: the share buttons stop short of the right edge */
+  .article-header .article-header-share {
+    margin-right: 110px;
+  }
+}

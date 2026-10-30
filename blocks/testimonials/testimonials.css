@@ -1,0 +1,118 @@
+/* white review cards in a slider: one at a time on phones, three on desktop */
+.testimonials {
+  --slider-arrow-top: 50%;
+  --slider-arrow-offset: -12px;
+}
+
+.testimonials .testimonials-list {
+  gap: 16px;
+  padding: 4px;
+}
+
+.testimonials .testimonials-item {
+  box-sizing: border-box;
+  width: 86%;
+}
+
+.testimonials .testimonials-card {
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 360px;
+  margin: 0;
+  border-radius: 20px;
+  padding: 32px 16px 40px 20px;
+  background-color: var(--background-color);
+  text-align: left;
+}
+
+.testimonials .testimonials-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* a yellow avatar with a person outline unless a photo is set */
+.testimonials .testimonials-avatar {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='25' r='11' fill='%23fff'/%3E%3Cpath d='M12 56c2-11 10-17 20-17s18 6 20 17' fill='%23fff'/%3E%3C/svg%3E") center / 100% no-repeat,
+    var(--brand-yellow);
+}
+
+.testimonials .testimonials-avatar:has(picture) {
+  background: none;
+}
+
+.testimonials .testimonials-avatar img {
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+}
+
+.testimonials .testimonials-who {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.testimonials .testimonials-name {
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.testimonials .testimonials-stars {
+  color: var(--brand-orange);
+  font-size: 18px;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.testimonials .testimonials-text {
+  margin: 24px 0 0;
+}
+
+.testimonials .testimonials-text p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media (width >= 600px) {
+  .testimonials .testimonials-item {
+    width: calc((100% - 16px) / 2);
+  }
+}
+
+@media (width >= 900px) {
+  /* three 306px cards, 34px apart, the arrows outside them like the original */
+  .testimonials {
+    --slider-arrow-offset: -70px;
+
+    max-width: 986px;
+    margin-inline: auto;
+  }
+
+  .testimonials .testimonials-list {
+    gap: 34px;
+  }
+
+  .testimonials .testimonials-item {
+    width: calc((100% - 68px) / 3);
+  }
+
+  .testimonials .testimonials-card {
+    min-height: 408px;
+    padding: 32px 15px 42px 20px;
+  }
+
+  .testimonials .testimonials-text p {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}

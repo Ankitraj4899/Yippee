@@ -1,0 +1,62 @@
+/* cards side by side that scroll sideways on small screens, a yellow play button under each */
+.video-picks .video-picks-list {
+  display: flex;
+  gap: 24px;
+  margin: 0 -24px;
+  padding: 0 24px 4px;
+  overflow-x: auto;
+  list-style: none;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.video-picks .video-picks-item {
+  display: flex;
+  flex: 0 0 270px;
+  flex-direction: column;
+  gap: 16px;
+  scroll-snap-align: center;
+}
+
+.video-picks .video-picks-item img {
+  display: block;
+  width: 100%;
+  height: 226px;
+  border-radius: 24px;
+  object-fit: cover;
+}
+
+.video-picks .video-picks-play {
+  box-sizing: border-box;
+  height: 52px;
+  border: 2px solid #2f2200;
+  border-radius: 16px;
+  padding: 8px;
+  background: rgb(250 215 5 / 70%) url('play.svg') no-repeat center / auto 32px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.video-picks .video-picks-play:hover {
+  background-color: rgb(250 215 5);
+}
+
+.video-picks .video-picks-play:focus-visible {
+  outline: 3px solid var(--text-color);
+  outline-offset: 3px;
+}
+
+@media (width >= 900px) {
+  /* like the original: three 306px cards, 58px apart */
+  .video-picks .video-picks-list {
+    justify-content: center;
+    gap: 58px;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .video-picks .video-picks-item {
+    flex-basis: 306px;
+  }
+}

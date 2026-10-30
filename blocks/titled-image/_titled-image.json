@@ -1,0 +1,57 @@
+{
+  "definitions": [
+    {
+      "title": "Titled Image",
+      "id": "titled-image",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Titled Image",
+              "model": "titled-image"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "titled-image",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "title",
+          "label": "Title",
+          "value": "",
+          "description": "e.g. Use the Trainers -"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "highlight",
+          "label": "Highlighted Words",
+          "value": "",
+          "description": "Optional, shown in red after the title, e.g. Super Easy!"
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Image Alt Text",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

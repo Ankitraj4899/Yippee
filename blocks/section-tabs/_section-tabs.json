@@ -1,0 +1,35 @@
+{
+  "definitions": [
+    {
+      "title": "Section Tabs",
+      "id": "section-tabs",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Section Tabs",
+              "model": "section-tabs"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "section-tabs",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "label",
+          "label": "Tabs Label",
+          "value": "",
+          "description": "Optional, read out by screen readers; defaults to this section's heading. The tabs are the sections below with a Tab Label (in the section's properties)"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

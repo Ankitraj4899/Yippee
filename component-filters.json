@@ -21,6 +21,23 @@
       "recipe-info",
       "promo-banner",
       "jump-links",
+      "testimonials",
+      "history",
+      "value-tiles",
+      "story-banner",
+      "section-tabs",
+      "impact-story",
+      "craft-videos",
+      "process-steps",
+      "showcase",
+      "video-picks",
+      "titled-image",
+      "blog-list",
+      "article-header",
+      "article-contents",
+      "callout",
+      "data-table",
+      "accordion",
       "product-grid",
       "better-world",
       "video-gallery",
@@ -28,6 +45,12 @@
       "cards",
       "columns",
       "fragment"
+    ]
+  },
+  {
+    "id": "accordion",
+    "components": [
+      "accordion-item"
     ]
   },
   {
@@ -70,9 +93,39 @@
     ]
   },
   {
+    "id": "craft-videos",
+    "components": [
+      "craft-videos-item"
+    ]
+  },
+  {
+    "id": "data-table",
+    "components": [
+      "data-table-row"
+    ]
+  },
+  {
+    "id": "history",
+    "components": [
+      "history-item"
+    ]
+  },
+  {
+    "id": "impact-story",
+    "components": [
+      "impact-story-stat"
+    ]
+  },
+  {
     "id": "jump-links",
     "components": [
       "jump-links-item"
+    ]
+  },
+  {
+    "id": "process-steps",
+    "components": [
+      "process-steps-item"
     ]
   },
   {
@@ -94,15 +147,39 @@
     ]
   },
   {
+    "id": "showcase",
+    "components": [
+      "showcase-item"
+    ]
+  },
+  {
     "id": "social-wall",
     "components": [
       "social-wall-item"
     ]
   },
   {
+    "id": "testimonials",
+    "components": [
+      "testimonials-item"
+    ]
+  },
+  {
+    "id": "value-tiles",
+    "components": [
+      "value-tiles-item"
+    ]
+  },
+  {
     "id": "video-gallery",
     "components": [
       "video-gallery-item"
+    ]
+  },
+  {
+    "id": "video-picks",
+    "components": [
+      "video-picks-item"
     ]
   }
 ]
