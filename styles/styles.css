@@ -433,6 +433,55 @@ main .section.sparkle-headings .default-content-wrapper h2 + h3 {
   margin-top: 0;
 }
 
+main .section.sparkle-headings .default-content-wrapper p:not(.button-wrapper) {
+  max-width: 870px;
+  margin-inline: auto;
+}
+
+/* Our Story backgrounds from the original: orange with a sparkle and a noodle-wave lower edge,
+   orange with a red squiggle and a heart, yellow with hearts */
+main .section.orange-wave,
+main .section.orange-squiggle,
+main .section.yellow-hearts {
+  margin: 0;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* no fill colour: the wave and rounded corners are see-through parts of the image */
+main .section.orange-wave {
+  padding: 32px 0 96px;
+  background-image: url('images/our-story-wave-mobile.png');
+}
+
+main .section.orange-squiggle {
+  padding: 40px 0 48px;
+  background-image: url('images/orange-squiggle-mobile.png');
+}
+
+main .section.yellow-hearts {
+  padding: 48px 0 64px;
+  background-color: var(--brand-yellow);
+  background-image: url('images/yellow-hearts-mobile.png');
+}
+
+main .section.yellow-hearts .default-content-wrapper h2 {
+  color: var(--text-color);
+}
+
+/* compact title: the page h1, centred, straight after the section above */
+main .section.title-compact {
+  margin: 0;
+  padding: 24px 0 0;
+  text-align: center;
+}
+
+main .section.title-compact .default-content-wrapper h1 {
+  margin: 0;
+  font-size: var(--heading-font-size-xl);
+}
+
 /* centered section headings get a sparkle on both sides */
 main .section.centered .default-content-wrapper:first-child h2 {
   display: flex;
@@ -541,6 +590,36 @@ main > .breadcrumb [aria-current] {
 
   main .section.white {
     padding: 145px 0 80px;
+  }
+
+  /* Our Story: 640px banners with the 468px image 40px below the top, like the original */
+  main .section.orange-wave,
+  main .section.orange-squiggle {
+    box-sizing: border-box;
+    min-height: 640px;
+    padding: 40px 0;
+  }
+
+  main .section.orange-wave {
+    padding-bottom: 132px;
+    background-image: url('images/our-story-wave.png');
+  }
+
+  main .section.orange-squiggle {
+    background-image: url('images/orange-squiggle.png');
+  }
+
+  main .section.yellow-hearts {
+    padding: 64px 0 115px;
+    background-image: url('images/yellow-hearts.png');
+  }
+
+  main .section.title-compact {
+    padding-top: 0;
+  }
+
+  main .section.title-compact .default-content-wrapper h1 {
+    font-size: 32px;
   }
 
   main .section.sparkle-headings .default-content-wrapper h2 {

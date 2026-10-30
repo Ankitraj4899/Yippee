@@ -1,0 +1,179 @@
+/* small screens: the years scroll sideways above the card */
+.history {
+  --slider-arrow-top: 132px;
+  --slider-arrow-offset: -6px;
+}
+
+.history .history-timeline {
+  position: relative;
+  display: flex;
+  gap: 24px;
+  margin: 0 0 24px;
+  padding: 4px;
+  overflow: auto hidden;
+  list-style: none;
+  scrollbar-width: none;
+}
+
+.history .history-timeline::-webkit-scrollbar {
+  display: none;
+}
+
+.history .history-timeline li {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.history .history-year {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: #8a8a8a;
+  font-family: lato, lato-fallback, sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.history .history-year[aria-pressed='true'] {
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+.history .history-year picture,
+.history .history-year img {
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.history .history-year:focus-visible {
+  outline: 2px solid var(--brand-red);
+  outline-offset: 2px;
+}
+
+/* one yellow card at a time, 318px wide like the original */
+.history .history-stage {
+  max-width: 318px;
+  margin: 0 auto;
+}
+
+.history .history-cards {
+  width: 100%;
+}
+
+.history .history-card {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 16px;
+  padding: 15px 15px 24px;
+  background-color: var(--brand-yellow);
+  text-align: left;
+}
+
+.history .history-card picture,
+.history .history-card img {
+  display: block;
+  width: 100%;
+  max-width: 284px;
+  height: auto;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.history .history-card-year {
+  margin: 16px 0 8px;
+  font-family: lato, lato-fallback, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.history .history-card-text p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+/* the timeline needs no dots: the years are the navigation */
+.history .history-stage .slider-dots {
+  display: none;
+}
+
+@media (width >= 900px) {
+  /* the years run down the left; the card sits centred in the space beside them */
+  .history {
+    --slider-arrow-top: 278px;
+    --slider-arrow-offset: -73px;
+
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .history .history-timeline {
+    flex-direction: column;
+    gap: 0;
+    max-height: 452px;
+    margin: 32px 0 0;
+    overflow: hidden auto;
+  }
+
+  .history .history-timeline li {
+    padding-bottom: 24px;
+  }
+
+  /* red joins between the years */
+  .history .history-timeline li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 104px;
+    width: 3px;
+    height: 24px;
+    margin-bottom: -12px;
+    background-color: var(--brand-red);
+    transform: translateY(-50%);
+  }
+
+  .history .history-year {
+    flex-direction: row;
+    gap: 15px;
+    font-size: 18px;
+  }
+
+  .history .history-year[aria-pressed='true'] {
+    font-weight: 400;
+  }
+
+  .history .history-year-text {
+    width: 42px;
+    text-align: left;
+  }
+
+  .history .history-year picture,
+  .history .history-year img {
+    width: 84px;
+    height: 84px;
+  }
+
+  .history .history-stage {
+    width: 318px;
+    margin: 0 auto;
+    transform: translateX(40px);
+  }
+
+  .history .history-card {
+    min-height: 608px;
+  }
+
+  .history .history-stage .slider-prev,
+  .history .history-stage .slider-next {
+    width: 53px;
+    height: 53px;
+  }
+}

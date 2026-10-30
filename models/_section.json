@@ -85,6 +85,22 @@
             {
               "name": "Sparkle Headings",
               "value": "sparkle-headings"
+            },
+            {
+              "name": "Orange Wave",
+              "value": "orange-wave"
+            },
+            {
+              "name": "Orange Squiggle",
+              "value": "orange-squiggle"
+            },
+            {
+              "name": "Yellow Hearts",
+              "value": "yellow-hearts"
+            },
+            {
+              "name": "Compact Title",
+              "value": "title-compact"
             }
           ]
         }
@@ -108,6 +124,10 @@
         "recipe-info",
         "promo-banner",
         "jump-links",
+        "testimonials",
+        "history",
+        "value-tiles",
+        "story-banner",
         "product-grid",
         "better-world",
         "video-gallery",

@@ -302,6 +302,22 @@
           {
             "name": "Sparkle Headings",
             "value": "sparkle-headings"
+          },
+          {
+            "name": "Orange Wave",
+            "value": "orange-wave"
+          },
+          {
+            "name": "Orange Squiggle",
+            "value": "orange-squiggle"
+          },
+          {
+            "name": "Yellow Hearts",
+            "value": "yellow-hearts"
+          },
+          {
+            "name": "Compact Title",
+            "value": "title-compact"
           }
         ]
       }
@@ -547,6 +563,56 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "history-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "year",
+        "label": "Year",
+        "value": "",
+        "description": "e.g. 2010. Milestones of the same year share one entry on the timeline"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "logo",
+        "label": "Timeline Logo",
+        "description": "Small logo beside the year on the timeline (the first milestone of a year sets it)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "logoAlt",
+        "label": "Timeline Logo Alt Text",
+        "value": ""
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Card Image",
+        "description": "Square, e.g. 284 x 284",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Card Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Text",
+        "value": ""
       }
     ]
   },
@@ -821,6 +887,139 @@
         "name": "link",
         "label": "Post Link",
         "description": "e.g. the Instagram post or profile"
+      }
+    ]
+  },
+  {
+    "id": "story-banner",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "description": "Shown beside the text, square (e.g. 468 x 468), its frame or shape drawn in",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Text",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "video",
+        "label": "Video",
+        "description": "Optional. MP4 or YouTube link; adds a play button on the image that opens the video pop-up"
+      }
+    ]
+  },
+  {
+    "id": "testimonials-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Photo",
+        "description": "Optional, square. Without it a yellow avatar is shown",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "author",
+        "label": "Name",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "rating",
+        "label": "Stars",
+        "value": "5",
+        "options": [
+          {
+            "name": "5",
+            "value": "5"
+          },
+          {
+            "name": "4",
+            "value": "4"
+          },
+          {
+            "name": "3",
+            "value": "3"
+          },
+          {
+            "name": "2",
+            "value": "2"
+          },
+          {
+            "name": "1",
+            "value": "1"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Review",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "value-tiles-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Icon",
+        "description": "Icon on its coloured shape, about 276 x 239",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Icon Alt Text",
+        "value": "",
+        "description": "Leave empty when the title says it all"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Text",
+        "value": "",
+        "description": "Optional"
       }
     ]
   },

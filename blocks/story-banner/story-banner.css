@@ -1,0 +1,110 @@
+/* text beside a square image; on small screens the image comes first */
+.story-banner {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 24px;
+}
+
+.story-banner .story-banner-title {
+  margin: 0 0 16px;
+  color: var(--text-color);
+  font-size: var(--heading-font-size-xxl);
+}
+
+.story-banner .story-banner-text p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.story-banner .story-banner-media {
+  position: relative;
+  align-self: center;
+  width: min(100%, 468px);
+}
+
+.story-banner .story-banner-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+/* white starburst play button with a red triangle, in the middle of the image */
+.story-banner .story-banner-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  border: 0;
+  padding: 0;
+  background: none;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.story-banner .story-banner-play::before,
+.story-banner .story-banner-play::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.story-banner .story-banner-play::before {
+  width: 100%;
+  height: 100%;
+  background-color: var(--background-color);
+  clip-path: polygon(50% 0%, 58% 10%, 67% 4%, 69% 16%, 80% 11%, 79% 23%, 92% 20%, 87% 32%, 100% 36%, 90% 45%, 100% 53%, 89% 60%, 96% 72%, 83% 70%, 84% 84%, 72% 78%, 67% 96%, 57% 86%, 50% 100%, 43% 86%, 33% 96%, 28% 80%, 16% 86%, 18% 72%, 4% 74%, 11% 61%, 0% 54%, 10% 45%, 0% 37%, 13% 32%, 8% 20%, 21% 23%, 20% 10%, 32% 16%, 33% 4%, 42% 10%);
+  transition: transform 0.2s ease;
+}
+
+.story-banner .story-banner-play::after {
+  margin-left: 3px;
+  border-style: solid;
+  border-width: 11px 0 11px 18px;
+  border-color: transparent transparent transparent var(--brand-red);
+}
+
+.story-banner .story-banner-play:hover::before {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.story-banner .story-banner-play:focus-visible {
+  outline: 3px solid var(--background-color);
+  outline-offset: 4px;
+}
+
+@media (width >= 900px) {
+  /* like the original: 590px of text, the 468px image on the right */
+  .story-banner {
+    display: grid;
+    grid-template-columns: minmax(0, 590px) 468px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    max-width: 1125px;
+    margin-inline: auto;
+  }
+
+  .story-banner .story-banner-title {
+    font-size: 32px;
+  }
+
+  .story-banner .story-banner-text p {
+    font-size: 18px;
+  }
+
+  .story-banner .story-banner-play {
+    width: 80px;
+    height: 80px;
+  }
+
+  .story-banner .story-banner-play::after {
+    margin-left: 4px;
+    border-width: 14px 0 14px 22px;
+  }
+}
