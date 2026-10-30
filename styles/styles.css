@@ -956,3 +956,41 @@ main .section.blog .default-content-wrapper a:any-link {
   color: #c7401a;
   font-weight: 700;
 }
+
+/* recipe pages (laid out by buildRecipePage in scripts.js): centred red headings, the
+   first (Ingredients) between sparkles */
+main .section.recipe-body:not(.centered) .default-content-wrapper h2 {
+  margin: 48px 0 28px;
+  color: var(--brand-red);
+  font-size: 28px;
+  text-align: center;
+}
+
+main .section.recipe-body > .default-content-wrapper:first-child h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+main .section.recipe-body > .default-content-wrapper:first-child h2::before,
+main .section.recipe-body > .default-content-wrapper:first-child h2::after {
+  content: '\2727' / '';
+  flex: 0 0 auto;
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  font-size: 0.8em;
+  font-weight: 400;
+}
+
+@media (width >= 900px) {
+  main .section.recipe-body:not(.centered) .default-content-wrapper h2 {
+    margin: 80px 0 48px;
+    font-size: 32px;
+  }
+
+  main .section.recipe-body > .default-content-wrapper:first-child h2 {
+    margin-top: 48px;
+  }
+}

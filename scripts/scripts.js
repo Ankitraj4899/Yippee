@@ -10,6 +10,7 @@ import {
   loadSections,
   loadCSS,
   getMetadata,
+  buildBlock,
 } from './aem.js';
 
 /**
@@ -59,19 +60,6 @@ async function loadFonts() {
 }
 
 /**
- * Builds all synthetic blocks in a container element.
- * @param {Element} main The container element
- */
-function buildAutoBlocks() {
-  try {
-    // TODO: add auto block, if needed
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Auto Blocking failed', error);
-  }
-}
-
-/**
  * Path of the current page and the prefix its links need: the local preview
  * serves test pages under /content/, the live site from the root.
  */
@@ -94,6 +82,72 @@ function pagePath() {
   // the homepage is /index on the author and in local tests
   if (segments.at(-1) === 'index') segments = segments.slice(0, -1);
   return { segments, base, ext };
+}
+
+/**
+ * Recipe pages (the pages with a Recipe Info block) in the original's layout, from their
+ * authored content: the opening title, text and photo with the recipe info become a
+ * Recipe Hero; the ingredients and method lists become Recipe Ingredients and Recipe
+ * Steps; later headed parts (e.g. Serving Suggestion, Chef's Tips) become Recipe Notes;
+ * and the shared extras (the /fragments/recipe-more page) follow.
+ * @param {Element} main The main element
+ */
+function buildRecipePage(main) {
+  // only the page itself: header, footer and fragments are decorated as a main too
+  if (main.parentElement !== document.body) return;
+  const info = main.querySelector(':scope > div > .recipe-info');
+  const title = main.querySelector(':scope > div > h1');
+  if (!info || !title) return;
+
+  const intro = title.parentElement;
+  const meta = intro.querySelector(':scope > .section-metadata');
+  const parts = [...intro.children].filter((el) => el !== meta);
+  const infoSection = info.parentElement;
+  intro.replaceChildren(buildBlock('recipe-hero', [...parts.map((el) => [el]), [info]]));
+  if (meta) intro.append(meta);
+  if (infoSection !== intro && !infoSection.querySelector(':scope > :not(.section-metadata)')) infoSection.remove();
+
+  // each headed list after the hero: ingredients, the method, then the notes
+  const headings = [...main.querySelectorAll(':scope > div > h2')];
+  headings.forEach((h2) => {
+    const text = h2.textContent;
+    const list = h2.nextElementSibling;
+    if (!list?.matches('ul, ol')) return;
+    if (/ingredient/i.test(text)) {
+      h2.parentElement.classList.add('recipe-body');
+      h2.after(buildBlock('recipe-ingredients', [[list]]));
+    } else if (/method|direction|instruction|step/i.test(text)) {
+      h2.parentElement.classList.add('recipe-body');
+      h2.after(buildBlock('recipe-steps', [[list]]));
+    }
+  });
+  const steps = main.querySelector('.recipe-steps');
+  const notes = [];
+  let el = steps?.nextElementSibling;
+  while (el && !el.matches('.section-metadata')) {
+    if (el.tagName === 'H2') notes.push([el]);
+    else if (notes.length) notes.at(-1).push(el);
+    el = el.nextElementSibling;
+  }
+  if (notes.length) steps.after(buildBlock('recipe-notes', notes.map((group) => [{ elems: group }])));
+
+  const { base } = pagePath();
+  const more = document.createElement('div');
+  more.append(buildBlock('recipe-more', [[`${base}/fragments/recipe-more`]]));
+  main.append(more);
+}
+
+/**
+ * Builds all synthetic blocks in a container element.
+ * @param {Element} main The container element
+ */
+function buildAutoBlocks(main) {
+  try {
+    buildRecipePage(main);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Auto Blocking failed', error);
+  }
 }
 
 /**

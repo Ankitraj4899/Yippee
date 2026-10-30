@@ -173,3 +173,13 @@
     border-width: 14px 0 14px 22px;
   }
 }
+
+/* Load More: under the videos, centred */
+.craft-videos .craft-videos-more {
+  margin: 40px 0 0;
+  text-align: center;
+}
+
+.craft-videos .craft-videos-more[hidden] {
+  display: none;
+}

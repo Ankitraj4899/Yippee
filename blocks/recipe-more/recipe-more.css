@@ -1,0 +1,4 @@
+/* the block is replaced by the shared extras as soon as they load */
+.recipe-more {
+  display: none;
+}
