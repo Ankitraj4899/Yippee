@@ -4,11 +4,13 @@ name = "yippee-json-ld"
 main = "src/index.js"
 compatibility_date = "2026-10-01"
 
-# Run on the site's own domain. Replace www.example.com with your domain (it must be a zone in
-# your Cloudflare account) before deploying.
-routes = [
-  { pattern = "www.example.com/*", zone_name = "example.com" },
-]
+# Deploy to Cloudflare's free *.workers.dev subdomain
+workers_dev = true
+
+# (Optional) If you switch to your custom domain later, disable workers_dev and uncomment routes:
+# routes = [
+#   { pattern = "www.example.com/*", zone_name = "example.com" },
+# ]
 
 [vars]
 # Edge Delivery origin (production, main branch)
