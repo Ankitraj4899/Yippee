@@ -136,6 +136,29 @@ describe('buildJsonLd', () => {
     assert.equal(byType(doc, 'FAQPage'), undefined);
   });
 
+  it('describes a product page from its Product Name and Product Category metadata', () => {
+    const page = `<html><head><title>Magic Masala Noodles | Sunfeast YiPPee!</title>
+      <meta name="description" content="Long, non-sticky noodles.">
+      <meta property="og:image" content="${SITE}/media_1.png">
+      <meta name="keywords" content="Magic Masala Noodles, instant noodles">
+      <meta name="product" content="Magic Masala Noodles">
+      <meta name="productcategory" content="Instant Noodles"></head>
+      <body><main><div><h1>YiPPee! Magic Masala</h1>
+      <div class="product-grid"><div><div></div></div>
+        <div><div><picture><img src="./media_2.png" alt="pack of 2"></picture></div><div>Pack of 2</div><div></div><div></div></div>
+      </div></div></main></body></html>`;
+    const doc = buildJsonLd(page, { url: `${SITE}/product-listing/magic-masala-noodles` });
+    const webpage = byType(doc, 'ItemPage');
+    assert.equal(webpage.mainEntity['@id'], `${SITE}/product-listing/magic-masala-noodles#product`);
+    assert.equal(webpage.keywords, 'Magic Masala Noodles, instant noodles');
+    const product = doc['@graph'].find((n) => n['@id']?.endsWith('#product'));
+    assert.equal(product.name, 'Magic Masala Noodles');
+    assert.equal(product.category, 'Instant Noodles');
+    assert.deepEqual(product.image, [`${SITE}/media_1.png`]);
+    const packs = byType(doc, 'ItemList').itemListElement.map((i) => i.item.name);
+    assert.deepEqual(packs, ['Magic Masala Noodles – Pack of 2']);
+  });
+
   it('skips fragments and noindex pages', () => {
     assert.equal(buildJsonLd(fixture('nav.html'), { url: `${SITE}/nav.plain.html` }), null);
     const noindex = fixture('pasta-tikki.html').replace('<head>', '<head><meta name="robots" content="noindex, nofollow">');

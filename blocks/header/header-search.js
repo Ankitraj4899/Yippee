@@ -27,9 +27,10 @@ function loadPages() {
         .map((row) => {
           const label = row.title || (row.pagetitle || '').replace(/\s*\|[^|]*$/, '');
           const {
-            pagetitle, description, category, products, topic,
+            pagetitle, description, category, products, topic, keywords, product, productcategory,
           } = row;
-          const text = [label, pagetitle, description, category, products, topic]
+          const text = [label, pagetitle, description, category, products, topic,
+            keywords, product, productcategory]
             .filter(Boolean).join(' ').toLowerCase();
           return { path: row.path, label: label.trim(), text };
         })

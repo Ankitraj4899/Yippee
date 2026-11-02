@@ -47,3 +47,12 @@ indices:
       readtime:
         select: head > meta[name="readtime"]
         value: attribute(el, "content")
+      keywords:
+        select: head > meta[name="keywords"]
+        value: attribute(el, "content")
+      product:
+        select: head > meta[name="product"]
+        value: attribute(el, "content")
+      productcategory:
+        select: head > meta[name="productcategory"]
+        value: attribute(el, "content")
