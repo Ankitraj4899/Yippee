@@ -1,0 +1,23 @@
+# Cloudflare Worker: CDN for the YiPPee! site in front of Edge Delivery, adding JSON-LD to pages.
+# Deploy with `npx wrangler deploy` (see README.md).
+name = "yippee-json-ld"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# Run on the site's own domain. Replace www.example.com with your domain (it must be a zone in
+# your Cloudflare account) before deploying.
+routes = [
+  { pattern = "www.example.com/*", zone_name = "example.com" },
+]
+
+[vars]
+# Edge Delivery origin (production, main branch)
+ORIGIN_HOSTNAME = "main--yippee--ankitraj4899.aem.live"
+# AEM clears Cloudflare's cache on publish (set up push invalidation, see README.md)
+PUSH_INVALIDATION = "enabled"
+
+# Only if the site's content is protected: add the site token as a secret, never here:
+#   npx wrangler secret put ORIGIN_AUTHENTICATION
+
+[observability]
+enabled = true

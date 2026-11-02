@@ -1,0 +1,17 @@
+{
+  "name": "yippee-json-ld-cloudflare-worker",
+  "private": true,
+  "description": "Cloudflare Worker that serves YiPPee! pages from Edge Delivery and adds schema.org JSON-LD",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "check": "wrangler deploy --dry-run --outdir dist",
+    "test": "mocha",
+    "logs": "wrangler tail"
+  },
+  "devDependencies": {
+    "mocha": "12.0.0-beta-5",
+    "wrangler": "4.156.1"
+  }
+}
