@@ -376,26 +376,31 @@ main .section.stripes .default-content-wrapper h2 {
   overflow-wrap: anywhere;
 }
 
-/* the intro, sized like the original: the YiPPeeee! heading in four colours, smaller text */
-main .section.stripes .default-content-wrapper h2.yippee-word {
+/* Colourful Heading (section style): the first heading runs black, red, yellow, cream */
+main .section.colorful-heading .colorful-heading-band-1 {
+  color: var(--text-color);
+}
+
+main .section.colorful-heading .colorful-heading-band-2 {
+  color: var(--brand-red);
+}
+
+main .section.colorful-heading .colorful-heading-band-3 {
+  color: var(--brand-yellow);
+}
+
+main .section.colorful-heading .colorful-heading-band-4 {
+  color: var(--brand-cream);
+}
+
+/* the intro (Color Stripes), sized like the original: the heading, then smaller text */
+main .section.stripes .default-content-wrapper h2.colorful-heading-title {
   margin: 20px 0 16px;
   font-size: 24px;
   line-height: 42px;
 }
 
-main .section.stripes .yippee-word-2 {
-  color: var(--brand-red);
-}
-
-main .section.stripes .yippee-word-3 {
-  color: var(--brand-yellow);
-}
-
-main .section.stripes .yippee-word-4 {
-  color: var(--brand-cream);
-}
-
-main .section.stripes .yippee-word-text {
+main .section.stripes .colorful-heading-text {
   margin-top: 0;
   font-size: var(--body-font-size-s);
   line-height: 28px;
@@ -403,7 +408,7 @@ main .section.stripes .yippee-word-text {
 }
 
 @media (width >= 900px) {
-  main .section.stripes .default-content-wrapper h2.yippee-word {
+  main .section.stripes .default-content-wrapper h2.colorful-heading-title {
     font-size: 32px;
   }
 }
