@@ -117,6 +117,52 @@
   }
 }
 
+/* untitled cards (the homepage DIY videos), sized like the original: 270 x 360 on small
+   screens, three 306 x 408 cards 36px apart in a 990px row on desktop */
+.video-gallery:not(.titled) .slider .slider-track.video-gallery-list {
+  gap: 24px;
+}
+
+.video-gallery:not(.titled) .video-gallery-item {
+  width: min(270px, 85%);
+}
+
+.video-gallery:not(.titled) .video-gallery-card {
+  height: auto;
+  aspect-ratio: 3 / 4;
+  border-radius: 30px;
+}
+
+.video-gallery:not(.titled) .video-gallery-card picture {
+  border-radius: 30px;
+}
+
+@media (width >= 900px) {
+  .video-gallery:not(.titled) {
+    max-width: 990px;
+    margin-inline: auto;
+  }
+
+  .video-gallery:not(.titled) .slider .slider-track.video-gallery-list {
+    gap: 36px;
+    padding-inline: 0;
+  }
+
+  .video-gallery:not(.titled) .video-gallery-item {
+    width: calc((100% - 72px) / 3);
+  }
+
+  .video-gallery:not(.titled) a.video-gallery-card picture::before {
+    width: 80px;
+    height: 80px;
+  }
+
+  .video-gallery:not(.titled) a.video-gallery-card picture::after {
+    margin-left: 4px;
+    border-width: 14px 0 14px 22px;
+  }
+}
+
 /* titled cards: the thumbnail fills the card, the video's name sits over its bottom */
 .video-gallery.titled .video-gallery-card {
   text-decoration: none;
