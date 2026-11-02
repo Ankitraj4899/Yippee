@@ -155,6 +155,94 @@
         "name": "readtime",
         "label": "Blog Reading Time",
         "description": "Blog pages only, e.g. 5 min read"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "product",
+        "label": "Product Name",
+        "description": "Product pages only: the product the page is about, e.g. Magic Masala Noodles (used for search results)"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "productcategory",
+        "label": "Product Category",
+        "description": "Product pages only: the range the product belongs to",
+        "options": [
+          {
+            "name": "None",
+            "value": ""
+          },
+          {
+            "name": "Instant Noodles",
+            "value": "Instant Noodles"
+          },
+          {
+            "name": "Cup Noodles",
+            "value": "Cup Noodles"
+          },
+          {
+            "name": "Pasta",
+            "value": "Pasta"
+          },
+          {
+            "name": "Korean Noodles",
+            "value": "Korean Noodles"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "robots",
+        "label": "Search Engines",
+        "description": "Hide the page from search engines (and from the site search and recipe/blog lists)",
+        "options": [
+          {
+            "name": "Show in search (default)",
+            "value": ""
+          },
+          {
+            "name": "Hide from search",
+            "value": "noindex"
+          },
+          {
+            "name": "Hide from search, don't follow its links",
+            "value": "noindex, nofollow"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "breadcrumb",
+        "label": "Breadcrumb",
+        "description": "The Home › … trail under the header",
+        "options": [
+          {
+            "name": "Show (default)",
+            "value": ""
+          },
+          {
+            "name": "Hide",
+            "value": "off"
+          }
+        ]
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "nav",
+        "label": "Navigation",
+        "description": "Optional: a different navigation page for this page (default: the site's nav)"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "footer",
+        "label": "Footer",
+        "description": "Optional: a different footer page for this page (default: the site's footer)"
       }
     ]
   },

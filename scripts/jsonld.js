@@ -228,6 +228,10 @@ export function buildJsonLd(html, { url, logo, recipes = [] }) {
   const isBlogPost = /^\/blog-listing\/[^/]+$/.test(path);
   const products = productsIn(main, pageId);
   const isProductList = products.length > 0;
+  // product pages name their product in the page metadata (Product Name, Product Category)
+  const productName = meta(html, 'product');
+  const isProductPage = Boolean(productName);
+  const keywords = meta(html, 'keywords');
 
   const organization = compact({
     '@type': 'Organization',
@@ -246,7 +250,7 @@ export function buildJsonLd(html, { url, logo, recipes = [] }) {
     publisher: { '@id': organization['@id'] },
   };
   const webpage = compact({
-    '@type': isRecipeList || isProductList ? 'CollectionPage' : 'WebPage',
+    '@type': (isProductPage && 'ItemPage') || (isRecipeList || isProductList ? 'CollectionPage' : 'WebPage'),
     '@id': `${pageId}#webpage`,
     url: pageId,
     name: title || heading,
@@ -255,6 +259,7 @@ export function buildJsonLd(html, { url, logo, recipes = [] }) {
     primaryImageOfPage: image ? { '@type': 'ImageObject', url: image } : undefined,
     datePublished: meta(html, 'published-time') || undefined,
     breadcrumb: isHome ? undefined : { '@id': `${pageId}#breadcrumb` },
+    keywords: keywords || undefined,
   });
   const graph = [organization, website, webpage];
   // the page's own name, without the " | Sunfeast YiPPee!" suffix (as in the visible breadcrumb)
@@ -280,7 +285,7 @@ export function buildJsonLd(html, { url, logo, recipes = [] }) {
       datePublished: meta(html, 'published-time') || undefined,
       recipeCategory: category,
       suitableForDiet: DIETS[meta(html, 'diet').toLowerCase()],
-      keywords: [category, SITE_NAME].filter(Boolean).join(', '),
+      keywords: keywords || [category, SITE_NAME].filter(Boolean).join(', '),
       prepTime: isoDuration(prep),
       cookTime: isoDuration(cook),
       totalTime: isoDuration(total),
@@ -307,7 +312,7 @@ export function buildJsonLd(html, { url, logo, recipes = [] }) {
       author: author ? { '@type': 'Organization', name: author } : { '@id': organization['@id'] },
       publisher: { '@id': organization['@id'] },
       articleSection: topic || undefined,
-      keywords: [topic, SITE_NAME].filter(Boolean).join(', '),
+      keywords: keywords || [topic, SITE_NAME].filter(Boolean).join(', '),
     }));
   }
 
@@ -340,8 +345,30 @@ export function buildJsonLd(html, { url, logo, recipes = [] }) {
     });
   }
 
+  if (isProductPage) {
+    webpage.mainEntity = { '@id': `${pageId}#product` };
+    graph.push(compact({
+      '@type': 'Product',
+      '@id': `${pageId}#product`,
+      mainEntityOfPage: { '@id': webpage['@id'] },
+      name: productName,
+      description,
+      image: image ? [image] : undefined,
+      url: pageId,
+      category: meta(html, 'productcategory') || undefined,
+      keywords: keywords || undefined,
+      brand: { '@type': 'Brand', name: SITE_NAME },
+      manufacturer: { '@id': organization['@id'] },
+    }));
+  }
+
   if (isProductList) {
-    webpage.mainEntity = { '@id': `${pageId}#products` };
+    // on a product page the list is its packs ("Also available in"), named after the product
+    const packName = (name) => {
+      const named = !isProductPage || name.toLowerCase().includes(productName.toLowerCase());
+      return named ? name : `${productName} – ${name}`;
+    };
+    if (!isProductPage) webpage.mainEntity = { '@id': `${pageId}#products` };
     graph.push({
       '@type': 'ItemList',
       '@id': `${pageId}#products`,
@@ -352,7 +379,7 @@ export function buildJsonLd(html, { url, logo, recipes = [] }) {
         position: i + 1,
         item: compact({
           '@type': 'Product',
-          name: product.name,
+          name: packName(product.name),
           image: product.image,
           url: product.url,
           brand: { '@type': 'Brand', name: SITE_NAME },
