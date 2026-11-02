@@ -225,40 +225,77 @@ export function decorateButtons(main) {
   });
 }
 
+// a Colourful Heading's letters after "YiPPee": red, yellow and cream in the original's 7 : 9 : 6
+const HEADING_SHARES = [7, 9, 6];
+
+/**
+ * Splits a heading into its colour bands: a leading "YiPPee" stays black and the rest is shared
+ * out by HEADING_SHARES; other headings are split 6 : 7 : 9 : 6 from the first letter. Longer or
+ * shorter headings keep the same look.
+ * @param {string} text The heading text
+ * @returns {string[]} the bands, black first
+ */
+export function headingColorBands(text) {
+  const [prefix = ''] = text.match(/^YiPPee/i) || [];
+  const shares = prefix ? HEADING_SHARES : [6, ...HEADING_SHARES];
+  const chars = [...text.slice(prefix.length)];
+  const total = shares.reduce((sum, share) => sum + share, 0);
+  let start = 0;
+  let sharesSoFar = 0;
+  const bands = shares.map((share, i) => {
+    sharesSoFar += share;
+    // every band gets at least one letter while there are letters left
+    const end = i === shares.length - 1 ? chars.length : Math.max(
+      Math.round((chars.length * sharesSoFar) / total),
+      Math.min(start + 1, chars.length),
+    );
+    const band = chars.slice(start, end).join('');
+    start = end;
+    return band;
+  });
+  return (prefix ? [prefix, ...bands] : bands).filter(Boolean);
+}
+
+/**
+ * Sections with the Colourful Heading style: their first heading runs from black through red and
+ * yellow to cream, like the original's "YiPPeeee!". Safe to run again after edits in the
+ * Universal Editor; removing the style takes the colours off.
+ * @param {Element} root The container element (main, or a part of it)
+ */
+export function decorateColorfulHeadings(root) {
+  const main = root.closest?.('main') || root;
+  main.querySelectorAll('.colorful-heading-title').forEach((heading) => {
+    if (heading.closest('.section.colorful-heading')) return;
+    heading.classList.remove('colorful-heading-title');
+    heading.nextElementSibling?.classList.remove('colorful-heading-text');
+    heading.textContent = heading.textContent.trim();
+  });
+  main.querySelectorAll('.section.colorful-heading').forEach((section) => {
+    const heading = section.querySelector('.default-content-wrapper :is(h1, h2, h3, h4, h5, h6)');
+    if (!heading) return;
+    heading.replaceChildren(...headingColorBands(heading.textContent.trim()).map((text, i) => {
+      const span = document.createElement('span');
+      span.className = `colorful-heading-band-${i + 1}`;
+      span.textContent = text;
+      return span;
+    }));
+    heading.classList.add('colorful-heading-title');
+    const intro = heading.nextElementSibling;
+    if (intro?.matches('p')) intro.classList.add('colorful-heading-text');
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
  */
 // eslint-disable-next-line import/prefer-default-export
-/**
- * The long "YiPPeeeee…!" heading of the intro (Stripes section) runs from black through
- * red and yellow to cream, like the original: "YiPPee", then 7 red e's, 9 yellow, the rest cream.
- * @param {Element} main The container element
- */
-function decorateYippeeWord(main) {
-  main.querySelectorAll('.section.stripes h2').forEach((heading) => {
-    const match = heading.textContent.trim().match(/^(YiPPee)(e+)(!*)$/i);
-    if (!match) return;
-    const [, start, es, end] = match;
-    const parts = [start, es.slice(0, 7), es.slice(7, 16), es.slice(16) + end];
-    heading.replaceChildren(...parts.filter(Boolean).map((text, i) => {
-      const span = document.createElement('span');
-      span.className = `yippee-word-${i + 1}`;
-      span.textContent = text;
-      return span;
-    }));
-    heading.classList.add('yippee-word');
-    const text = heading.nextElementSibling;
-    if (text?.matches('p')) text.classList.add('yippee-word-text');
-  });
-}
-
 export function decorateMain(main) {
   decorateIcons(main);
   buildBreadcrumb(main);
   buildAutoBlocks(main);
   decorateSections(main);
-  decorateYippeeWord(main);
+  decorateColorfulHeadings(main);
   decorateBlocks(main);
   decorateButtons(main);
 }

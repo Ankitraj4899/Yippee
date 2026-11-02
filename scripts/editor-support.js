@@ -8,7 +8,7 @@ import {
   loadSections,
 } from './aem.js';
 import { decorateRichtext } from './editor-support-rte.js';
-import { decorateButtons, decorateMain } from './scripts.js';
+import { decorateButtons, decorateColorfulHeadings, decorateMain } from './scripts.js';
 
 let promiseChanges$ = Promise.resolve();
 
@@ -79,6 +79,7 @@ async function applyChanges(event) {
           decorateIcons(newSection);
           decorateRichtext(newSection);
           decorateSections(parentElement);
+          decorateColorfulHeadings(parentElement);
           decorateBlocks(parentElement);
           await loadSections(parentElement);
           element.remove();
@@ -88,6 +89,8 @@ async function applyChanges(event) {
           decorateButtons(parentElement);
           decorateIcons(parentElement);
           decorateRichtext(parentElement);
+          // an edited heading in a Colourful Heading section gets its colours again
+          decorateColorfulHeadings(parentElement);
         }
         return true;
       }
