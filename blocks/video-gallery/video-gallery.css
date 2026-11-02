@@ -163,6 +163,13 @@
   }
 }
 
+/* wide screens: the arrows sit 74px outside the cards, like the original */
+@media (width >= 1200px) {
+  .video-gallery:not(.titled) {
+    --slider-arrow-offset: -74px;
+  }
+}
+
 /* titled cards: the thumbnail fills the card, the video's name sits over its bottom */
 .video-gallery.titled .video-gallery-card {
   text-decoration: none;
